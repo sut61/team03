@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+  เลือกห้องซ้อมดนตรี
+</mat-toolbar>
+<form [formGroup]="roomForm">
+  <mat-form-field>
+    <mat-select placeholder="จำนวนคน" (valueChange)="selectSize($event)">
+      <mat-option *ngFor="let roomsize of roomSizes" [value]="roomsize.id">
+        {{roomsize.size}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+    <mat-select placeholder="ประเภทห้อง" (valueChange)="selectType($event)">
+      <mat-option *ngFor="let roomtype of roomTypes" [value]="roomtype.id" >
+        {{roomtype.type}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <button mat-stroked-button [disabled]="!roomForm.valid" type="button" (click)="findRoom()">ค้นหาห้อง</button><br>
+  *ในการจองห้องบันทึกจะต้องทำการจองทั้งวัน (12 ชั่วโมง)<br>
+  *ราคาที่เห็นเป็นราคาต่อชั่วโมงเท่านั้น
+  <mat-list *ngFor="let room of rooms">
+    <mat-card>
+      {{room.name}}
+      <button mat-stroked-button type="button" (click)="roomSelect(room.id)">เลือก</button> <br>
+      ราคา {{room.rate}} ต่อชั่วโมง
+      เครื่องดนตรี: <a *ngFor="let i of room.roomInstruments">{{i.instrument.name}} </a>
+    </mat-card>
+  </mat-list>
+</form>

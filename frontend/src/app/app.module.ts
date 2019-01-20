@@ -17,8 +17,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import {TokenService} from './shared/token/token.service';
+import { RoomSelectComponent } from './room-select/room-select.component';
+import {RoomSelectService} from './shared/room-select/room-select.service';
 
 const appRoutes: Routes = [
+  {path: 'select', component: RoomSelectComponent},
   {path: 'login', component: LoginComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
@@ -26,7 +29,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    RoomSelectComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,7 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     MatFormFieldModule
   ],
-  providers: [LoginService, TokenService],
+  providers: [LoginService, TokenService, RoomSelectService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

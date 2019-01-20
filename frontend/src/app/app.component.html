@@ -1,1 +1,10 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <ul>
+      <li *ngIf="!isLogin()"><button mat-button (click)="gotoLogin()">ลงชื่อเข้าใช้</button></li>
+      <li *ngIf="isLogin()"><button mat-button (click)="gotoSelect()">เลือกห้อง</button></li>
+      <li *ngIf="isLogin()"><button mat-button (click)="signOut()">ออกจากระบบ</button></li>
+    </ul>
+  </mat-toolbar-row>
+</mat-toolbar>
 <router-outlet></router-outlet>

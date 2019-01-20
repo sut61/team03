@@ -18,13 +18,15 @@ export class LoginComponent implements OnInit {
   constructor(private route: Router, private loginService: LoginService, private token: TokenService) { }
 
   ngOnInit() {
+    if (this.token.getUsername()) {
+      this.route.navigate(['select']);
+    }
   }
 
   login() {
     this.loginService.signin(this.user).subscribe(value => {}, error1 => {}, () => {
       this.token.saveUsername(this.user.username);
-      // redirect to component
-      // this.route.navigate(['select']);
+      this.route.navigate(['select']);
     });
   }
 

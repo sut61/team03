@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router';
+import {TokenService} from './shared/token/token.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,28 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  constructor(private route: Router, private token: TokenService) {}
+
+  isLogin(): boolean {
+    return !!this.token.getUsername();
+  }
+
+  isAdmin(): boolean {
+    return (this.isLogin() && this.token.getUsername() === 'admin');
+  }
+
+  gotoSelect() {
+    this.route.navigate(['select']);
+  }
+
+  gotoLogin() {
+    this.route.navigate(['login']);
+  }
+
+  signOut() {
+    this.token.signOut();
+    this.gotoLogin();
+  }
+
 }
