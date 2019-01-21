@@ -1,5 +1,6 @@
 package com.sut.se.g03.controller;
 
+import com.sut.se.g03.G03Application;
 import com.sut.se.g03.entity.*;
 import com.sut.se.g03.repository.*;
 import org.slf4j.Logger;
@@ -34,11 +35,13 @@ public class RoomReserveController {
     @Autowired private BillRoomRepository billRoomRepository;
     @Autowired private BillInfoRepository billInfoRepository;
     @Autowired private RoomInstrumentRepository roomInstrumentRepository;
+    @Autowired private PaidStatusRepository paidStatusRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(RoomReserveController.class);
 
     private final String PRACTICE_ROOM_TYPE_NAME = "practice";
     private final String RECORD_ROOM_TYPE_NAME = "record";
+    private final String NOT_PAID_STATUS_NAME = "ยังไม่จ่ายเงิน";
 
     private boolean isPracticeRoom(RoomType roomType){
         return roomTypeRepository.findByType(PRACTICE_ROOM_TYPE_NAME) == roomType;
@@ -94,6 +97,7 @@ public class RoomReserveController {
         final int DAYHOUR = 12;
         float price;
         final boolean RESERVE_STATUS = true;
+        PaidStatus notPaid = paidStatusRepository.findByName(NOT_PAID_STATUS_NAME).get();
         Room room = roomRepository.getOne(roomID);
         Schedule schedule = scheduleRepository.getOne(dateID);
         Member member = memberRepository.findByUserName(username);
@@ -121,7 +125,7 @@ public class RoomReserveController {
                 content = createContent(DAYHOUR, room.getRoomType(), room.getName());
             }
             Date localDate = Date.from(LocalDate.now().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-            Bill bill = billRepository.save(new Bill(localDate, price, member));
+            Bill bill = billRepository.save(new Bill(localDate, price, member, notPaid));
             billInfoRepository.save(new BillInfo(content, price, bill));
             billRoomRepository.save(new BillRoom(room, bill));
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
