@@ -19,9 +19,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {TokenService} from './shared/token/token.service';
 import { RoomSelectComponent } from './room-select/room-select.component';
 import {RoomSelectService} from './shared/room-select/room-select.service';
+import { RoomReserveComponent } from './room-reserve/room-reserve.component';
+import {RoomReserveService} from './shared/room-reserve/room-reserve.service';
 
 const appRoutes: Routes = [
   {path: 'select', component: RoomSelectComponent},
+  {path: 'reserve/:id', component: RoomReserveComponent},
   {path: 'login', component: LoginComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
@@ -30,7 +33,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    RoomSelectComponent
+    RoomSelectComponent,
+    RoomReserveComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,7 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     MatFormFieldModule
   ],
-  providers: [LoginService, TokenService, RoomSelectService],
+  providers: [LoginService, TokenService, RoomSelectService, RoomReserveService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
