@@ -33,6 +33,7 @@ public class G03Application {
 	@Autowired	private RoomTypeRepository roomTypeRepository;
 	@Autowired	private RoomSizeRepository roomSizeRepository;
 	@Autowired	private TimeTableRepository timeTableRepository;
+	@Autowired  private PaidStatusRepository paidStatusRepository;
 
 	@Bean
 	ApplicationRunner init(){
@@ -43,8 +44,14 @@ public class G03Application {
 			createScheduleTable();
 			createRoom();
 			createTimeTable();
+			createPaidStatus("จ่ายแล้ว");
+			createPaidStatus("ยังไม่จ่ายเงิน");
 			logger.info("Initializing Complete");
 		};
+	}
+
+	private void createPaidStatus(String status){
+		paidStatusRepository.save(new PaidStatus(status));
 	}
 
 	private void createNewUser(String plainPassword,String userName) throws Exception {

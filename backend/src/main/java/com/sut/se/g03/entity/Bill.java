@@ -1,8 +1,10 @@
 package com.sut.se.g03.entity;
 
+import com.sut.se.g03.repository.PaidStatusRepository;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -20,7 +22,9 @@ public class Bill {
 	private Date date;
 	private float totalPrice;
 	private Timestamp timestamp;
-	private Boolean paid = false;
+
+	@ManyToOne
+	private PaidStatus paidStatus;
 
 	@ManyToOne
 	private Member member;
@@ -30,6 +34,13 @@ public class Bill {
 	public Bill(Date date, float totalPrice, Member member) {
 		this.date = date;
 		this.totalPrice += totalPrice;
+		this.member = member;
+	}
+
+	public Bill(Date date, float totalPrice, Member member, PaidStatus paidStatus) {
+		this.date = date;
+		this.totalPrice += totalPrice;
+		this.paidStatus = paidStatus;
 		this.member = member;
 	}
 }
