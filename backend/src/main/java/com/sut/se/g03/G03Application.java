@@ -32,8 +32,9 @@ public class G03Application {
 	@Autowired	private RoomRepository roomRepository;
 	@Autowired	private RoomTypeRepository roomTypeRepository;
 	@Autowired	private RoomSizeRepository roomSizeRepository;
+	@Autowired	private StatusRoomRepository statusRoomRepository;
 	@Autowired	private TimeTableRepository timeTableRepository;
-	@Autowired  private PaidStatusRepository paidStatusRepository;
+
 
 	@Bean
 	ApplicationRunner init(){
@@ -44,14 +45,8 @@ public class G03Application {
 			createScheduleTable();
 			createRoom();
 			createTimeTable();
-			createPaidStatus("จ่ายแล้ว");
-			createPaidStatus("ยังไม่จ่ายเงิน");
 			logger.info("Initializing Complete");
 		};
-	}
-
-	private void createPaidStatus(String status){
-		paidStatusRepository.save(new PaidStatus(status));
 	}
 
 	private void createNewUser(String plainPassword,String userName) throws Exception {
@@ -82,14 +77,16 @@ public class G03Application {
 		RoomSize size9 = roomSizeRepository.save(new RoomSize(9));
 		RoomType rec = roomTypeRepository.save(new RoomType("record"));
 		RoomType pra = roomTypeRepository.save(new RoomType("practice"));
-		roomRepository.save(new Room("R101",200,size5,rec));
-		roomRepository.save(new Room("R102",250,size7,rec));
-		roomRepository.save(new Room("R103",200,size5,rec));
-		roomRepository.save(new Room("R104",300,size9,rec));
-		roomRepository.save(new Room("P101",100,size5,pra));
-		roomRepository.save(new Room("P102",150,size7,pra));
-		roomRepository.save(new Room("P103",100,size5,pra));
-		roomRepository.save(new Room("P104",190,size9,pra));
+		StatusRoom open = statusRoomRepository.save(new StatusRoom("ใช้งาน"));
+		StatusRoom close = statusRoomRepository.save(new StatusRoom("ปิดใช้งาน"));
+		roomRepository.save(new Room("R101",200,size5,rec,open));
+		roomRepository.save(new Room("R102",250,size7,rec,open));
+		roomRepository.save(new Room("R103",200,size5,rec,open));
+		roomRepository.save(new Room("R104",300,size9,rec,open));
+		roomRepository.save(new Room("P101",100,size5,pra,close));
+		roomRepository.save(new Room("P102",150,size7,pra,close));
+		roomRepository.save(new Room("P103",100,size5,pra,close));
+		roomRepository.save(new Room("P104",190,size9,pra,close));
 	}
 
 	private void createTimeTable(){
