@@ -26,16 +26,20 @@ public class Room {
     @ManyToOne
     RoomType roomType;
 
+    @ManyToOne
+    StatusRoom statusRoom;
+
     @OneToMany(mappedBy = "room")
     List<RoomInstrument> roomInstruments = new ArrayList<>();
 
     public Room(){}
 
-    public Room(String name,int rate,RoomSize roomSize,RoomType roomType){
+    public Room(String name,int rate,RoomSize roomSize,RoomType roomType,StatusRoom statusRoom){
         this.name = name;
         this.rate = rate;
         this.roomSize = roomSize;
         this.roomType = roomType;
+        this.statusRoom = statusRoom;
     }
 
 }
