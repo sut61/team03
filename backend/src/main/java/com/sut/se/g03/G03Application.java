@@ -34,6 +34,7 @@ public class G03Application {
 	@Autowired	private RoomSizeRepository roomSizeRepository;
 	@Autowired	private StatusRoomRepository statusRoomRepository;
 	@Autowired	private TimeTableRepository timeTableRepository;
+	@Autowired	private InstrumentRepository instrumentRepository;
 
 
 	@Bean
@@ -79,14 +80,18 @@ public class G03Application {
 		RoomType pra = roomTypeRepository.save(new RoomType("practice"));
 		StatusRoom open = statusRoomRepository.save(new StatusRoom("ใช้งาน"));
 		StatusRoom close = statusRoomRepository.save(new StatusRoom("ปิดใช้งาน"));
+		Instrument guitar = instrumentRepository.save(new Instrument("กีตาร์"));
+		Instrument drum = instrumentRepository.save(new Instrument("กลองชุด"));
+		Instrument bass = instrumentRepository.save(new Instrument("กีตาร์เบส"));
+		Instrument key = instrumentRepository.save(new Instrument("คีย์บอร์ด"));
 		roomRepository.save(new Room("R101",200,size5,rec,open));
 		roomRepository.save(new Room("R102",250,size7,rec,open));
 		roomRepository.save(new Room("R103",200,size5,rec,open));
 		roomRepository.save(new Room("R104",300,size9,rec,open));
 		roomRepository.save(new Room("P101",100,size5,pra,close));
-		roomRepository.save(new Room("P102",150,size7,pra,open));
+		roomRepository.save(new Room("P102",150,size7,pra,close));
 		roomRepository.save(new Room("P103",100,size5,pra,close));
-		roomRepository.save(new Room("P104",190,size9,pra,open));
+		roomRepository.save(new Room("P104",190,size9,pra,close));
 	}
 
 	private void createTimeTable(){
