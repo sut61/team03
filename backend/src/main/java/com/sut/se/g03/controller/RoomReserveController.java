@@ -43,6 +43,7 @@ public class RoomReserveController {
     private final String PRACTICE_ROOM_TYPE_NAME = "practice";
     private final String RECORD_ROOM_TYPE_NAME = "record";
     private final String NOT_PAID_STATUS_NAME = "ยังไม่จ่ายเงิน";
+    
     private final String OPENED_ROOM = "ใช้งาน";
 
     private boolean isPracticeRoom(RoomType roomType){
