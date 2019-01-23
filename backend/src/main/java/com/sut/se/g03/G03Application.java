@@ -84,9 +84,9 @@ public class G03Application {
 		roomRepository.save(new Room("R103",200,size5,rec,open));
 		roomRepository.save(new Room("R104",300,size9,rec,open));
 		roomRepository.save(new Room("P101",100,size5,pra,close));
-		roomRepository.save(new Room("P102",150,size7,pra,close));
+		roomRepository.save(new Room("P102",150,size7,pra,open));
 		roomRepository.save(new Room("P103",100,size5,pra,close));
-		roomRepository.save(new Room("P104",190,size9,pra,close));
+		roomRepository.save(new Room("P104",190,size9,pra,open));
 	}
 
 	private void createTimeTable(){

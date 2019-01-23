@@ -36,12 +36,14 @@ public class RoomReserveController {
     @Autowired private BillInfoRepository billInfoRepository;
     @Autowired private RoomInstrumentRepository roomInstrumentRepository;
     @Autowired private PaidStatusRepository paidStatusRepository;
+    @Autowired private StatusRoomRepository statusRoomRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(RoomReserveController.class);
 
     private final String PRACTICE_ROOM_TYPE_NAME = "practice";
     private final String RECORD_ROOM_TYPE_NAME = "record";
     private final String NOT_PAID_STATUS_NAME = "ยังไม่จ่ายเงิน";
+    private final String OPENED_ROOM = "ใช้งาน";
 
     private boolean isPracticeRoom(RoomType roomType){
         return roomTypeRepository.findByType(PRACTICE_ROOM_TYPE_NAME) == roomType;
@@ -84,8 +86,8 @@ public class RoomReserveController {
 
     @GetMapping("/reserve/rooms/{typeId}/{sizeId}")
     public Collection<Room> getRooms(@PathVariable Long typeId, @PathVariable Long sizeId){
-        return roomRepository.findByRoomSizeAndRoomType(roomSizeRepository.findById(sizeId)
-                ,roomTypeRepository.findById(typeId));
+        return roomRepository.findAllByRoomSizeAndRoomTypeAndStatusRoom(roomSizeRepository.findById(sizeId)
+                ,roomTypeRepository.findById(typeId), statusRoomRepository.findByName(OPENED_ROOM));
     }
 
     @PutMapping("/reserve/reserve/{roomID}/{dateID}/{username}")

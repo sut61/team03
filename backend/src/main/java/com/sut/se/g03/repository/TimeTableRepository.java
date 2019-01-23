@@ -16,5 +16,4 @@ import java.util.Optional;
 public interface TimeTableRepository extends JpaRepository<TimeTable,Long> {
     Collection<TimeTable> findAllByRoomAndAndSchedule(Optional<Room> room, Optional<Schedule> schedule);
     TimeTable findByRoomAndSchedule(Room room, Schedule schedule);
-    TimeTable findByRoomAndScheduleAndTimePeriod(Room room, Schedule schedule, TimePeriod timePeriod);
 }
