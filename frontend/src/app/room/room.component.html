@@ -1,0 +1,96 @@
+<mat-toolbar color="primary">
+ จัดการห้องซ้อมดนตรี 
+</mat-toolbar><br>
+เพิ่มห้องซ้อมดนตรี<br>
+
+  <mat-form-field class="example-full-width">
+      <input matInput name="inputName"  type="text" placeholder="ชื่อห้อง"  [(ngModel)]="inputName" >
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field class="example-full-width">
+      <input matInput name="inputRate"  type="number" placeholder="ราคา"  [(ngModel)]="inputRate" >
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+      <mat-select [(ngModel)]="roomSizeSelect" placeholder="ขนาดห้อง">
+        <mat-option *ngFor="let roomsize of roomsizes" [value]="roomsize.id">
+          {{roomsize.size+" คน"}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field>
+        <mat-select [(ngModel)]="roomTypeSelect" placeholder="ประเภทห้อง">
+          <mat-option *ngFor="let roomtype of roomtypes" [value]="roomtype.id">
+            {{roomtype.type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <mat-form-field>
+          <mat-select [(ngModel)]="statusRoomSelect" placeholder="สถานะห้อง">
+            <mat-option *ngFor="let statusroom of statusrooms" [value]="statusroom.id">
+              {{statusroom.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+      <button mat-raised-button color="primary" (click)="postRoom()">เพิ่ม</button><br>
+แก้ไขห้องซ้อมดนตรี<br>
+<mat-form-field>
+    <mat-select [(ngModel)]="roomSelect1" placeholder="ห้อง">
+      <mat-option *ngFor="let room of rooms" [value]="room.id">
+        {{room.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field class="example-full-width">
+      <input matInput name="inputRate1"  type="number" placeholder="ราคา"  [(ngModel)]="inputRate1" >
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+      <mat-select [(ngModel)]="roomSizeSelect1" placeholder="ขนาดห้อง">
+        <mat-option *ngFor="let roomsize of roomsizes" [value]="roomsize.id">
+          {{roomsize.size+" คน"}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field>
+        <mat-select [(ngModel)]="roomTypeSelect1" placeholder="ประเภทห้อง">
+          <mat-option *ngFor="let roomtype of roomtypes" [value]="roomtype.id">
+            {{roomtype.type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <mat-form-field>
+          <mat-select [(ngModel)]="statusRoomSelect1" placeholder="สถานะห้อง">
+            <mat-option *ngFor="let statusroom of statusrooms" [value]="statusroom.id">
+              {{statusroom.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+      <button mat-raised-button color="primary" (click)="putRoom()">แก้ไข</button><br>
+      *ในการจองห้องบันทึกจะต้องทำการจองทั้งวัน (12 ชั่วโมง)<br>
+      *ราคาที่เห็นเป็นราคาต่อชั่วโมงเท่านั้น<br><br>
+      เพิ่มเครื่องดนตรี<br>
+      <mat-form-field>
+        <mat-select [(ngModel)]="roomSelect" placeholder="ห้อง">
+          <mat-option *ngFor="let room of rooms" [value]="room.id">
+            {{room.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <mat-form-field>
+          <mat-select [(ngModel)]="instrumentSelect" placeholder="เครื่องดนตรี">
+            <mat-option *ngFor="let instrument of instruments" [value]="instrument.id">
+              {{instrument.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+      <button mat-raised-button color="primary" (click)="postInstrumen()">เพิ่ม</button>

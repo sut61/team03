@@ -21,8 +21,11 @@ import { RoomSelectComponent } from './room-select/room-select.component';
 import {RoomSelectService} from './shared/room-select/room-select.service';
 import { RoomReserveComponent } from './room-reserve/room-reserve.component';
 import {RoomReserveService} from './shared/room-reserve/room-reserve.service';
+import { RoomComponent } from './room/room.component';
+import { RoomService } from './shared/room/room.service';
 
 const appRoutes: Routes = [
+  {path: 'room', component: RoomComponent},
   {path: 'select', component: RoomSelectComponent},
   {path: 'reserve/:id', component: RoomReserveComponent},
   {path: 'login', component: LoginComponent},
@@ -34,7 +37,8 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     RoomSelectComponent,
-    RoomReserveComponent
+    RoomReserveComponent,
+    RoomComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +66,7 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     MatFormFieldModule
   ],
-  providers: [LoginService, TokenService, RoomSelectService, RoomReserveService],
+  providers: [LoginService, TokenService, RoomSelectService, RoomReserveService,RoomService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -20,6 +20,10 @@ export class AppComponent {
     return (this.isLogin() && this.token.getUsername() === 'admin');
   }
 
+  gotoRoom() {
+    this.route.navigate(['/room']);
+  }
+
   gotoSelect() {
     this.route.navigate(['select']);
   }
