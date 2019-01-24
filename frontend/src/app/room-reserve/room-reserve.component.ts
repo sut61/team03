@@ -74,9 +74,13 @@ export class RoomReserveComponent implements OnInit {
     this.roomReserveService.putReserve(this.room.id, this.dateSelectID, this.timeData, this.token.getUsername()).subscribe(
       value => {},
       error1 => {
-        alert('error');
+        if (alert('error')) {
+          window.location.reload();
+        }
       }, () => {
-        alert('complete');
+        if (alert('complete')) {
+          window.location.reload();
+        }
       });
     window.location.reload();
   }

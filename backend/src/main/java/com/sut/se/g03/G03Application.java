@@ -35,8 +35,8 @@ public class G03Application {
 	@Autowired	private StatusRoomRepository statusRoomRepository;
 	@Autowired	private TimeTableRepository timeTableRepository;
 	@Autowired	private InstrumentRepository instrumentRepository;
-
-
+    @Autowired  private PaidStatusRepository paidStatusRepository;
+    @Autowired  private CreditTypeRepository creditTypeRepository;
 	@Bean
 	ApplicationRunner init(){
 		return args -> {
@@ -46,8 +46,31 @@ public class G03Application {
 			createScheduleTable();
 			createRoom();
 			createTimeTable();
+			createPaidStatus("จ่ายแล้ว");
+			createPaidStatus("ยังไม่จ่ายเงิน");
 			logger.info("Initializing Complete");
 		};
+	}
+	@Bean
+	ApplicationRunner init2() {
+		return args -> {
+		    CreditType c1 = new CreditType();
+		    c1.setType("กรุงเทพ");
+		    CreditType c2 = new CreditType();
+		    c2.setType("กสิกรไทย");
+		    CreditType c3 = new CreditType();
+		    c3.setType("กรุงไทย");
+		    CreditType c4 = new CreditType();
+		    c4.setType("ไทยพาณิชย์");
+		    creditTypeRepository.save(c1);
+		    creditTypeRepository.save(c2);
+		    creditTypeRepository.save(c3);
+		    creditTypeRepository.save(c4);
+
+		};
+	}
+	private void createPaidStatus(String status){
+		paidStatusRepository.save(new PaidStatus(status));
 	}
 
 	private void createNewUser(String plainPassword,String userName) throws Exception {
@@ -89,9 +112,9 @@ public class G03Application {
 		roomRepository.save(new Room("R103",200,size5,rec,open));
 		roomRepository.save(new Room("R104",300,size9,rec,open));
 		roomRepository.save(new Room("P101",100,size5,pra,close));
-		roomRepository.save(new Room("P102",150,size7,pra,close));
+		roomRepository.save(new Room("P102",150,size7,pra,open));
 		roomRepository.save(new Room("P103",100,size5,pra,close));
-		roomRepository.save(new Room("P104",190,size9,pra,close));
+		roomRepository.save(new Room("P104",190,size9,pra,open));
 	}
 
 	private void createTimeTable(){
