@@ -1,9 +1,9 @@
-package project.se.demo.controller;
+package com.sut.se.g03.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import project.se.demo.entity.*;
-import project.se.demo.repository.*;
+import com.sut.se.g03.entity.*;
+import com.sut.se.g03.repository.*;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -39,7 +39,7 @@ public class ShopController {
                         @PathVariable String email, @PathVariable String subdist, @PathVariable Long itemId,
                         @PathVariable int itemNum, @PathVariable long districtId ){
         Shop newShop = new Shop();
-        Customer customer = customerRepository.findByUsername(username);
+
         Item item = itemRepository.findByItemId(itemId);
         District district = districtRepository.findById(districtId);
 
@@ -47,7 +47,6 @@ public class ShopController {
         newShop.setItem(item);
         newShop.setItemNum(itemNum);
         newShop.setDistrictShop(district);
-        newShop.setCustomerShop(customer);
         newShop.setCustomerName(customerName);
         newShop.setTel(tel);
         newShop.setEmail(email);

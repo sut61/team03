@@ -1,4 +1,4 @@
-package project.se.demo.entity;
+package com.sut.se.g03.entity;
 import lombok.*;
 import javax.persistence.*;
 import java.util.Collection;

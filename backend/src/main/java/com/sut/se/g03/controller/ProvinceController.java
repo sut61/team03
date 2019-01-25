@@ -1,9 +1,8 @@
-package project.se.demo.controller;
+package com.sut.se.g03.controller;
 
 import org.springframework.web.bind.annotation.*;
-import project.se.demo.entity.*;
-import project.se.demo.repository.*;
-
+import com.sut.se.g03.entity.*;
+import com.sut.se.g03.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Collection;
 import java.util.stream.Collectors;
