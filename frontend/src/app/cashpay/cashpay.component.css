@@ -1,10 +1,12 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background-color:#E0FFFF ;
+
 }
 
 
 header {
-  background-color: #3cb371;
+  background-color: #6495ED  ;
   padding: 10px;
   text-align: center;
   font-size: 30px;
@@ -15,7 +17,7 @@ nav {
   float: right;
   width: 10%;
   height: 1000px;
-  background: rgb(188, 247, 186);
+  background-color: #AFEEEE;
   padding: 100px;
 }
 
@@ -31,7 +33,7 @@ section:after {
 }
 
 footer {
-  background-color: #3cb371;
+  background-color: #6495ED  ;
   padding: 10px;
   text-align: center;
   color: white;

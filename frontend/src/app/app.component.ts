@@ -36,5 +36,8 @@ export class AppComponent {
     this.token.signOut();
     this.gotoLogin();
   }
+  gotoPay() {
+    this.route.navigate(['/paidtable']);
+  }
 
 }
