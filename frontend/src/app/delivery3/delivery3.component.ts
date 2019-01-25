@@ -50,7 +50,7 @@ export class Delivery3Component implements OnInit {
           this.shop = data;
           console.log('PUT Request is successful', data);
           if(data){
-            this.router.navigate(['infomation_final/' + this.shop.shopId,{username:this.item.username, shop:this.shop.shopId, province:this.item.province}]);
+            this.router.navigate(['infomation_final/' + this.shop.shopId,{shop:this.shop.shopId, province:this.item.province}]);
             alert('สั่งซื้อสำเร็จ');
           }
         },

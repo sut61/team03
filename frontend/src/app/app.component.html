@@ -4,7 +4,7 @@
       <li *ngIf="!isLogin()"><button mat-button (click)="gotoLogin()">ลงชื่อเข้าใช้</button></li>
       <li *ngIf="isLogin()"><button mat-button (click)="gotoSelect()">เลือกห้อง</button></li>
       <li *ngIf="isAdmin()"><button mat-button (click)="gotoRoom()">จัดการห้อง</button></li>
-      <li *ngIf="isAdmin()"><button mat-button (click)="gotoShop()">ซื้ออุปกรณ์</button></li>
+      <li *ngIf="isLogin()"><button mat-button (click)="gotoMain()">ซื้ออุปกรณ์</button></li>
       <li *ngIf="isAdmin()"><button mat-button (click)="gotoPay()">แจ้งการชำระเงิน</button></li>
       <li *ngIf="isLogin()"><button mat-button (click)="signOut()">ออกจากระบบ</button></li>
     </ul>

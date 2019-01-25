@@ -29,7 +29,7 @@ export class Delivery2Component implements OnInit {
 
   }
   next(){
-    this.router.navigate(['transport_final/' + this.districtSelect,{username:this.item.username, item:this.item.item,
+    this.router.navigate(['transport_final/' + this.districtSelect,{item:this.item.item,
       itemNum:this.item.itemNum, province:this.item.province, district:this.districtSelect}]);
   }
 }

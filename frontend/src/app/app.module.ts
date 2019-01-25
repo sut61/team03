@@ -42,7 +42,7 @@ const appRoutes: Routes = [
 { path: 'paidtable', component: PaidTableComponent},
 { path: 'creditpay/:id', component: CreditpayComponent},
 { path: 'cashpay/:id', component: CashpayComponent},
-{ path: 'main/:username', component: MainComponent },
+{ path: 'main', component: MainComponent },
 { path: 'transport/:item', component: Delivery1Component },
 { path: 'transport_next/:province', component: Delivery2Component },
 { path: 'transport_final/:district', component: Delivery3Component },

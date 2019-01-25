@@ -39,8 +39,8 @@ export class AppComponent {
   gotoPay() {
     this.route.navigate(['/paidtable']);
   }
-  gotoShop() {
-    this.route.navigate(['/main']);
+  gotoMain() {
+    this.route.navigate(['main']);
   }
 
 }

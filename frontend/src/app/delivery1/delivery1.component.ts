@@ -28,7 +28,7 @@ export class Delivery1Component implements OnInit {
     });
   }
  next(){
-  this.router.navigate(['transport_next/' + this.provinceSelect,{username:this.item.username,
+  this.router.navigate(['transport_next/' + this.provinceSelect,{
       item:this.item.itemId, itemNum:this.item.itemNum, province:this.provinceSelect}]);
   }
 
