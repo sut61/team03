@@ -16,7 +16,6 @@ export class MainComponent implements OnInit {
 
   cus : any ={
     id : '',
-    username : '',
     customerName : '',
     tel : '',
     email : ''
@@ -46,7 +45,7 @@ export class MainComponent implements OnInit {
   }
 
   add(itemId,itemNum){
-    this.router.navigate(['transport/' + itemId,{username:this.customer.username ,itemId:itemId, itemNum:itemNum}]);
+    this.router.navigate(['transport/' + itemId,{itemId:itemId, itemNum:itemNum}]);
   }
 
 }
