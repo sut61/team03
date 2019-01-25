@@ -32,7 +32,7 @@ import { Delivery1Component } from './delivery1/delivery1.component';
 import { Delivery2Component } from './delivery2/delivery2.component';
 import { Delivery3Component } from './delivery3/delivery3.component';
 import { ShowinfoComponent } from './showinfo/showinfo.component';
-
+import {MainService} from './shared/main.service';
 
 const appRoutes: Routes = [
 {path: 'room', component: RoomComponent},
