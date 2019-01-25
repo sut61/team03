@@ -69,6 +69,24 @@ public class G03Application {
 
 		};
 	}
+	@Bean
+	ApplicationRunner init3() {
+		return args -> {
+			MemberInfo in1 = new MemberInfo();
+			in1.setFname("Inw Fee");
+			in1.setLname("FeeFee");
+			in1.setPhone("012345678");
+			in1.setEmail("DR@gg.com");
+			memberInfoRepository.save(in1);
+			MemberInfo in2 = new MemberInfo();
+			in2.setFname("Bear");
+			in2.setLname("Grew");
+			in2.setPhone("012345678");
+			in2.setEmail("Br@gg.com");
+			memberInfoRepository.save(in2);
+		};
+	}
+
 	private void createPaidStatus(String status){
 		paidStatusRepository.save(new PaidStatus(status));
 	}
@@ -112,6 +130,7 @@ public class G03Application {
 		roomRepository.save(new Room("R103",200,size5,rec,open));
 		roomRepository.save(new Room("R104",300,size9,rec,open));
 		roomRepository.save(new Room("P101",100,size5,pra,close));
+
 		roomRepository.save(new Room("P102",150,size7,pra,open));
 		roomRepository.save(new Room("P103",100,size5,pra,close));
 		roomRepository.save(new Room("P104",190,size9,pra,open));
