@@ -5,25 +5,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@Table( name = "Payment")
-public class Payment {
+@Table( name = "Cash")
+public class Cash {
+    @SequenceGenerator(name="cash_seq",sequenceName="cash_seq")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="cash_seq")
     @Id
-    @SequenceGenerator(name = "payment_seq", sequenceName = "payment_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "payment_seq")
-    private Long id;
-    private Date date;
-    private float price;
-    private String receive;
+    private  Long id;
+    private  String cashreceive;
+    private float cashprice;
 
-    @ManyToOne (fetch = FetchType.EAGER,targetEntity = CreditType.class)
-    @JoinColumn(name = "CreditType",insertable = true)
-    private CreditType credit;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MemberInfo")
@@ -33,11 +28,8 @@ public class Payment {
     @JoinColumn(name = "TotalPrice")
     private Bill bill;
 
+
     @ManyToOne(fetch = FetchType.EAGER,targetEntity = Payment.class)
     @JoinColumn(name = "Status",insertable = true)
     private PaidStatus paidStatus;
-
-
-
 }
-

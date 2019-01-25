@@ -11,4 +11,6 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:4200")
 public interface PaidStatusRepository extends JpaRepository<PaidStatus,Long> {
 	Optional<PaidStatus> findByName(String name);
+	Optional<PaidStatus> findById(Long id);
+
 }
