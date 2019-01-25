@@ -1,0 +1,83 @@
+<!--<mat-card>-->
+<button mat-button color="primary"  class="example-mid-width" routerLink="" >BACK</button>
+
+<br>
+<h2>ประวัติการบันทึก Point Service</h2>
+<table >
+  <tr>
+    <th>ID</th>
+    <th>วันที่เริ่ม</th>
+    <th>วันที่สิ้นสุด</th>
+    <!-- <th>ระยะเวลาการยืม</th> -->
+    <th>ประเภทโปรโมชั่น</th>
+    <th>สินค้า</th>
+    <th>code</th>
+    <!--<th>Sender Location</th>-->
+    <!--<th>Receiver Name</th>-->
+    <!--<th>Receiver Phone</th>-->
+    <!--<th>Receiver Address</th>-->
+    <!--<th>Note</th>-->
+  </tr>
+
+
+  <!--@ManyToOne(fetch = FetchType.EAGER)-->
+  <!--private Addpoint addpoint;-->
+
+  <!--@ManyToOne(fetch = FetchType.EAGER)-->
+  <!--private Billxy billxy;-->
+
+  <!--@ManyToOne(fetch = FetchType.EAGER,targetEntity = Memberxy.class)-->
+  <!--private Memberxy memberxy;-->
+
+  <!--@ManyToOne(fetch = FetchType.EAGER)-->
+  <!--private Staffxy staffxy;-->
+  <!---->
+  <tr *ngFor="let promotion of promotions">
+    <td>{{promotion.id}}</td>
+    <td>{{promotion.startDate}}</td>
+    <td>{{promotion.endDate}}</td>
+    <!-- <td>{{promotion.betweens}}</td> -->
+    <td>{{promotion.typepromotion.typePromotinos}}</td>
+    <td>{{promotion.product.addproduct}}</td>
+    <td>{{promotion.code}}</td>
+
+
+    <!--// private String addproduct;-->
+    <!--addproducts:Array<any>;-->
+    <!--addproductSelect:'';-->
+
+    <!--// private String promotinoName;-->
+    <!--// private String code;-->
+    <!--// Date startDate;-->
+    <!--//-->
+    <!--// @Temporal(TemporalType.DATE)-->
+    <!--// private @io.micrometer.core.lang.NonNull-->
+    <!--// Date stopDate;-->
+    <!--promotinoName:string;-->
+    <!--code:string;-->
+    <!--startDate:null;-->
+    <!--stopDate:null;-->
+
+
+
+    <!--// private String staffName;-->
+    <!--staffNams:Array<any>;-->
+      <!--staffNameSelect:'';-->
+
+      <!--// private String typePromotinos;-->
+      <!--typePromotinos:Array<any>;-->
+        <!--typePromotinosSelect:'';-->
+
+
+
+    <!--<td>{{point.paidCustomer.phone}}</td>-->
+    <!--<td>{{point.paidCustomer.address}}</td>-->
+    <!--<td>{{point.receiverName}}</td>-->
+    <!--<td>{{point.receiverPhone}}</td>-->
+    <!--<td>{{point.receiverAddress}}</td>-->
+    <!--<td>{{point.note}}</td>-->
+  </tr>
+</table>
+<br>
+
+<!--</mat-card>-->
