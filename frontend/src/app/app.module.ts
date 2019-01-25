@@ -23,12 +23,20 @@ import { RoomReserveComponent } from './room-reserve/room-reserve.component';
 import {RoomReserveService} from './shared/room-reserve/room-reserve.service';
 import { RoomComponent } from './room/room.component';
 import { RoomService } from './shared/room/room.service';
+import {PaidTableComponent} from './paid-table/paid-table.component';
+import {CreditpayComponent} from './creditpay/creditpay.component';
+import {CashpayComponent} from './cashpay/cashpay.component';
+import {PaidService} from './shared/pay/paid.service';
 
 const appRoutes: Routes = [
   {path: 'room', component: RoomComponent},
   {path: 'select', component: RoomSelectComponent},
   {path: 'reserve/:id', component: RoomReserveComponent},
   {path: 'login', component: LoginComponent},
+  { path: 'paidtable', component: PaidTableComponent},
+  { path: 'creditpay/:id', component: CreditpayComponent},
+  { path: 'cashpay/:id', component: CashpayComponent},
+
   {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
 
@@ -38,7 +46,10 @@ const appRoutes: Routes = [
     LoginComponent,
     RoomSelectComponent,
     RoomReserveComponent,
-    RoomComponent
+    RoomComponent,
+    PaidTableComponent,
+    CreditpayComponent,
+    CashpayComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +77,7 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     MatFormFieldModule
   ],
-  providers: [LoginService, TokenService, RoomSelectService, RoomReserveService,RoomService],
+  providers: [LoginService, TokenService, RoomSelectService, RoomReserveService, RoomService , PaidService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
