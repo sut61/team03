@@ -1,0 +1,31 @@
+
+/*
+html{
+background-image: url('/UI/image/blackgound.jpeg');
+} */
+
+.example-full-width {
+  alignment: center;
+  text-align: center;
+  width: 20%;
+  left : 10%;
+}
+.example-full-widtha {
+  alignment: center;
+  text-align: center;
+  width: 20%;
+  left : 40%;
+}
+
+.example-mid-width {
+  alignment: center;
+  text-align: center;
+  width: 20%;
+  left : 40%;
+}
+.aa{
+  text-align: center;
+}
+
+
+
