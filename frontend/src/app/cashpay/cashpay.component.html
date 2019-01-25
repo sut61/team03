@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CSS Template</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+
+
+<header>
+  <h2> <p align = "left">ระบบชำระค่าบริการด้วยเงินสด</p></h2>
+</header>
+
+<section>
+  <nav>
+    <ul>
+    </ul>
+  </nav>
+  <br>
+
+  <h2 ><p align = "center">โปรดกรอกข้อมูลให้ครบถ้วน!</p></h2><br>
+
+  <h3><p align = "center">ชื่อ</p></h3>
+  <p align ="center"><mat-form-field>
+    <mat-select   placeholder="โปรดใส่ชื่อ" [(ngModel)]="memberInfoSelect">
+      <mat-option *ngFor="let memberinfo of  memberinfos" [value]="memberinfo.id">
+        {{memberinfo.fname}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field></p>
+
+
+  <h3><p align = "center">เลือกยอดที่ค้างชำระ</p></h3>
+  <p align ="center"><mat-form-field>
+    <mat-select   placeholder="เลือกยอดที่ค้าง" [(ngModel)]="totalSelect">
+      <mat-option *ngFor="let bill of bills" [value]="bill.id">
+        {{bill.totalPrice}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field></p>
+
+
+  <h3><p align = "center">จำนวนเงินที่ได้รับ</p></h3>
+  <p align="center"><mat-form-field class="example-full-width">
+    <input matInput placeholder="โปรดใส่จำนวนเงิน" [(ngModel)]="price">
+  </mat-form-field></p>
+
+  <h3><p align = "center">เลือกสถานะ</p></h3>
+  <p align ="center"><mat-form-field>
+    <mat-select   placeholder="โปรดเลือกสถานะ" [(ngModel)]="statusSelect">
+      <mat-option *ngFor="let paidstatus of paidstatuss" [value]="paidstatus.id">
+        {{paidstatus.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field></p>
+
+
+  <h3><p align = "center">ชื่อผู้รับ</p></h3>
+  <p align="center"><mat-form-field class="example-full-width">
+    <input matInput placeholder="โปรดใส่ชื่อผู้รับ" [(ngModel)]="cashreceive">
+  </mat-form-field></p><br><br>
+
+  <p align = 'center'> <i class="fa fa-sign-in fa-lg fa-fw"></i><button mat-flat-button color="primary" (click)="insert()">Save</button></p>
+
+
+
+</section>
+
+<footer>
+
+</footer>
+
+</body>
+</html>

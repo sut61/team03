@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CSS Template</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+
+
+<header>
+  <h2> <p align = "left">ระบบแจ้งชำระค่าบริการ</p></h2>
+</header>
+
+<section>
+  <nav>
+    <ul>
+    </ul>
+  </nav>
+  <br>
+
+  <h2 ><p align = "center">โปรดตรวจสอบการแจ้งชำระ</p></h2>
+
+  <div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="memberinfos">
+
+      <!-- id Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="userName">
+        <mat-header-cell *matHeaderCellDef> userName. </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.fname}} </mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="CreditPay">
+        <th mat-header-cell *matHeaderCellDef style = "width:8%">โอนเงิน</th>
+        <td mat-cell *matCellDef="let element"> <button mat-raised-button color="warn" (click)="viewCreditpay(element)">CreditPay</button> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="CashPay">
+        <th mat-header-cell *matHeaderCellDef style = "width:8%">เงินสด</th>
+        <td mat-cell *matCellDef="let element"> <button mat-raised-button color="warn"  (click)="viewCashpay(element)" >CashPay</button> </td>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+
+
+
+
+
+
+</section>
+
+<footer>
+
+</footer>
+
+</body>
+</html>
