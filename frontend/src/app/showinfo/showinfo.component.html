@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ระบบจัดการค่าใช้จ่าย</title>
+</head>
+<body>
+<div class="menubar">
+  <div class="container">
+    <div class="logo">
+      <h1>Studio Shop</h1>
+    </div>
+    <ul>
+      <li>
+        <a href="#">Home</a>
+      </li>
+      <li>
+        <a href="#">About</a>
+      </li>
+      <li>
+        <a href="#">Contact</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="clearfix"></div>
+<header class="header">
+  <div class="container">
+    <div class="header_area">
+      <h1>ส่วนการจัดส่งสินค้า</h1>
+      <p>ขอต้อนรับสู่ส่วนการส่งสินค้า ท่านสามารถเลือกข้อมูลการจัดส่งได้จากด้านล่าง</p>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="info1">
+    <div class="container">
+      <div class="headareainfo">
+        <h1>Delivery Information</h1>
+      </div>
+      <div class="info1_area">
+        <div class="info11_area">
+          <div class="info111_area">
+
+            <h2>4. รายละเอียดการจัดส่ง / Delivery Infomation </h2>
+
+          </div>
+          <div class="info112_area">
+            <label>ชื่อ - สกุล / Frist - Last name</label><br>
+            <div id="box_1">
+              {{shop.customerName}}
+            </div><br>
+            <label>เบอร์โทรศัพท์ / Phone number</label><br>
+            <div id="box_1">
+              {{shop.tel}}
+            </div><br>
+            <label>อีเมล / E-mail</label><br>
+            <div id="box_1">
+              {{shop.email}}
+            </div><br>
+            <label>ที่อยู่ / Address</label><br>
+            <div id="box_1">
+              {{shop.subdist}}
+            </div><br>
+            <label>อำเภอ / District</label><br>
+            <div id="box_1">
+              {{shop.districtShop.district}}
+            </div><br>
+            <label>จังหวัด / Province</label><br>
+            <div id="box_1">
+              {{province.province}}
+            </div><br>
+            <label>สินค้า / Item</label><br>
+            <div id="box_1">
+              {{shop.item.itemName}}
+            </div><br>
+          </div>
+          <div class="info113_area">
+            <div class="button_area_foot">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer>
+  <p>Copyright &copy; 2019 | Ronnakrit Lissanun</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ระบบจัดการค่าใช้จ่าย</title>
+</head>
+<body>
+<div class="menubar">
+  <div class="container">
+    <div class="logo">
+      <h1>Studio Shop</h1>
+    </div>
+    <ul>
+      <li>
+        <a href="#">Home</a>
+      </li>
+      <li>
+        <a href="#">About</a>
+      </li>
+      <li>
+        <a href="#">Contact</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="clearfix"></div>
+<header class="header">
+  <div class="container">
+    <div class="header_area">
+      <h1>ส่วนแสดงรายการสินค้า</h1>
+      <p>ขอต้อนรับสู่ส่วนแสดงรายการสินค้าท่านสามารถ เลือกดูรายการที่สนใจได้ด้านล่าง</p>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="info1">
+    <div class="container">
+      <div class="headareainfo">
+        <h1>รายการสินค้า</h1>
+      </div>
+      <div class="info1_area">
+        <div class="info11" *ngFor="let item of item">
+          <div class="info11left">
+            <img src="{{item.pic}}" alt="">
+          </div>
+          <div class="info11right" >
+            <div class="info11right_a">
+              ชื่อสินค้า : {{item.itemName}}
+            </div>
+            <div class="info11right_b">
+              <div class="info11_b_l">
+                <h2> ราคา : {{item.price}}</h2><br>
+
+              </div>
+              <div class="info11_b_r">
+                <h2> จำนวนที่มี : {{item.itemNum}} </h2>
+              </div>
+            </div>
+            <div class="info11right_c">
+              <div class="info11_c_l">
+                <input matInput id="box_1" placeholder="จำนวนอุปกรณ์" value=" " [(ngModel)]="item.numItem" name="item">
+              </div>
+              <div class="info11_c_r">
+                <button mat-raised-button (click)="add(item.itemId,item.numItem)" class="mat-bot" >ซื้อ</button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <section class="transport">
+    <div class="container">
+
+    </div>
+  </section>
+</main>
+<footer>
+  <p>Copyright &copy; 2019 | Ronnakrit Lissanun</p>
+</footer>
+</body>
+</html>
+
+
