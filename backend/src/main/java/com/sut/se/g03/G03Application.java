@@ -42,6 +42,9 @@ public class G03Application {
 	@Autowired  private ItemRepository itemRepository;
 	@Autowired  private ProvinceRepository provinceRepository;
 	@Autowired  private DistrictRepository districtRepository;
+	@Autowired  private BillRepository billRepository;
+	@Autowired  private BillInfoRepository billInfoRepository;
+	@Autowired  private BillRoomRepository billRoomRepository;
 
 
 	@Bean
@@ -55,6 +58,10 @@ public class G03Application {
 			createTimeTable();
 			createPaidStatus("จ่ายแล้ว");
 			createPaidStatus("ยังไม่จ่ายเงิน");
+			billRepository.save(new Bill(new Date(),1200f,memberRepository.findById(1L).get() , paidStatusRepository.findByName("จ่ายแล้ว").get()));
+			billRoomRepository.save(new BillRoom(roomRepository.findById(1L).get(), billRepository.findById(1L).get()));
+			billInfoRepository.save(new BillInfo("จ่ายค่าห้อง 1000",1000f,billRepository.findById(1L).get()));
+
 			logger.info("Initializing Complete");
 		};
 	}
