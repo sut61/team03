@@ -43,4 +43,8 @@ export class AppComponent {
     this.route.navigate(['main']);
   }
 
+  gotoBill() {
+    this.route.navigate(['/bill']);
+  }
+
 }

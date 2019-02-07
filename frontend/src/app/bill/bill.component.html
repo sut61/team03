@@ -1,0 +1,88 @@
+<mat-toolbar color="primary">
+  <span style="font-size: 40px; color: azure">จัดการบิลล์ค่าเสียหาย</span>
+</mat-toolbar>
+<div class="body">
+  <!--         ส่วนกล่องของเลือกปุ่มด้านซ้ายมือ  -->
+  <div class="left-body">
+    <mat-card class="left-card">
+      <div class="left-style">
+        <h3>MENU</h3>
+        <button class="b-left" mat-flat-button color="accent" (click)="gotoBill()">จัดการบิลล์ค่าเสียหาย</button>
+      </div>
+    </mat-card>
+
+    <!--         ส่วนกล่องของฝั่งเพิ่มข้อมูล  -->
+    <form #bill="ngForm" (ngSubmit)="putBill(bill.value)">
+      <mat-card class="addData-card">
+        <div class="addData-style">
+          <div style="margin-bottom: 10px;">
+            <h2><U>เพิ่มข้อมูลบิลล์ค่าเสียหาย</U></h2>
+          </div>
+          <!--         ส่วนcombobox ของ id บิลล์ค่าห้องซ้อม  -->
+          <p>เลือกIDจากบิลล์ค่าห้องซ้อม</p>
+
+          <mat-form-field>
+            <mat-select [(ngModel)]="bill.bill" name="billid">
+              <mat-option *ngFor="let billRoom of billRooms" [value]="billRoom.id" class="showcombobox">
+                {{billRoom.bill.member.userName}} &nbsp; {{billRoom.bill.date}} &nbsp; {{billRoom.bill.totalPrice}} บาท
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <!--         ส่วนcombobox ของ ห้องที่ใช้ซ้อม  -->
+          <br>
+          <mat-form-field>
+            <p>เลือกห้องที่ผู้ใช้งานเข้าใช้ซ้อม</p>
+            <mat-select [(ngModel)]="bill.room" name="billRoom">
+              <mat-option *ngFor="let billRoom of billRooms" [value]="billRoom.id">
+                {{billRoom.room.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <!--         ส่วนกรอกรายละเอียดค่าเสียหาย -->
+          <br>
+            <mat-form-field class="contentbox">
+              <div style="text-align:center;">
+                <p>กรอกรายละเอียดค่าเสียหาย</p>
+                <p>(กดมุมล่างขวาเพื่อขยาย-ลดได้)</p>
+              </div>
+              <textarea class="contentbox-write" matInput [(ngModel)]="bill.comment" name="comment"></textarea>
+            </mat-form-field>
+
+          <!--         ส่วนกรอกรายละเอียดค่าเสียหาย -->
+          <br>
+            <mat-form-field>
+              <div>
+                <p>กรอกราคาค่าเสียหายทั้งหมด</p>
+              </div>
+              <input matInput style="text-align:right;" [(ngModel)]="bill.price" name="price">
+            </mat-form-field>
+            <div class="bath">บาท</div>
+
+          <!--         ส่วนcombobox ของ สถานะการจ่ายเงิน  -->
+          <br>
+          <mat-form-field>
+            <p>เลือกสถานะการจ่ายเงินของผู้ใช้งาน</p>
+            <mat-select [(ngModel)]="bill.paidStatus" name="paidStatus">
+              <mat-option *ngFor="let paidStatus of paidStatuses" [value]="paidStatus.id">
+                {{paidStatus.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <br>
+          <!--           ส่วนของปุ่มเพิ่มข้อมูล        -->
+          <div style="margin-top: 20px;"><button type="submit" mat-raised-button color="accent">
+              <p style="text-align: center;">เพิ่มข้อมูล
+              </p>
+            </button></div>
+
+
+        </div>
+      </mat-card>
+    </form>
+  </div>
+</div>
