@@ -21,7 +21,6 @@ public class Bill {
 	private Long id;
 	private Date date;
 	private float totalPrice;
-	private Timestamp timestamp;
 
 	@ManyToOne
 	private PaidStatus paidStatus;
