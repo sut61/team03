@@ -35,6 +35,8 @@ import { ShowinfoComponent } from './showinfo/showinfo.component';
 import {MainService} from './shared/main.service';
 import { BillComponent } from './bill/bill.component';
 import { BillService } from './shared/bill/bill.service';
+import {CommentComponent} from './comment/comment.component';
+import {CommentService} from './shared/comment/comment.service';
 const appRoutes: Routes = [
 {path: 'room', component: RoomComponent},
 {path: 'select', component: RoomSelectComponent},
@@ -49,6 +51,7 @@ const appRoutes: Routes = [
 { path: 'transport_final/:district', component: Delivery3Component },
 { path: 'infomation_final/:idShop', component: ShowinfoComponent },
 {path: 'bill', component: BillComponent },
+  {path: 'comment', component: CommentComponent},
 
 {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
@@ -68,7 +71,8 @@ Delivery1Component,
 Delivery2Component,
 Delivery3Component,
 ShowinfoComponent,
-BillComponent
+BillComponent,
+  CommentComponent,
 ],
 imports: [
 BrowserModule,
@@ -96,7 +100,7 @@ RouterModule.forRoot(appRoutes),
     MatCheckboxModule,
     MatFormFieldModule
   ],
-  providers: [LoginService, TokenService, RoomSelectService, RoomReserveService, RoomService , PaidService, MainService, BillService],
+  providers: [LoginService, TokenService, RoomSelectService, RoomReserveService, RoomService , PaidService, MainService, BillService , CommentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

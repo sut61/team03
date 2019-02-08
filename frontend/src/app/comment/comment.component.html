@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CSS Template</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+
+
+<header>
+  <h2> <p align = "left">รีวิวการให้บริการ</p></h2>
+</header>
+
+<section>
+  <nav>
+    <ul>
+
+      <div class="example-container mat-elevation-z8">
+        <mat-table #table [dataSource]="reviews">
+
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- id Column -->
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> ลำดับ. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+          </ng-container>
+
+          <!-- name Column -->
+          <ng-container matColumnDef="userName">
+            <mat-header-cell *matHeaderCellDef> ชื่อ. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.member.userName}} </mat-cell>
+          </ng-container>
+
+          <!-- type Column -->
+          <ng-container matColumnDef="typeService">
+            <mat-header-cell *matHeaderCellDef> ประเภทของบริการ. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.serviceType.typeService}} </mat-cell>
+          </ng-container>
+
+          <!-- score Column -->
+          <ng-container matColumnDef="score">
+            <mat-header-cell *matHeaderCellDef> คะแนน. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.score.score}} </mat-cell>
+          </ng-container>
+
+          <!-- commentPositive  Column -->
+          <ng-container matColumnDef="commentPositive">
+            <mat-header-cell *matHeaderCellDef> สิ่งที่ประทับใจ. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.commentPositive}} </mat-cell>
+          </ng-container>
+
+          <!-- commentNegative Column -->
+          <ng-container matColumnDef="commentNegative">
+            <mat-header-cell *matHeaderCellDef> สิ่งที่ควรปรับปรุง. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.commentNegative}} </mat-cell>
+          </ng-container>
+
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        </mat-table>
+
+      </div>
+
+
+    </ul>
+  </nav>
+  <br>
+
+  <h2 ><p align = "center">โปรดกรอกข้อมูลให้ครบถ้วน!</p></h2><br>
+
+
+  <h3><p align = "center">ชื่อ</p></h3>
+  <p align ="center"><mat-form-field>
+    <mat-select   placeholder="โปรดใส่ชื่อ" [(ngModel)]="memberSelect">
+      <mat-option *ngFor="let member of  members" [value]="member.id">
+        {{member.userName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field></p><br>
+
+  <h3><p align = "center">เลือกประเภทการเข้ารับบริการ</p></h3>
+  <p align ="center"><mat-form-field>
+    <mat-select   placeholder="โปรดเลือกประเภท"   [(ngModel)]="servicetypeSelect">
+      <mat-option *ngFor="let servicetype of  servicetypes" [value]="servicetype.id">
+        {{servicetype.typeService}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field></p><br>
+
+  <h3><p align = "center">เลือกคะแนน</p></h3>
+  <p align ="center"><mat-form-field>
+    <mat-select   placeholder="โปรดเลือกคะแนน" [(ngModel)]="scoreSelect">
+      <mat-option *ngFor="let score of  scores" [value]="score.id">
+        {{score.score}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field></p><br>
+
+  <h3><p align = "center">โปรดกรอกสิ่งที่ประทับใจ</p></h3>
+  <p align ="center"><mat-form-field class="example-full-width">
+    <textarea matInput placeholder="กรอกความคิดเห็น" minlength="5"  maxlength="40" [(ngModel)]="review" ></textarea>
+  </mat-form-field></p><br>
+
+  <h3><p align = "center">โปรดกรอกสิ่งที่ควรปรับปรุง</p></h3>
+  <p align ="center"><mat-form-field class="example-full-width">
+    <textarea matInput placeholder="กรอกความคิดเห็น" minlength="5"  maxlength="40" [(ngModel)]="review2" ></textarea>
+  </mat-form-field></p><br>
+
+  <p align = 'center'> <i class="fa fa-sign-in fa-lg fa-fw"></i><button mat-flat-button color="primary" (click)="insert()">Save</button></p>
+
+
+
+</section>
+
+
+
+
+
+<footer>
+
+</footer>
+
+</body>
+</html>
