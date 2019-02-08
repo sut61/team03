@@ -20,8 +20,16 @@ export class AppComponent {
     return (this.isLogin() && this.token.getUsername() === 'admin');
   }
 
+  isUser(): boolean {
+    return (this.isLogin() && this.token.getUsername() !== 'admin');
+  }
+
   gotoRoom() {
     this.route.navigate(['/room']);
+  }
+
+  gotoCourseReserve() {
+    this.route.navigate(['/coursereserve']);
   }
 
   gotoSelect() {
