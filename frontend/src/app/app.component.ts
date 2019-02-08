@@ -57,4 +57,7 @@ export class AppComponent {
   gotoComment() {
     this.route.navigate(['/comment']);
   }
+  gotoPromotion() {
+    this.route.navigate(['/promotion']);
+  }
 }
