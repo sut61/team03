@@ -37,7 +37,10 @@ import { BillComponent } from './bill/bill.component';
 import { BillService } from './shared/bill/bill.service';
 import {CommentComponent} from './comment/comment.component';
 import {CommentService} from './shared/comment/comment.service';
+import { CourseReserveComponent } from './course-reserve/course-reserve.component';
+import {CourseReserveService} from './shared/course-reserve/course-reserve.service';
 const appRoutes: Routes = [
+{path: 'coursereserve', component: CourseReserveComponent},
 {path: 'room', component: RoomComponent},
 {path: 'select', component: RoomSelectComponent},
 {path: 'reserve/:id', component: RoomReserveComponent},
@@ -73,6 +76,7 @@ Delivery3Component,
 ShowinfoComponent,
 BillComponent,
   CommentComponent,
+CourseReserveComponent,
 ],
 imports: [
 BrowserModule,
@@ -100,7 +104,7 @@ RouterModule.forRoot(appRoutes),
     MatCheckboxModule,
     MatFormFieldModule
   ],
-  providers: [LoginService, TokenService, RoomSelectService, RoomReserveService, RoomService , PaidService, MainService, BillService , CommentService],
+  providers: [LoginService, TokenService, RoomSelectService, RoomReserveService, RoomService , PaidService, MainService, BillService , CommentService, CourseReserveService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
