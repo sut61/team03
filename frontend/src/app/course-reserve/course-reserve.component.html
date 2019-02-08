@@ -1,0 +1,30 @@
+<mat-toolbar color="primary">
+  จองคอร์สเรียนดนตรี 
+ </mat-toolbar>
+ 
+   <mat-form-field class="example-full-width">
+       <input matInput name="inputNickName"  type="text" placeholder="ชื่อเล่น"  [(ngModel)]="inputNickName" >
+   </mat-form-field>
+   &nbsp;&nbsp;&nbsp;&nbsp;
+   <mat-form-field class="example-full-width">
+       <input matInput name="inputPhone"  type="text" placeholder="เบอร์ที่ใช้ติดต่อ"  [(ngModel)]="inputPhone" >
+   </mat-form-field>
+   &nbsp;&nbsp;&nbsp;&nbsp;
+   <mat-form-field>
+       <mat-select [(ngModel)]="CouseMusicSelect" placeholder="คอร์สเรียน">
+         <mat-option *ngFor="let coursemusic of coursemusics" [value]="coursemusic.id">
+           {{coursemusic.id}}
+         </mat-option>
+       </mat-select>
+     </mat-form-field>
+     &nbsp;&nbsp;&nbsp;&nbsp;
+     <mat-form-field>
+         <mat-select [(ngModel)]="StatusCourseSelect" placeholder="สถานะการจอง">
+           <mat-option *ngFor="let statuscourse of statuscourses" [value]="statuscourse.id">
+             {{statuscourse.name}}
+           </mat-option>
+         </mat-select>
+       </mat-form-field>
+       &nbsp;&nbsp;&nbsp;&nbsp;
+       <button mat-raised-button color="primary" (click)="postCourseReserve()">เพิ่ม</button><br>
+ 
