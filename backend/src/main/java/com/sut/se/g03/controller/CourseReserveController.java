@@ -38,7 +38,7 @@ public class CourseReserveController{
     }
     
 
-    @PostMapping("/coursereserve/reserve/{couseId}/{nickname}/{phone}/{statuscourseId}/{username}")
+    @PostMapping("/coursereserve/reserve/{courseId}/{nickname}/{phone}/{statuscourseId}/{username}")
     public CourseReserve newCouseReserve(@PathVariable Long courseId,@PathVariable String nickname,@PathVariable String phone,@PathVariable Long statuscourseId,@PathVariable String username) {
         CourseReserve newCourseReserve = new CourseReserve();
         Member member = memberRepository.findByUserName(username);
