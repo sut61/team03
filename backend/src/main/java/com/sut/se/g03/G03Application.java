@@ -45,6 +45,7 @@ public class G03Application {
 	@Autowired  private BillRepository billRepository;
 	@Autowired  private BillInfoRepository billInfoRepository;
 	@Autowired  private BillRoomRepository billRoomRepository;
+	@Autowired  private StatusCourseRepository statusCourseRepository;
 
 
 	@Bean
@@ -58,6 +59,7 @@ public class G03Application {
 			createTimeTable();
 			createPaidStatus("จ่ายแล้ว");
 			createPaidStatus("ยังไม่จ่ายเงิน");
+			createStatusCourse("ยืนยันการจอง");
 			billRepository.save(new Bill(new Date(),1200f,memberRepository.findById(1L).get() , paidStatusRepository.findByName("จ่ายแล้ว").get()));
 			billRoomRepository.save(new BillRoom(roomRepository.findById(1L).get(), billRepository.findById(1L).get()));
 			billInfoRepository.save(new BillInfo("จ่ายค่าห้อง 1000",1000f,billRepository.findById(1L).get()));
@@ -229,6 +231,9 @@ public class G03Application {
 
 	private void createNewUser(String plainPassword,String userName) throws Exception {
 		memberRepository.save(new Member(userName,plainPassword));
+	}
+	private void createStatusCourse(String a){
+		statusCourseRepository.save(new StatusCourse(a));
 	}
 
 	private void createPeriodTable(){
