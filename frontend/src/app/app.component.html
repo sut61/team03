@@ -7,6 +7,7 @@
       <li *ngIf="isLogin()"><button mat-button (click)="gotoMain()">ซื้ออุปกรณ์</button></li>
       <li *ngIf="isAdmin()"><button mat-button (click)="gotoBill()">จัดการบิลล์ค่าเสียหาย</button></li>
       <li *ngIf="isAdmin()"><button mat-button (click)="gotoPay()">แจ้งการชำระเงิน</button></li>
+      <li *ngIf="isLogin()"><button mat-button (click)="gotoComment()">รีวิวห้องซ้อมดนตรีและบริการอื่นๆ</button></li>
       <li *ngIf="isLogin()"><button mat-button (click)="signOut()">ออกจากระบบ</button></li>
     </ul>
   </mat-toolbar-row>

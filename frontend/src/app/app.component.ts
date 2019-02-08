@@ -46,5 +46,7 @@ export class AppComponent {
   gotoBill() {
     this.route.navigate(['/bill']);
   }
-
+  gotoComment() {
+    this.route.navigate(['/comment']);
+  }
 }
