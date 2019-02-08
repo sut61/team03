@@ -19,6 +19,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {TokenService} from './shared/token/token.service';
 import { RoomSelectComponent } from './room-select/room-select.component';
 import {RoomSelectService} from './shared/room-select/room-select.service';
+import { PromotionComponent } from './promotion/Promotion.component';
+import {AllserviceService} from './shared/allservice.service';
 import { RoomReserveComponent } from './room-reserve/room-reserve.component';
 import {RoomReserveService} from './shared/room-reserve/room-reserve.service';
 import { RoomComponent } from './room/room.component';
@@ -55,6 +57,7 @@ const appRoutes: Routes = [
 { path: 'infomation_final/:idShop', component: ShowinfoComponent },
 {path: 'bill', component: BillComponent },
   {path: 'comment', component: CommentComponent},
+  {path: 'promotion', component: PromotionComponent},
 
 {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
@@ -75,6 +78,7 @@ Delivery2Component,
 Delivery3Component,
 ShowinfoComponent,
 BillComponent,
+PromotionComponent,
   CommentComponent,
 CourseReserveComponent,
 ],
@@ -104,7 +108,7 @@ RouterModule.forRoot(appRoutes),
     MatCheckboxModule,
     MatFormFieldModule
   ],
-  providers: [LoginService, TokenService, RoomSelectService, RoomReserveService, RoomService , PaidService, MainService, BillService , CommentService, CourseReserveService],
+  providers: [LoginService, TokenService, RoomSelectService,AllserviceService, RoomReserveService, RoomService , PaidService, MainService, BillService , CommentService, CourseReserveService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
