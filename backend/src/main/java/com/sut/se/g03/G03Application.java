@@ -46,7 +46,8 @@ public class G03Application {
 	@Autowired  private BillInfoRepository billInfoRepository;
 	@Autowired  private BillRoomRepository billRoomRepository;
 	@Autowired  private StatusCourseRepository statusCourseRepository;
-
+    @Autowired  private ScoreRepository scoreRepository;
+    @Autowired  private ServiceTypeRepository serviceTypeRepository;
 
 	@Bean
 	ApplicationRunner init(){
@@ -87,6 +88,39 @@ public class G03Application {
 
 		};
 	}
+	@Bean
+	ApplicationRunner init6(){
+		return args -> {
+			ServiceType st1 = new ServiceType();
+			st1.setTypeService("บริการเช้าห้องซ้อมดนตรี");
+			serviceTypeRepository.save(st1);
+			ServiceType st2 = new ServiceType();
+			st2.setTypeService("บริการร้านค้าซื้ออุปกรณ์ดนตรี");
+			serviceTypeRepository.save(st2);
+		};
+	}
+	@Bean
+	ApplicationRunner innit7(){
+		return args -> {
+			Score s1 = new Score();
+			Score s2 = new Score();
+			Score s3 = new Score();
+			Score s4 = new Score();
+			Score s5 = new Score();
+			s1.setScore(1);
+			s2.setScore(2);
+			s3.setScore(3);
+			s4.setScore(4);
+			s5.setScore(5);
+			scoreRepository.save(s1);
+			scoreRepository.save(s2);
+			scoreRepository.save(s3);
+			scoreRepository.save(s4);
+			scoreRepository.save(s5);
+
+		};
+	}
+
 
 	@Bean
 	ApplicationRunner init5() {
