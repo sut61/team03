@@ -129,6 +129,7 @@ public class ReviewTest {
     }
 
     //test Score = Null
+    @Test
     public void TestScoreCannotNull(){
         Review r = new Review();
         r.setCommentNegative("aaaaaaaaaaaaaaaaaaaa");
@@ -157,6 +158,7 @@ public class ReviewTest {
         }
     }
     //test Member = Null
+    @Test
     public void TestMembetCannotNull(){
         Review r = new Review();
         r.setCommentNegative("aaaaaaaaaaaaaaaaaaaa");
