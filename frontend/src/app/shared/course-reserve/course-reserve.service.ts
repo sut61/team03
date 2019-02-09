@@ -18,8 +18,8 @@ export class CourseReserveService {
     return this.http.get(this.API + '/coursereserve/CourseMusic');
   }
 
-  addCourseReserve(inputNickName: String,inputPhone: String,CourseMusicSelect: number,StatusCourseSelect: number, username: String){
-    return this.http.post(this.API + '/coursereserve/reserve/' + CourseMusicSelect + '/' + inputNickName + '/' + inputPhone + '/' +  StatusCourseSelect + '/' + username,{
+  addCourseReserve(inputNickName: String,inputNameFacebook: String,inputPhone: String,CourseMusicSelect: number,StatusCourseSelect: number, username: String){
+    return this.http.post(this.API + '/coursereserve/reserve/' + CourseMusicSelect + '/' + inputNickName + '/' + inputNameFacebook + '/' + '/' + inputPhone + '/' +  StatusCourseSelect + '/' + username,{
     });
   }
 
