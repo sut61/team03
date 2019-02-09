@@ -48,6 +48,8 @@ export class CommentComponent implements OnInit {
   insert() {
     if (this.review == null || this.memberSelect == null || this.servicetypeSelect == null || this.scoreSelect == null || this.review2 == null ) {
       alert('กรอกข้อมูลให้ครบ');
+    }else if (this.review.length < 5 || this.review2.length < 5){
+      alert('กรอกข้อมูลสั้นเกินไป');
     } else {
       this.httpClient.post('http://localhost:8080/comment/review/' + this.review + '/' + this.review2 + '/' + this.memberSelect + '/' + this.servicetypeSelect + '/' + this.scoreSelect  , {}).subscribe()
       alert('สำเร็จ');
