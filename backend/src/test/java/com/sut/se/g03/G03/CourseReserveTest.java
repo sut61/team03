@@ -50,6 +50,7 @@ public class CourseReserveTest {
         CourseReserve s = new CourseReserve();
         s.setPhone("085-1234567");
         s.setNickname("เฟรมซุ่ม");
+        s.setNameFacebook("frame frame");
         s.setCoursemusic(entityManager.persist(new CourseMusic(" อ.เฟรมซุ่ม ")));
         s.setStatusCourse(entityManager.persist(new StatusCourse("ใช้งาน")));
 
@@ -70,6 +71,28 @@ public class CourseReserveTest {
         CourseReserve s = new CourseReserve();
         s.setPhone(null);
         s.setNickname("เฟรมซุ่ม");
+        s.setNameFacebook("frame frame");
+        s.setCoursemusic(entityManager.persist(new CourseMusic(" อ.เฟรมซุ่ม ")));
+        s.setStatusCourse(entityManager.persist(new StatusCourse("ใช้งาน")));
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+            fail("Should not pass to this line");
+
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+    @Test
+    public void testNullNameFacebook() {
+        CourseReserve s = new CourseReserve();
+        s.setPhone("085-1234567");
+        s.setNickname("เฟรมซุ่ม");
+        s.setNameFacebook(null);
         s.setCoursemusic(entityManager.persist(new CourseMusic(" อ.เฟรมซุ่ม ")));
         s.setStatusCourse(entityManager.persist(new StatusCourse("ใช้งาน")));
 
@@ -90,6 +113,7 @@ public class CourseReserveTest {
         CourseReserve s = new CourseReserve();
         s.setPhone("085-12345678");
         s.setNickname("เฟรมซุ่ม");
+        s.setNameFacebook("frame frame");
         s.setCoursemusic(entityManager.persist(new CourseMusic(" อ.เฟรมซุ่ม ")));
         s.setStatusCourse(entityManager.persist(new StatusCourse("ใช้งาน")));
 
@@ -110,6 +134,7 @@ public class CourseReserveTest {
         CourseReserve s = new CourseReserve();
         s.setPhone("085-12345");
         s.setNickname("เฟรมซุ่ม");
+        s.setNameFacebook("frame frame");
         s.setCoursemusic(entityManager.persist(new CourseMusic(" อ.เฟรมซุ่ม ")));
         s.setStatusCourse(entityManager.persist(new StatusCourse("ใช้งาน")));
 
@@ -130,6 +155,7 @@ public class CourseReserveTest {
         CourseReserve s = new CourseReserve();
         s.setPhone("08512345678");
         s.setNickname("เฟรมซุ่ม");
+        s.setNameFacebook("frame frame");
         s.setCoursemusic(entityManager.persist(new CourseMusic(" อ.เฟรมซุ่ม ")));
         s.setStatusCourse(entityManager.persist(new StatusCourse("ใช้งาน")));
 
@@ -149,6 +175,7 @@ public class CourseReserveTest {
         CourseReserve s = new CourseReserve();
         s.setPhone("085-1234567");
         s.setNickname(null);
+        s.setNameFacebook("frame frame");
         s.setCoursemusic(entityManager.persist(new CourseMusic(" อ.เฟรมซุ่ม ")));
         s.setStatusCourse(entityManager.persist(new StatusCourse("ใช้งาน")));
 
@@ -169,6 +196,7 @@ public class CourseReserveTest {
         CourseReserve s = new CourseReserve();
         s.setPhone("085-1234567");
         s.setNickname("a");
+        s.setNameFacebook("frame frame");
         s.setCoursemusic(entityManager.persist(new CourseMusic(" อ.เฟรมซุ่ม ")));
         s.setStatusCourse(entityManager.persist(new StatusCourse("ใช้งาน")));
 
@@ -188,6 +216,7 @@ public class CourseReserveTest {
         CourseReserve s = new CourseReserve();
         s.setPhone("085-1234567");
         s.setNickname("เฟรมซุ่มเฟรมซุ่มเฟรมซุ่มเฟรมซุ่ม");
+        s.setNameFacebook("frame frame");
         s.setCoursemusic(entityManager.persist(new CourseMusic(" อ.เฟรมซุ่ม ")));
         s.setStatusCourse(entityManager.persist(new StatusCourse("ใช้งาน")));
 
@@ -207,6 +236,7 @@ public class CourseReserveTest {
         CourseReserve s = new CourseReserve();
         s.setPhone("085-1234567");
         s.setNickname("เฟรมซุ่ม");
+        s.setNameFacebook("frame frame");
         s.setCoursemusic(null);
         s.setStatusCourse(entityManager.persist(new StatusCourse("ใช้งาน")));
 
@@ -226,6 +256,7 @@ public class CourseReserveTest {
         CourseReserve s = new CourseReserve();
         s.setPhone("085-1234567");
         s.setNickname("เฟรมซุ่ม");
+        s.setNameFacebook("frame frame");
         s.setCoursemusic(entityManager.persist(new CourseMusic(" อ.เฟรมซุ่ม ")));
         s.setStatusCourse(null);
 
