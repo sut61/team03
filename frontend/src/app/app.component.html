@@ -4,7 +4,6 @@
       <li *ngIf="!isLogin()"><button mat-button (click)="gotoLogin()">ลงชื่อเข้าใช้</button></li>
       <li *ngIf="isLogin()"><button mat-button (click)="gotoSelect()">เลือกห้อง</button></li>
       <li *ngIf="isAdmin()"><button mat-button (click)="gotoRoom()">จัดการห้อง</button></li>
-      <li *ngIf="isAdmin()"><button mat-button (click)="gotoCourseMusic()">จัดคอร์สอนดนตรี</button></li>
       <li *ngIf="isUser()"><button mat-button (click)="gotoCourseReserve()">จองคอร์สเรียน</button></li>
       <li *ngIf="isLogin()"><button mat-button (click)="gotoMain()">ซื้ออุปกรณ์</button></li>
       <li *ngIf="isAdmin()"><button mat-button (click)="gotoBill()">จัดการบิลล์ค่าเสียหาย</button></li>
@@ -12,6 +11,7 @@
       <li *ngIf="isAdmin()"><button mat-button (click)="gotoPromotion()">จัดโปรโมชั่น</button></li>
       <li *ngIf="isAdmin()"><button mat-button (click)="gotoClassify()">จัดหมวดหมู่</button></li>
       <li *ngIf="isAdmin()"><button mat-button (click)="gotoAddproduct()">เพิ่มสินค้า</button></li>
+      <li *ngIf="isAdmin()"><button mat-button (click)="gotoCheck()">ซ่อมแซมอุปกรณ์</button></li>
       <li *ngIf="isLogin()"><button mat-button (click)="gotoComment()">รีวิวห้องซ้อมดนตรีและบริการอื่นๆ</button></li>
       <li *ngIf="isLogin()"><button mat-button (click)="signOut()">ออกจากระบบ</button></li>
     </ul>

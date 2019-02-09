@@ -44,11 +44,16 @@ import { BillService } from './shared/bill/bill.service';
 import {CommentComponent} from './comment/comment.component';
 import {CommentService} from './shared/comment/comment.service';
 import { CourseReserveComponent } from './course-reserve/course-reserve.component';
-import {CourseReserveService} from './shared/course-reserve/course-reserve.service';
-import {ClassifyComponent} from './classify/classify.component';
-import {ClassifyService} from './shared/classify/classify.service';
-import { CoursemusicComponent } from './coursemusic/coursemusic.component';
-import { CoursemusicService } from './shared/coursemusic/coursemusic.service';
+import { CourseReserveService} from './shared/course-reserve/course-reserve.service';
+import { ClassifyComponent} from './classify/classify.component';
+import { ClassifyService} from './shared/classify/classify.service';
+import { CheckmainComponent } from './checkmain/checkmain.component';
+import { CheckcustomerComponent } from './checkcustomer/checkcustomer.component';
+import { CheckmanagerComponent } from './checkmanager/checkmanager.component';
+import { ShowdataComponent } from './showdata/showdata.component';
+import { CheckmainService} from './shared/CheckService/checkmain.service';
+
+
 const appRoutes: Routes = [
 {path: 'coursereserve', component: CourseReserveComponent},
 {path: 'room', component: RoomComponent},
@@ -64,13 +69,17 @@ const appRoutes: Routes = [
 { path: 'transport_final/:district', component: Delivery3Component },
 { path: 'infomation_final/:idShop', component: ShowinfoComponent },
 {path: 'bill', component: BillComponent },
-  {path: 'comment', component: CommentComponent},
+{path: 'comment', component: CommentComponent},
   {path: 'promotion', component: PromotionComponent},
   {path: 'addproduct', component: AddproductComponent},
   {path:'product-show',component:ProductShowComponent},
   {path:'promotion-show',component:PromotionShowComponent},
   {path: 'classify', component: ClassifyComponent},
-  {path: 'courseMusic', component: CoursemusicComponent},
+{ path: 'check', component: CheckmainComponent },
+{ path: 'cusinfo/:itemName', component: CheckcustomerComponent },
+{ path: 'managerinfo/:itemName', component: CheckmanagerComponent },
+{ path: 'showdata/:idFix', component: ShowdataComponent },
+
 {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
 
@@ -94,10 +103,13 @@ PromotionComponent,
 AddproductComponent,
 ProductShowComponent,
 PromotionShowComponent,
-  CommentComponent,
+CommentComponent,
 CourseReserveComponent,
-  ClassifyComponent,
-  CoursemusicComponent
+ClassifyComponent,
+CheckmainComponent,
+CheckcustomerComponent,
+CheckmanagerComponent,
+ShowdataComponent
 ],
 imports: [
 BrowserModule,
@@ -127,7 +139,7 @@ RouterModule.forRoot(appRoutes),
     MatSlideToggleModule
   ],
   providers: [LoginService, TokenService, RoomSelectService, AllserviceService, RoomReserveService,
-    RoomService , PaidService, ProserviceService , MainService, BillService , CommentService, CourseReserveService, ClassifyService, CoursemusicService],
+    RoomService , PaidService, ProserviceService , MainService, CheckmainService, BillService , CommentService, CourseReserveService, ClassifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
