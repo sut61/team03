@@ -11,7 +11,7 @@ export class RoomReserveService {
   private dateURL = 'date';
   private timeURL = 'select';
   private reserveTimeURL = 'reserve';
-  private roomTypeURL = 'room'
+  private roomTypeURL = 'room';
 
   constructor(private http: HttpClient) { }
 
@@ -31,8 +31,8 @@ export class RoomReserveService {
     return this.http.get(this.API + this.roomTypeURL + '/' + roomID);
   }
 
-  putReserve(roomID, dateID, timeID, username) {
-    return this.http.put(this.API + this.reserveTimeURL + '/' + roomID + '/' + dateID + '/' + username, timeID);
+  putReserve(roomID, dateID, timeID, username, bookingName) {
+    return this.http.put(this.API + this.reserveTimeURL + '/' + roomID + '/' + dateID + '/' + username + '/' + bookingName, timeID);
   }
 
 }
