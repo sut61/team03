@@ -78,89 +78,9 @@ export class PromotionComponent implements OnInit {
     this.router.navigate(['']);
 
 }
-//
-//   other:String;
-//   date:null;
-//
-// //Addpoint
-//   addPoints : Array<any>;
-//   addPointSelect: '';
-//   // constructor() { }
-//
-//   //nameStaff
-//   nameStaffs : Array<any>;
-//   nameStaffSelect:'';
-//
-//   //nameCustomer
-//   nameCustomers : Array<any>;
-//   nameCustomerSelect:'';
-//
-//
-//
-//   data:any = {
-//
-//
-//   }
-//
-//   ngOnInit() {
-//     this.controller.getAddpoint().subscribe(on =>{
-//       this.addPoints = on;
-//       console.log(this.addPoints);
-//     });
-//
-//     this.controller.getStaffxy().subscribe(on =>{
-//       this.nameStaffs = on;
-//       console.log(this.nameStaffs);
-//     });
-//
-//     this.controller.getMemberxy().subscribe(on =>{
-//       this.nameCustomers = on;
-//       console.log(this.nameCustomers);
-//     });
-//   }
-//
-//
-//
-//   // SubmittedData(){
-//   //   console.log(this.data)
-//   //   const data  = this.data
-//   //   if (this.select.usernameSelect === '' || this.select.paymentSelect === '' || this.select.areaSelect === '' || this.pickLocation === '' || this.dropLocation === '') {
-//   //     alert('กรุณากรอกข้อมูลให้ครบถ้วน');
-//   //   } else {
-//   //     this.router.navigate(['bike-show',{
-//   //       username: data.username = this.cus.name,
-//   //       payments:  data.payments = this.pm.paymentType,
-//   //       areas:     data.areas = this.ap.areaType,
-//   //       pickLocation: data.pickLocation = this.pickLocation,
-//   //       dropLocation: data.dropLocation = this.dropLocation,
-//   //       totalPrice: data.totalPrice = 20 + this.ap.areaPrice
-//   //     }])
-//   //   }
-//   // }
-//
-// //   SubmittedData(){
-// //     console.log(this.data)
-// //     const data = this.data
-// //
-// //     this.router.navigate(['point-check',{
-// // date: data.date = this.date;
-// //
-// //
-// //
-// //     }])
-// //
-// //   }
-//
-//
-//
-//
-//   insert(){
-//     this.httpClient.post('http://localhost:8080/point/'+this.other+'/'+this.date+'/'+this.addPointSelect+'/'+this.nameCustomerSelect+'/'+this.nameStaffSelect,   {})
-//       .subscribe()
-//     alert("สำเร็จ");
-//     this.router.navigate(['']);
-//
-//   }
+show(){
+  this.router.navigate(['promotion-show']);
+}
 
 
 

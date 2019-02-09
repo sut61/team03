@@ -1,22 +1,11 @@
 <br><br><br><br><br>
 <h1 class="aa">PROMOTION</h1>
 <br>
-<!--<mat-form-field class="example-mid-width">-->
-<!--<input matInput placeholder="ชื่อพนักงาน" [(ngModel)]="staff">-->
-<!--</mat-form-field>-->
-<!--<br>-->
+
 <mat-form-field class="example-mid-width">
   <input matInput placeholder="ชื่อโปรโมชั่น" [(ngModel)]="promotinoName">
 </mat-form-field>
 <br>
-<!-- <mat-form-field  class="example-mid-width" >
-  <mat-select placeholder="ชื่อพนักงาน" [(ngModel)]="staffNameSelect" name="addPoint">
-    <mat-option *ngFor="let gd of staffNams" [value]="gd.id">
-      {{gd.staffName}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-<br> -->
 
 <mat-form-field class="example-mid-width">
   <input matInput [matDatepicker]="pickerstart" placeholder="วันที่เริ่ม" [(ngModel)]="startDate">
@@ -35,14 +24,7 @@
   <input matInput placeholder="code" [(ngModel)]="code">
 </mat-form-field>
 <br> 
-<!--<mat-form-field class="example-mid-width">-->
-<!--<input matInput placeholder="รหัสลูกค้า" [(ngModel)]="staff">-->
-<!--</mat-form-field>-->
-<!--<br>-->
-<!--<mat-form-field class="example-mid-width">-->
-<!--<input matInput placeholder="จำนวนเงิน" [(ngModel)]="treatmentName">-->
-<!--</mat-form-field>-->
-<!--<br>-->
+
 <mat-form-field class="example-mid-width">
   <mat-select placeholder="ประเภทโปรโมชั่น" [(ngModel)]="typePromotinosSelect" name="addPoint">
     <mat-option *ngFor="let gd of typePromotinoss" [value]="gd.id">
@@ -67,13 +49,7 @@
   </mat-select>
 </mat-form-field>
 <br>
-<!--<button mat-button color="primary"  class="example-mid-width" (click)="insert()" >SUBMIT</button>-->
-<!--<br><br>-->
-<!--<button mat-button color="primary"  class="example-mid-width" routerLink="point-check" >CHECK POINT</button>-->
-<!--<br><br>-->
-<!--<button mat-button color="primary"  class="example-mid-width" routerLink="" >BACK</button>-->
-<!--<a mat-raised-button (click)="SubmittedData()"  color="warn" type="submit">Save</a>-->
-<!--<a mat-raised-button routerLink="" color="warn" >Cancel</a>-->
+
 <button mat-button color="primary" class="example-mid-width" (click)="insert()">SUBMIT</button> <br>
-<button mat-button color="primary" class="example-mid-width" routerLink="promotion-show">SHOW-PROMOTION</button>
+<button mat-button color="primary" class="example-mid-width" (click)="show()">SHOW-PROMOTION</button>
 <br><br>
