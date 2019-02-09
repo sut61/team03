@@ -11,6 +11,7 @@ export class CourseReserveComponent implements OnInit {
   coursemusics: Array<any>;
   statuscourses: Array<any>;
   inputNickName: String;
+  inputNameFacebook: String;
   inputPhone: String;
 
   CouseMusicSelect: number;
@@ -43,7 +44,7 @@ export class CourseReserveComponent implements OnInit {
     console.log(this.CouseMusicSelect);
     console.log(this.StatusCourseSelect);
     console.log(this.token.getUsername());
-    this.coursereserveservice.addCourseReserve( this.inputNickName, this.inputPhone, this.CouseMusicSelect, this.StatusCourseSelect, this.token.getUsername()).subscribe(
+    this.coursereserveservice.addCourseReserve( this.inputNickName,this.inputNameFacebook, this.inputPhone, this.CouseMusicSelect, this.StatusCourseSelect, this.token.getUsername()).subscribe(
       data => {
         this.getCourseMusicList();
         alert("การเพิ่มข้อมูลสำเร็จ");
