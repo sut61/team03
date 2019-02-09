@@ -85,6 +85,14 @@ public class G03Application {
 	private ClassifyRepository classifyRepository;
 	@Autowired
 	private ItemTypeRepository itemTypeRepository;
+	@Autowired  
+	private CourseMusicRepository courseMusicRepository;
+	@Autowired  
+	private PaymentTypeRepository paymentTypeRepository;
+	@Autowired  
+	private CourseTimeRepository courseTimeRepository;
+	@Autowired  
+	private ClassroomRepository classroomRepository;
 
 	@Bean
 	ApplicationRunner init() {
@@ -95,6 +103,7 @@ public class G03Application {
 			createScheduleTable();
 			createRoom();
 			createTimeTable();
+			createCourseMusic();
 			createPaidStatus("จ่ายแล้ว");
 			createPaidStatus("ยังไม่จ่ายเงิน");
 			createStatusCourse("ยืนยันการจอง");
@@ -108,6 +117,7 @@ public class G03Application {
 			classifyRepository.save(new Classify("ของใช้", "อุปกรณ์ปรับเปลี่ยนของเครื่องดนตรี", used));
 			itemTypeRepository.save(new ItemType("กลองชุด"));
 			itemTypeRepository.save(new ItemType("กีต้า"));
+			courseMusicRepository.save(new CourseMusic("อาจารย์ฟี่","จอมยุทธ์","ฟี่ซ่า","0986270527",memberRepository.findById(2L).get(),classroomRepository.findById(6L).get(),paymentTypeRepository.findById(1L).get(),instrumentRepository.findById(1L).get(),courseTimeRepository.findById(1L).get()));
 		};
 	}
 
@@ -307,6 +317,39 @@ public class G03Application {
 			in2.setEmail("Br@gg.com");
 			memberInfoRepository.save(in2);
 		};
+	}
+
+	private void createCourseMusic(){
+		courseTimeRepository.save(new CourseTime("วันจันทร์",Time.valueOf("17:00:00"),Time.valueOf("19:00:00")));
+		courseTimeRepository.save(new CourseTime("วันจันทร์",Time.valueOf("19:00:00"),Time.valueOf("21:00:00")));
+		courseTimeRepository.save(new CourseTime("วันอังคาร",Time.valueOf("17:00:00"),Time.valueOf("19:00:00")));
+		courseTimeRepository.save(new CourseTime("วันอังคาร",Time.valueOf("19:00:00"),Time.valueOf("21:00:00")));
+		courseTimeRepository.save(new CourseTime("วันพุธ",Time.valueOf("17:00:00"),Time.valueOf("19:00:00")));
+		courseTimeRepository.save(new CourseTime("วันพุธ",Time.valueOf("19:00:00"),Time.valueOf("21:00:00")));
+		courseTimeRepository.save(new CourseTime("วันพฤหัสบดี",Time.valueOf("17:00:00"),Time.valueOf("19:00:00")));
+		courseTimeRepository.save(new CourseTime("วันพฤหัสบดี",Time.valueOf("19:00:00"),Time.valueOf("21:00:00")));
+		courseTimeRepository.save(new CourseTime("วันศุกร์",Time.valueOf("17:00:00"),Time.valueOf("19:00:00")));
+		courseTimeRepository.save(new CourseTime("วันศุกร์",Time.valueOf("19:00:00"),Time.valueOf("21:00:00")));
+		courseTimeRepository.save(new CourseTime("วันเสาร์",Time.valueOf("10:00:00"),Time.valueOf("12:00:00")));
+		courseTimeRepository.save(new CourseTime("วันเสาร์",Time.valueOf("13:00:00"),Time.valueOf("15:00:00")));
+		courseTimeRepository.save(new CourseTime("วันเสาร์",Time.valueOf("15:00:00"),Time.valueOf("17:00:00")));
+		courseTimeRepository.save(new CourseTime("วันเสาร์",Time.valueOf("17:00:00"),Time.valueOf("19:00:00")));
+		courseTimeRepository.save(new CourseTime("วันอาทิตย์",Time.valueOf("10:00:00"),Time.valueOf("12:00:00")));
+		courseTimeRepository.save(new CourseTime("วันอาทิตย์",Time.valueOf("13:00:00"),Time.valueOf("15:00:00")));
+		courseTimeRepository.save(new CourseTime("วันอาทิตย์",Time.valueOf("15:00:00"),Time.valueOf("17:00:00")));
+		paymentTypeRepository.save(new PaymentType("รายวัน",900f));
+		paymentTypeRepository.save(new PaymentType("รายเดือน",3600f));
+		classroomRepository.save(new Classroom("C1Keyboard"));
+		classroomRepository.save(new Classroom("C2Keyboard"));
+		classroomRepository.save(new Classroom("C3Keyboard"));
+		classroomRepository.save(new Classroom("C1GuitarBass"));
+		classroomRepository.save(new Classroom("C2GuitarBass"));
+		classroomRepository.save(new Classroom("C1Guitar"));
+		classroomRepository.save(new Classroom("C2Guitar"));
+		classroomRepository.save(new Classroom("C1Drum"));
+		classroomRepository.save(new Classroom("C2Drum"));
+		classroomRepository.save(new Classroom("C3Drum"));
+
 	}
 
 	private void createPaidStatus(String status) {
