@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @ToString
@@ -19,6 +20,7 @@ public class Member {
     private Long id;
 
     @Column(unique = true)
+    @NotNull
     private String userName;
 
     @JsonIgnore
@@ -39,4 +41,7 @@ public class Member {
         this.password = EncryptText.generatePasswordHash(password);
     }
 
+    public Member( String userName) {
+        this.userName = userName;
+    }
 }
