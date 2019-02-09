@@ -7,6 +7,8 @@ import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -21,6 +23,10 @@ public class Bill {
 	private Long id;
 	private Date date;
 	private float totalPrice;
+
+	@NotNull
+	@Pattern(regexp = "^(([ก-ู]|[เ-์]){1,25} ([ก-ู]|[เ-์]){1,25})|([A-Z][a-z]{1,25} [A-Z][a-z]{1,25})|([a-z]{1,25} [a-z]{1,25})$")
+	private String bookingName;
 
 	@ManyToOne
 	private PaidStatus paidStatus;
@@ -42,4 +48,13 @@ public class Bill {
 		this.paidStatus = paidStatus;
 		this.member = member;
 	}
+
+	public Bill(Date date, float totalPrice, Member member, PaidStatus paidStatus, String bookingName) {
+		this.date = date;
+		this.totalPrice += totalPrice;
+		this.paidStatus = paidStatus;
+		this.member = member;
+		this.bookingName = bookingName;
+	}
+
 }

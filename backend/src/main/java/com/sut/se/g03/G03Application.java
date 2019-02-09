@@ -79,9 +79,12 @@ public class G03Application {
 	private StaffRepository staffRepository;
 	@Autowired
 	private TypepromotionRepository typepromotionRepository;
-
-
-
+	@Autowired
+	private ClassifyStatusRepository classifyStatusRepository;
+	@Autowired
+	private ClassifyRepository classifyRepository;
+	@Autowired
+	private ItemTypeRepository itemTypeRepository;
 
 	@Bean
 	ApplicationRunner init() {
@@ -96,11 +99,15 @@ public class G03Application {
 			createPaidStatus("ยังไม่จ่ายเงิน");
 			createStatusCourse("ยืนยันการจอง");
 			billRepository.save(new Bill(new Date(), 1200f, memberRepository.findById(1L).get(),
-					paidStatusRepository.findByName("จ่ายแล้ว").get()));
+					paidStatusRepository.findByName("จ่ายแล้ว").get(), "abcdefghi abcde"));
 			billRoomRepository.save(new BillRoom(roomRepository.findById(1L).get(), billRepository.findById(1L).get()));
 			billInfoRepository.save(new BillInfo("จ่ายค่าห้อง 1000", 1000f, billRepository.findById(1L).get()));
-
-			logger.info("Initializing Complete");
+			ClassifyStatus used = classifyStatusRepository.save(new ClassifyStatus("ใช้งาน"));
+			classifyStatusRepository.save(new ClassifyStatus("ไม่ใช้งาน"));
+			classifyRepository.save(new Classify("เครื่องดนตรี", "เครื่องดนตรีที่ขายภสยในร้าน", used));
+			classifyRepository.save(new Classify("ของใช้", "อุปกรณ์ปรับเปลี่ยนของเครื่องดนตรี", used));
+			itemTypeRepository.save(new ItemType("กลองชุด"));
+			itemTypeRepository.save(new ItemType("กีต้า"));
 		};
 	}
 
@@ -377,7 +384,7 @@ public class G03Application {
 	}
 
 	@Bean
-	ApplicationRunner init(ProductRepository productRepository, PromotionRepository promotionRepository, StaffRepository staffRepository, TypepromotionRepository typepromotionRepository){
+	ApplicationRunner init8(ProductRepository productRepository, PromotionRepository promotionRepository, StaffRepository staffRepository, TypepromotionRepository typepromotionRepository){
 		return args -> {
 			Product product1 = new Product("กีตาร์");
 			Product product2 = new Product("กลอง");
