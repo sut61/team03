@@ -1,0 +1,56 @@
+<mat-card style="margin:100px auto;width: 30%;">
+
+  <div style="text-align:center">
+      <mat-card-title>เพิ่มสินค้า </mat-card-title>
+  </div>
+  <mat-card-content>
+
+      <mat-form-field style="width: 100%;">
+          <mat-select placeholder="ประเภทสินค้า" [(ngModel)]="selecttypeproduct">
+              <mat-option *ngFor="let typeproduct of typeproducts" [value]="typeproduct.id">
+                  {{typeproduct.typeproduct}}
+              </mat-option>
+          </mat-select>
+      </mat-form-field>
+
+      <mat-form-field style="width: 100%;">
+              <input matInput placeholder="ชื่อสินค้า" [(ngModel)]="nameproduct">
+
+
+          </mat-form-field>
+
+
+      <mat-form-field style="width: 100%;">
+          <input matInput type="number" placeholder="จำนวน" [(ngModel)]="number">
+      </mat-form-field>
+
+      <mat-form-field style="width: 100%;">
+        <input matInput type="number" placeholder="ราคาต้นทุน/ชิ้น"[(ngModel)]="price">
+    </mat-form-field>
+    <mat-form-field style="width: 100%;">
+        <input matInput type="number" placeholder="ราคาขาย/ชิ้น" [(ngModel)]="saleprice">
+    </mat-form-field>
+
+
+      <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="วันที่เพิ่มสินค้า" [(ngModel)]="date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  </mat-card-content>
+
+  <div style="text-align:center" class="example-button-row">
+
+      <button mat-raised-button (click)="insert()">บันทึก</button>
+      <button mat-raised-button>ยกเลิก</button>
+
+  </div>
+  <div style="text-align:center" >
+
+    <button mat-raised-button class="Bg" (click)="show()">ดูสินค้า</button>
+
+  </div>
+  
+
+
+</mat-card>

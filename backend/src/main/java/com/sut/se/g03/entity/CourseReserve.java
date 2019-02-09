@@ -29,8 +29,10 @@ public class CourseReserve {
     @NotNull
     @Size(min = 2,max = 15)
     private String nickname;
+
+    @NotNull
+    private String nameFacebook;
     
-   
     @ManyToOne
 	private Member member;
     
@@ -45,9 +47,10 @@ public class CourseReserve {
 
     public CourseReserve(){}
 
-    public CourseReserve(String phone,String nickname,Member member,StatusCourse statusCourse,CourseMusic coursemusic){
+    public CourseReserve(String phone,String nickname,String nameFacebook,Member member,StatusCourse statusCourse,CourseMusic coursemusic){
         this.phone = phone;
         this.nickname = nickname;
+        this.nameFacebook = nameFacebook;
         this.member = member;
         this.statusCourse = statusCourse;
         this.coursemusic = coursemusic;

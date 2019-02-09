@@ -10,6 +10,7 @@
       <li *ngIf="isAdmin()"><button mat-button (click)="gotoPay()">แจ้งการชำระเงิน</button></li>
       <li *ngIf="isAdmin()"><button mat-button (click)="gotoPromotion()">จัดโปรโมชั่น</button></li>
       <li *ngIf="isAdmin()"><button mat-button (click)="gotoClassify()">จัดหมวดหมู่</button></li>
+      <li *ngIf="isAdmin()"><button mat-button (click)="gotoProduct()">เพิ่มสินค้า</button></li>
       <li *ngIf="isLogin()"><button mat-button (click)="gotoComment()">รีวิวห้องซ้อมดนตรีและบริการอื่นๆ</button></li>
       <li *ngIf="isLogin()"><button mat-button (click)="signOut()">ออกจากระบบ</button></li>
     </ul>

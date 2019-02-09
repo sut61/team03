@@ -38,8 +38,8 @@ public class CourseReserveController{
     }
     
 
-    @PostMapping("/coursereserve/reserve/{courseId}/{nickname}/{phone}/{statuscourseId}/{username}")
-    public CourseReserve newCouseReserve(@PathVariable Long courseId,@PathVariable String nickname,@PathVariable String phone,@PathVariable Long statuscourseId,@PathVariable String username) {
+    @PostMapping("/coursereserve/reserve/{courseId}/{nickname}/{namefacebook}/{phone}/{statuscourseId}/{username}")
+    public CourseReserve newCouseReserve(@PathVariable Long courseId,@PathVariable String nickname,@PathVariable String namefacebook,@PathVariable String phone,@PathVariable Long statuscourseId,@PathVariable String username) {
         CourseReserve newCourseReserve = new CourseReserve();
         Member member = memberRepository.findByUserName(username);
         StatusCourse statuscourse = statuscourseRepository.findById(statuscourseId).get();
@@ -48,6 +48,7 @@ public class CourseReserveController{
         newCourseReserve.setMember(member);
         newCourseReserve.setCoursemusic(coursemusic);
         newCourseReserve.setNickname(nickname);
+        newCourseReserve.setNameFacebook(namefacebook);
         newCourseReserve.setPhone(phone);
         newCourseReserve.setStatusCourse(statuscourse);
         return coursereserveRepository.save(newCourseReserve);

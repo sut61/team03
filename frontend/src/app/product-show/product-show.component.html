@@ -1,0 +1,41 @@
+<mat-card style="margin:100px auto;width: 20%;">
+<div  style="text-align:center">
+    <h2 >คลังสินค้า </h2>
+
+
+
+<table >
+  <tr>
+    <th>ID</th>
+    <th>ชื่อสินค้า</th>
+    <th>จำนวน</th>
+    <th>ราคาต้นทุน</th>
+    <th>ราคาขาย</th>
+    
+  </tr>
+
+
+  <tr *ngFor="let product of product">
+
+      <td>{{product.id}}</td>
+      <td>{{product.nameproduct}}</td>
+      <td>{{product.number}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.saleprice}}</td> 
+    </tr>
+</table>
+</div>
+  <br>
+
+  <div style="text-align:center" >
+
+      <button mat-raised-button class="Bg" routerLink="">ย้อนกลับ</button>
+  
+    </div>
+
+
+
+  </mat-card>
+
+
+

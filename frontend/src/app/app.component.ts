@@ -60,6 +60,9 @@ export class AppComponent {
   gotoPromotion() {
     this.route.navigate(['/promotion']);
   }
+  gotoProduct() {
+    this.route.navigate(['/product']);
+  }
 
   gotoClassify() {
     this.route.navigate(['/classify']);

@@ -21,6 +21,10 @@ import { RoomSelectComponent } from './room-select/room-select.component';
 import {RoomSelectService} from './shared/room-select/room-select.service';
 import { PromotionComponent } from './promotion/Promotion.component';
 import {AllserviceService} from './shared/allservice.service';
+import {ProserviceService} from './shared/proservice/proservice.service';
+import { AddproductComponent } from './addproduct/addproduct.component';
+import { ProductShowComponent } from './product-show/product-show.component';
+import { PromotionShowComponent } from './promotion-show/promotion-show.component';
 import { RoomReserveComponent } from './room-reserve/room-reserve.component';
 import {RoomReserveService} from './shared/room-reserve/room-reserve.service';
 import { RoomComponent } from './room/room.component';
@@ -60,6 +64,9 @@ const appRoutes: Routes = [
 {path: 'bill', component: BillComponent },
   {path: 'comment', component: CommentComponent},
   {path: 'promotion', component: PromotionComponent},
+  {path: 'product', component: AddproductComponent},
+  {path:'product-show',component:ProductShowComponent},
+  {path:'promotion-show',component:PromotionShowComponent},
   {path: 'classify', component: ClassifyComponent},
 {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
@@ -81,6 +88,9 @@ Delivery3Component,
 ShowinfoComponent,
 BillComponent,
 PromotionComponent,
+AddproductComponent,
+ProductShowComponent,
+PromotionShowComponent,
   CommentComponent,
 CourseReserveComponent,
   ClassifyComponent
@@ -113,7 +123,7 @@ RouterModule.forRoot(appRoutes),
     MatSlideToggleModule
   ],
   providers: [LoginService, TokenService, RoomSelectService, AllserviceService, RoomReserveService,
-    RoomService , PaidService, MainService, BillService , CommentService, CourseReserveService, ClassifyService],
+    RoomService , PaidService, ProserviceService , MainService, BillService , CommentService, CourseReserveService, ClassifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
