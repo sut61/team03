@@ -10,8 +10,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.sut.se.g03.entity.Typeproduct;
-
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -95,6 +93,19 @@ public class G03Application {
 	private CourseTimeRepository courseTimeRepository;
 	@Autowired  
 	private ClassroomRepository classroomRepository;
+
+	@Autowired
+	private InstruTypeRepository instruTypeRepository;
+	@Autowired
+	private CustomerFixRepository customerFixRepository;
+	@Autowired
+	private ItemFixRepository itemFixRepository;
+	@Autowired
+	private DatainfoRepository datainfoRepository;
+	@Autowired
+	private ManagerinfoRepository managerinfoRepository;
+	@Autowired
+	private FixMainRepository fixMainRepository;
 
 	@Bean
 	ApplicationRunner init() {
@@ -183,6 +194,49 @@ public class G03Application {
 				Province provinceshop = new Province();
 				provinceshop.setProvince(province);
 				provinceRepository.save(provinceshop);
+			});
+
+			Stream.of("Mr.brain", "Mr.Doggy").forEach(managerName -> {
+				Managerinfo managerinfo = new Managerinfo();
+				managerinfo.setManagerName(managerName);
+				if(managerName == "Mr.brain"){
+					managerinfoRepository.save(managerinfo);
+				}
+				if(managerName == "Mr.Doggy"){
+					managerinfoRepository.save(managerinfo);
+				}
+			});
+
+			Stream.of("String Instruments", "Woodwind Instruments","Brass Instruments", "Keyboard Instruments","Percussion Instruments").forEach(instumentType -> {
+				InstruType instruType = new InstruType();
+				instruType.setInstumentType(instumentType);
+				if(instumentType == "String Instruments"){
+					instruTypeRepository.save(instruType);
+				}
+				if(instumentType == "Woodwind Instruments"){
+					instruTypeRepository.save(instruType);
+				}
+				if(instumentType == "Brass Instruments"){
+					instruTypeRepository.save(instruType);
+				}
+				if(instumentType == "Keyboard Instruments"){
+					instruTypeRepository.save(instruType);
+				}
+				if(instumentType == "Percussion Instruments"){
+					instruTypeRepository.save(instruType);
+				}
+
+			});
+
+			Stream.of("สวยพี่สวย", "ก็มาดิครับ").forEach(data -> {
+				Datainfo datainfo = new Datainfo();
+				datainfo.setData(data);
+				if(data == "สวยพี่สวย"){
+					datainfoRepository.save(datainfo);
+				}
+				if(data == "ก็มาดิครับ"){
+					datainfoRepository.save(datainfo);
+				}
 			});
 
 			Stream.of("อำเภอแก้งสนามนาง", "อำเภอขามทะเลสอ", "อำเภอขามสะแกแสง", "อำเภอคง", "อำเภอครบุรี", "อำเภอจักราช",
@@ -472,29 +526,6 @@ public class G03Application {
 			staffRepository.save(staff3);
 			staffRepository.save(staff4);
 
-
-		};
-	}
-	@Bean
-	ApplicationRunner init9(TypeproductRepository typeproductRepository){
-		return args -> {
-			
-
-			Typeproduct typeproduct1 = new Typeproduct("กลอง");
-			Typeproduct typeproduct2 = new Typeproduct("กีตาร์และเบส");
-			Typeproduct typeproduct3 = new Typeproduct("เครื่องสาย");
-			Typeproduct typeproduct4 = new Typeproduct("กีตาร์และเบส");
-			Typeproduct typeproduct5 = new Typeproduct("เครื่องดนตรีมาร์ชชิ่ง");
-			Typeproduct typeproduct6 = new Typeproduct("เครื่องเพอร์คัชชั่น");
-			
-			typeproductRepository.save(typeproduct1);
-			typeproductRepository.save(typeproduct2);
-			typeproductRepository.save(typeproduct3);
-			typeproductRepository.save(typeproduct4);
-			typeproductRepository.save(typeproduct5);
-			typeproductRepository.save(typeproduct6);
-
-		
 
 		};
 	}
