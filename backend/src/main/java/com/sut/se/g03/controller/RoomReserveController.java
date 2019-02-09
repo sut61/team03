@@ -43,7 +43,7 @@ public class RoomReserveController {
     private final String PRACTICE_ROOM_TYPE_NAME = "practice";
     private final String RECORD_ROOM_TYPE_NAME = "record";
     private final String NOT_PAID_STATUS_NAME = "ยังไม่จ่ายเงิน";
-    
+
     private final String OPENED_ROOM = "ใช้งาน";
 
     private boolean isPracticeRoom(RoomType roomType){
@@ -80,7 +80,7 @@ public class RoomReserveController {
 
     @GetMapping("/reserve/select/{roomID}/{dateID}")
     public Collection<TimeTable> getTimeByDateAndRoom(@PathVariable Long roomID,
-													  @PathVariable Long dateID){
+                                                      @PathVariable Long dateID){
         return timeTableRepository.findAllByRoomAndAndSchedule(roomRepository.findById(roomID),
                 scheduleRepository.findById(dateID));
     }
@@ -91,11 +91,12 @@ public class RoomReserveController {
                 ,roomTypeRepository.findById(typeId), statusRoomRepository.findByName(OPENED_ROOM));
     }
 
-    @PutMapping("/reserve/reserve/{roomID}/{dateID}/{username}")
+    @PutMapping("/reserve/reserve/{roomID}/{dateID}/{username}/{bookingName}")
     @Transactional
     public ResponseEntity<Object> reserve(@PathVariable Long roomID,
                                           @PathVariable Long dateID,
                                           @PathVariable String username,
+                                          @PathVariable String bookingName,
                                           @RequestBody Long[] timeTableID){
         final int DAYHOUR = 12;
         float price;
@@ -128,7 +129,7 @@ public class RoomReserveController {
                 content = createContent(DAYHOUR, room.getRoomType(), room.getName());
             }
             Date localDate = Date.from(LocalDate.now().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-            Bill bill = billRepository.save(new Bill(localDate, price, member, notPaid));
+            Bill bill = billRepository.save(new Bill(localDate, price, member, notPaid, bookingName));
             billInfoRepository.save(new BillInfo(content, price, bill));
             billRoomRepository.save(new BillRoom(room, bill));
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
