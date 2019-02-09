@@ -1,0 +1,131 @@
+<mat-toolbar color="primary">
+  จัดหมวดหมู่
+</mat-toolbar>
+<div style="margin: 10px;" *ngIf="statusText">
+  {{statusText}}
+</div>
+<mat-accordion>
+  <!-- add classify -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        เพิ่มหมวดหมู่
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-form-field>
+      <input matInput placeholder="หมวดหมู่" [(ngModel)]="model.name" required #classifyNameModel="ngModel">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <textarea matInput #detailMessage [(ngModel)]="model.detail"
+                maxlength="250" placeholder="คำอธิบาย" required #classifyDetailModel="ngModel"></textarea>
+      <mat-hint align="end">{{detailMessage.value.length}} / 250</mat-hint>
+    </mat-form-field>
+    <br>
+    <mat-slide-toggle [checked]="model.decreaseAble"
+                      [(ngModel)]="model.decreaseAble">จำกัดจำนวน</mat-slide-toggle>
+    <br>
+    <mat-form-field>
+      <input [disabled]="!model.decreaseAble" [(ngModel)]="model.amount"
+             placeholder="จำนวน" matInput type="number">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-select placeholder="สถานะ" [(ngModel)]="model.classifyStatus" required #statusModel="ngModel">
+        <mat-option *ngFor="let s of status" [value]="s">
+          {{s.status}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button [disabled]="classifyNameModel.invalid || classifyDetailModel.invalid || statusModel.invalid" (click)="addClass()">เพิ่ม</button>
+  </mat-expansion-panel>
+  <!-- add type -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        เพิ่มประเภท
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-form-field>
+      <input matInput placeholder="ประเภท" [(ngModel)]="typeName" required>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button [disabled]="!typeName" (click)="addType()">เพิ่มประเภท</button>
+  </mat-expansion-panel>
+  <!-- manage status -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        เปลี่ยนแปลงสถานะ
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-form-field>
+      <mat-select placeholder="สถานะ" [(ngModel)]="selectStatus">
+        <mat-option *ngFor="let s of status" [value]="s.id">
+          {{s.status}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-select placeholder="หมวดหมู่" [(ngModel)]="selectClassStatus">
+        <mat-option *ngFor="let c of classify" [value]="c.id">
+          {{c.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button (click)="editClassStatus()" [disabled]="!selectStatus || !selectClassStatus">แก้ไข</button>
+  </mat-expansion-panel>
+  <!-- manage classify -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        จัดหมวดหมู่
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-form-field>
+      <mat-select placeholder="สินค้า" [(ngModel)]="selectItem">
+        <mat-option *ngFor="let i of item" [value]="i.itemId">
+          {{i.itemName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-select placeholder="หมวดหมู่" [(ngModel)]="selectClassManage">
+        <mat-option *ngFor="let c of classify" [value]="c.id">
+          {{c.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button (click)="manageClass()" [disabled]="!selectItem || !selectClassManage">จัดการ</button>
+  </mat-expansion-panel>
+  <!-- manage type -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        จัดการประเภท
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-form-field>
+      <mat-select placeholder="สินค้า" [(ngModel)]="selectItemType">
+        <mat-option *ngFor="let i of item" [value]="i.itemId">
+          {{i.itemName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-select placeholder="ประเภท" [(ngModel)]="selectTypeItem">
+        <mat-option *ngFor="let t of type" [value]="t.id">
+          {{t.typeName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button [disabled]="!selectItemType || !selectTypeItem" (click)="manageType()">จัดการประเภท</button>
+  </mat-expansion-panel>
+</mat-accordion>

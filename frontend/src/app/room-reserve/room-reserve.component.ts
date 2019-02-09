@@ -19,7 +19,11 @@ export class RoomReserveComponent implements OnInit {
   timeTable: any;
   timeData = [];
   timeForm: FormGroup;
+  bookingForm: FormGroup;
+  bookingName: any;
   roomType: any;
+  isComplete = false;
+  isError = false;
 
   constructor(private roomSelectService: RoomSelectService, private router: ActivatedRoute,
               private fb: FormBuilder, private roomReserveService: RoomReserveService,
@@ -43,6 +47,9 @@ export class RoomReserveComponent implements OnInit {
     });
     this.timeForm = this.fb.group({
       'time': new FormControl('', Validators.required)
+    });
+    this.bookingForm = this.fb.group({
+      'booking': new FormControl('', Validators.required)
     });
   }
 
@@ -71,18 +78,15 @@ export class RoomReserveComponent implements OnInit {
     console.log(this.timeData);
     console.log(this.dateSelectID);
     console.log(this.room.id);
-    this.roomReserveService.putReserve(this.room.id, this.dateSelectID, this.timeData, this.token.getUsername()).subscribe(
+    this.bookingName = this.bookingForm.get('booking').value;
+    this.roomReserveService.putReserve(this.room.id, this.dateSelectID, this.timeData, this.token.getUsername(), this.bookingName)
+      .subscribe(
       value => {},
       error1 => {
-        if (alert('error')) {
-          window.location.reload();
-        }
+        this.isError = true;
       }, () => {
-        if (alert('complete')) {
-          window.location.reload();
-        }
+        this.isComplete = true;
       });
-    window.location.reload();
   }
 
   isPractice() {

@@ -5,12 +5,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import {LoginService} from './shared/login/login.service';
 import {
-MatAutocompleteModule, MatButtonModule,
-MatButtonToggleModule, MatCardModule,
-MatCheckboxModule, MatDatepickerModule, MatExpansionModule,
-MatFormFieldModule, MatGridListModule, MatInputModule, MatListModule, MatNativeDateModule,
-MatOptionModule, MatPaginatorModule,
-MatSelectModule, MatTableModule, MatTabsModule, MatToolbarModule
+  MatAutocompleteModule, MatButtonModule,
+  MatButtonToggleModule, MatCardModule,
+  MatCheckboxModule, MatDatepickerModule, MatExpansionModule,
+  MatFormFieldModule, MatGridListModule, MatInputModule, MatListModule, MatNativeDateModule,
+  MatOptionModule, MatPaginatorModule,
+  MatSelectModule, MatSlideToggleModule, MatTableModule, MatTabsModule, MatToolbarModule
 } from '@angular/material';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -41,6 +41,8 @@ import {CommentComponent} from './comment/comment.component';
 import {CommentService} from './shared/comment/comment.service';
 import { CourseReserveComponent } from './course-reserve/course-reserve.component';
 import {CourseReserveService} from './shared/course-reserve/course-reserve.service';
+import {ClassifyComponent} from './classify/classify.component';
+import {ClassifyService} from './shared/classify/classify.service';
 const appRoutes: Routes = [
 {path: 'coursereserve', component: CourseReserveComponent},
 {path: 'room', component: RoomComponent},
@@ -58,7 +60,7 @@ const appRoutes: Routes = [
 {path: 'bill', component: BillComponent },
   {path: 'comment', component: CommentComponent},
   {path: 'promotion', component: PromotionComponent},
-
+  {path: 'classify', component: ClassifyComponent},
 {path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
 
@@ -81,6 +83,7 @@ BillComponent,
 PromotionComponent,
   CommentComponent,
 CourseReserveComponent,
+  ClassifyComponent
 ],
 imports: [
 BrowserModule,
@@ -106,9 +109,11 @@ RouterModule.forRoot(appRoutes),
     MatAutocompleteModule,
     MatOptionModule,
     MatCheckboxModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSlideToggleModule
   ],
-  providers: [LoginService, TokenService, RoomSelectService,AllserviceService, RoomReserveService, RoomService , PaidService, MainService, BillService , CommentService, CourseReserveService],
+  providers: [LoginService, TokenService, RoomSelectService, AllserviceService, RoomReserveService,
+    RoomService , PaidService, MainService, BillService , CommentService, CourseReserveService, ClassifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
