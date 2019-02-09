@@ -1,0 +1,109 @@
+<mat-toolbar color="primary">
+  <span style="font-size: 40px; color: azure">จัดคอร์สสอนดนตรี</span>
+</mat-toolbar>
+<div class="body">
+  <!--         ส่วนกล่องของเลือกปุ่มด้านซ้ายมือ  -->
+    <div class="left-body"  >
+    <mat-card class="left-card">
+
+    </mat-card>
+
+    <!--         ส่วนกล่องของฝั่งเพิ่มข้อมูล  -->
+
+    <mat-card class="addData-card">
+      <div class="addData-style">
+          <div style="margin-bottom: 10px;"><h2><U>เพิ่มข้อมูลคอร์สสอนดนตรี</U></h2></div>
+
+              <!--         ส่วนกรอกชื่ออาจารย์ -->
+              <form >
+                  <mat-form-field >
+                      <div ><p>กรอกชื่อของอาจารย์</p></div>
+                      <input matInput style="text-align:left;" type="text" name="inputFname" [(ngModel)]="inputFname">
+                    </mat-form-field>
+              </form>
+
+              <!--         ส่วนกรอกนามสกุลอาจารย์ -->
+              <form >
+                <mat-form-field >
+                    <div ><p>กรอกนามสกุลของอาจารย์</p></div>
+                    <input matInput style="text-align:left;" type="text" name="inputLname" [(ngModel)]="inputLname">
+                  </mat-form-field>
+            </form>
+
+             <!--         ส่วนกรอกชื่อเล่นอาจารย์ -->
+             <form >
+              <mat-form-field >
+                  <div ><p>กรอกชื่อเล่นของอาจารย์</p></div>
+                  <input matInput style="text-align:left;" type="text" name="inputnickname" [(ngModel)]="inputnickname">
+                </mat-form-field>
+          </form>
+
+           <!--         ส่วนกรอกเบอร์โทรศัพท์ -->
+           <form >
+            <mat-form-field >
+                <div ><p>กรอกเบอร์โทรศัพท์ของอาจารย์</p></div>
+                <input matInput style="text-align:left;"  type="text" name="inputPhoneNum" [(ngModel)]="inputPhoneNum">
+              </mat-form-field>
+        </form>
+
+               <!--         ส่วนcombobox ของ เครื่องดนตรี  -->
+          <br>
+          <mat-form-field>
+            <p>เลือกเครื่องดนตรีที่อาจารย์สอน</p>
+              <mat-select [(ngModel)]="instrumentSelect">
+                <mat-option *ngFor="let instrument of instruments"  [value]="instrument.id">
+                  {{instrument.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <br>
+            <!--         ส่วนcombobox ของ วัน-เวลาที่ใช้สอน  -->
+          <br>
+          <mat-form-field>
+            <p>เลือกวันและเวลาที่สอน</p>
+              <mat-select [(ngModel)]="courseTimeSelect">
+                <mat-option *ngFor="let courseTime of courseTimes" [value]="courseTime.id">
+                  {{courseTime.day}} &nbsp; {{courseTime.start}} &nbsp; {{courseTime.end}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <br>
+             <!--         ส่วนcombobox ของ ห้องที่ใช้สอน -->
+          <br>
+          <mat-form-field>
+            <p>เลือกห้องที่ใช้สอน</p>
+              <mat-select [(ngModel)]="classRoomSelect">
+                <mat-option *ngFor="let classroom of classrooms" [value]="classroom.id">
+                  {{classroom.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <br>
+             <!--         ส่วนcombobox ของ ประเภทการจ่ายเงินให้อาจารย์ -->
+          <br>
+          <mat-form-field>
+            <p>เลือกประเภทการจ่ายเงินให้อาจารย์</p>
+              <mat-select [(ngModel)]="paymentTypeSelect">
+                <mat-option *ngFor="let paymentType of paymentTypes " [value]="paymentType.id">
+                  {{paymentType.name}} &nbsp; {{paymentType.price}} บาท
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <br>
+
+            <!--           ส่วนของปุ่มเพิ่มข้อมูล        -->
+    <div style="margin-top: 20px;"><button mat-raised-button color="accent" (click)="InsertCoursemusic()" >
+        <p style="text-align: center;">เพิ่มข้อมูล
+        </p>
+      </button></div>
+
+
+      </div>
+    </mat-card>
+
+</div>
+</div>
