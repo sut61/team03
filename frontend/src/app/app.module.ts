@@ -64,7 +64,7 @@ const appRoutes: Routes = [
 {path: 'bill', component: BillComponent },
   {path: 'comment', component: CommentComponent},
   {path: 'promotion', component: PromotionComponent},
-  {path: 'product', component: AddproductComponent},
+  {path: 'addproduct', component: AddproductComponent},
   {path:'product-show',component:ProductShowComponent},
   {path:'promotion-show',component:PromotionShowComponent},
   {path: 'classify', component: ClassifyComponent},

@@ -32,20 +32,17 @@ export class AddproductComponent implements OnInit {
       alert('กรุณากรอกให้ครบถ้วน');}
 
     else {
-        this.httpClient.post('http://localhost:8080/product/' + this.selecttypeproduct + '/' + this.nameproduct + '/' + this.number + '/' + this.price + '/' + this.saleprice + '/' + this.date, {})
+        this.httpClient.post('http://localhost:8080/addproduct/' + this.selecttypeproduct + '/' + this.nameproduct + '/' + this.number + '/' + this.price + '/' + this.saleprice + '/' + this.date, {})
           .subscribe()
         alert("บันทึกเรียบร้อย");
-        this.router.navigate(['product']);
+        this.router.navigate(['']);
       }
 
     }
     
-       show(){
-       this.router.navigate(['product-show']);
-     }
+
 
   }
-
 
 
 

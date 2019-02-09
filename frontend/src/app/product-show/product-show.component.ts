@@ -11,11 +11,11 @@ import {Router} from "@angular/router";
 export class ProductShowComponent implements OnInit {
 
   constructor(private controller:ProserviceService,private httpClient:HttpClient,private router:Router) { }
-  product:Array<any>;
+  addproduct:Array<any>;
   ngOnInit() {
-    this.controller.getProduct().subscribe(data =>{
-      this.product = data;
-      console.log(this.product);
+    this.controller.getAddproduct().subscribe(data =>{
+      this.addproduct = data;
+      console.log(this.addproduct);
     })
   }
 

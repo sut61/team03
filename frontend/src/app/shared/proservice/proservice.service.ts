@@ -10,8 +10,8 @@ export class ProserviceService {
   public API = '//localhost:8080';
   constructor(private httpClient:HttpClient) { }
 
-  getProduct(): Observable<any>{
-    return this.httpClient.get(this.API+'/product');
+  getAddproduct(): Observable<any>{
+    return this.httpClient.get(this.API+'/addproduct');
   }
 
   getTypeproduct(): Observable<any>{
