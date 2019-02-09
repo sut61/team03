@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Getter
@@ -17,6 +18,10 @@ public class ServiceType {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "serviceType_seq")
     private Long id;
 
-    //@NotNull
+    @NotNull
     private String typeService;
+
+    public ServiceType(String typeService) {
+        this.typeService = typeService;
+    }
 }
