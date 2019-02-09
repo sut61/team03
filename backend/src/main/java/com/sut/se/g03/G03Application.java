@@ -10,6 +10,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.sut.se.g03.entity.Typeproduct;
+
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -470,6 +472,29 @@ public class G03Application {
 			staffRepository.save(staff3);
 			staffRepository.save(staff4);
 
+
+		};
+	}
+	@Bean
+	ApplicationRunner init9(TypeproductRepository typeproductRepository){
+		return args -> {
+			
+
+			Typeproduct typeproduct1 = new Typeproduct("กลอง");
+			Typeproduct typeproduct2 = new Typeproduct("กีตาร์และเบส");
+			Typeproduct typeproduct3 = new Typeproduct("เครื่องสาย");
+			Typeproduct typeproduct4 = new Typeproduct("กีตาร์และเบส");
+			Typeproduct typeproduct5 = new Typeproduct("เครื่องดนตรีมาร์ชชิ่ง");
+			Typeproduct typeproduct6 = new Typeproduct("เครื่องเพอร์คัชชั่น");
+			
+			typeproductRepository.save(typeproduct1);
+			typeproductRepository.save(typeproduct2);
+			typeproductRepository.save(typeproduct3);
+			typeproductRepository.save(typeproduct4);
+			typeproductRepository.save(typeproduct5);
+			typeproductRepository.save(typeproduct6);
+
+		
 
 		};
 	}
