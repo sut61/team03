@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ระบบจัดการค่าใช้จ่าย</title>
+</head>
+<body>
+<div class="menubar">
+  <div class="container">
+    <div class="logo">
+      <h1>Studio Shop</h1>
+    </div>
+    <ul>
+      <li>
+        <a href="#">Home</a>
+      </li>
+      <li>
+        <a href="#">About</a>
+      </li>
+      <li>
+        <a href="#">Contact</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="clearfix"></div>
+<header class="header">
+  <div class="container">
+    <div class="header_area">
+      <h1>ส่วนการตรวจสอบและรับซ่อมบำรุง</h1>
+      <p>Condition Based Maintenance</p>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="info1">
+    <div class="container">
+      <div class="headareainfo">
+        <h1>Check and Fix Information</h1>
+      </div>
+      <div class="info1_area">
+        <div class="info11_area">
+          <div class="info111_area">
+
+            <h2>4. รายละเอียดการตรวจสอบ / Check Infomation </h2>
+
+          </div>
+          <div class="info112_area">
+            <label>ชื่อ - สกุล / Frist - Last name</label><br>
+            <div id="box_1">
+              {{fixData.customerFix.customerFixName}}
+            </div><br>
+            <label>เบอร์โทรศัพท์ / Phone number</label><br>
+            <div id="box_1">
+              {{fixData.customerFix.tel}}
+            </div><br>
+            <label>อีเมล / E-mail</label><br>
+            <div id="box_1">
+              {{fixData.customerFix.email}}
+            </div><br>
+            <label>ประเภทเครื่องดนตรีที่ได้รับมอบ / Instrument Type</label><br>
+            <div id="box_1">
+              {{fixData.instruType.instumentType}}
+            </div><br>
+            <label>อุปกรณ์ที่นำมาตรวจสอบ / Item</label><br>
+            <div id="box_1">
+              {{fixData.itemFix.itemFixName}}
+            </div><br>
+            <label>อาการ | สภาพของอุปกรณ์ / Based Quality</label><br>
+            <div id="box_1">
+              {{fixData.datainfo.data}}
+            </div><br>
+            <label>จ่าใช้จ่าย / Cost</label><br>
+            <div id="box_1">
+              {{fixData.cost}}
+            </div><br>
+            <label>ชื่อผู้ตรวจสอบ / Consignee Name </label><br>
+            <div id="box_1">
+              {{fixData.managerinfo.managerName}}
+            </div><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer>
+  <p>Copyright &copy; 2019 | Ronnakrit Lissanun</p>
+</footer>
+</body>
+</html>

@@ -63,12 +63,11 @@ export class AppComponent {
   gotoAddproduct() {
     this.route.navigate(['/addproduct']);
   }
-
+  gotoCheck() {
+    this.route.navigate(['/check']);
+  }
   gotoClassify() {
     this.route.navigate(['/classify']);
   }
 
-  gotoCourseMusic() {
-    this.route.navigate(['/courseMusic']);
-  }
 }
