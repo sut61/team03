@@ -25,7 +25,7 @@ export class Delivery3Component implements OnInit {
   };
 
   shop: any;
-
+  showError : String;
   constructor(private mainService:MainService,private httpClient: HttpClient,private router: Router,private rout: ActivatedRoute) {}
 
   ngOnInit() {
@@ -41,6 +41,7 @@ export class Delivery3Component implements OnInit {
    next(){
       if (this.shopAdd.name === '' || this.shopAdd.tel === '' || this.shopAdd.email === '' || this.shopAdd.address === ''){
         alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+          this.showError = "กรุณากรอกข้อมูลให้ครบถ้วน"
     }else {
       this.httpClient.post('http://localhost:8080/Customer/add/' + this.shopAdd.username + '/' + this.shopAdd.name + '/' +
         this.shopAdd.tel + '/' + this.shopAdd.email + '/' + this.shopAdd.address + '/' + this.shopAdd.item
@@ -52,6 +53,7 @@ export class Delivery3Component implements OnInit {
           if(data){
             this.router.navigate(['infomation_final/' + this.shop.shopId,{shop:this.shop.shopId, province:this.item.province}]);
             alert('สั่งซื้อสำเร็จ');
+            this.showError = "สั่งซื้อสำเร็จ"
           }
         },
         error => {
