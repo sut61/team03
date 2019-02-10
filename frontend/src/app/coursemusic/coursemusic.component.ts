@@ -25,7 +25,7 @@ export class CoursemusicComponent implements OnInit {
   courseTimeSelect: number ;
   classRoomSelect: number  ;
   paymentTypeSelect: number ;
-
+  showError : String;
 
   constructor(private courseMusicService: CoursemusicService , private route: Router, private token: TokenService) { }
 
@@ -72,6 +72,7 @@ export class CoursemusicComponent implements OnInit {
     if(this.inputFname === '' || this.inputLname === ''|| this.inputnickname === '' || this.inputPhoneNum === ''|| this.instrumentSelect === 0 ||
     this.courseTimeSelect === 0 || this.classRoomSelect === 0 || this.paymentTypeSelect === 0){
     alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+    this.showError = "กรุณากรอกข้อมูลให้ครบถ้วน"
   }
     else{
       this.courseMusicService.addcourseMusic( this.inputFname, this.inputLname, this.inputnickname, this.inputPhoneNum,this.instrumentSelect,
@@ -79,10 +80,12 @@ export class CoursemusicComponent implements OnInit {
         data => {
           this.getCourseMusicItem();
           alert("การเพิ่มข้อมูลสำเร็จ");
+          this.showError = "การเพิ่มข้อมูลสำเร็จ"
         },
         error => {
           alert("เกิดข้อผิดพลาด");
           console.log("Error", error);
+          this.showError = "เกิดข้อผิดพลาด"
         }
       );
 

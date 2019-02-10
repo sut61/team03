@@ -18,7 +18,7 @@
               <form >
                   <mat-form-field >
                       <div ><p>กรอกชื่อของอาจารย์</p></div>
-                      <input matInput style="text-align:left;" type="text" name="inputFname" [(ngModel)]="inputFname">
+                      <input matInput style="text-align:left;" type="text" id="1" name="inputFname" [(ngModel)]="inputFname">
                     </mat-form-field>
               </form>
 
@@ -26,7 +26,7 @@
               <form >
                 <mat-form-field >
                     <div ><p>กรอกนามสกุลของอาจารย์</p></div>
-                    <input matInput style="text-align:left;" type="text" name="inputLname" [(ngModel)]="inputLname">
+                    <input matInput style="text-align:left;" type="text" id="2" name="inputLname" [(ngModel)]="inputLname">
                   </mat-form-field>
             </form>
 
@@ -34,7 +34,7 @@
              <form >
               <mat-form-field >
                   <div ><p>กรอกชื่อเล่นของอาจารย์</p></div>
-                  <input matInput style="text-align:left;" type="text" name="inputnickname" [(ngModel)]="inputnickname">
+                  <input matInput style="text-align:left;" type="text" id="3" name="inputnickname" [(ngModel)]="inputnickname">
                 </mat-form-field>
           </form>
 
@@ -42,7 +42,7 @@
            <form >
             <mat-form-field >
                 <div ><p>กรอกเบอร์โทรศัพท์ของอาจารย์</p></div>
-                <input matInput style="text-align:left;"  type="text" name="inputPhoneNum" [(ngModel)]="inputPhoneNum">
+                <input matInput style="text-align:left;"  type="text"  id="4" name="inputPhoneNum" [(ngModel)]="inputPhoneNum">
               </mat-form-field>
         </form>
 
@@ -50,8 +50,8 @@
           <br>
           <mat-form-field>
             <p>เลือกเครื่องดนตรีที่อาจารย์สอน</p>
-              <mat-select [(ngModel)]="instrumentSelect">
-                <mat-option *ngFor="let instrument of instruments"  [value]="instrument.id">
+              <mat-select name="teacher" [(ngModel)]="instrumentSelect">
+                <mat-option *ngFor="let instrument of instruments" [value]="instrument.id">
                   {{instrument.name}}
                 </mat-option>
               </mat-select>
@@ -62,9 +62,9 @@
           <br>
           <mat-form-field>
             <p>เลือกวันและเวลาที่สอน</p>
-              <mat-select [(ngModel)]="courseTimeSelect">
+              <mat-select name="time" [(ngModel)]="courseTimeSelect">
                 <mat-option *ngFor="let courseTime of courseTimes" [value]="courseTime.id">
-                  {{courseTime.day}} &nbsp; {{courseTime.start}} &nbsp; {{courseTime.end}}
+                  {{courseTime.day}} : {{courseTime.start}} : {{courseTime.end}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -74,7 +74,7 @@
           <br>
           <mat-form-field>
             <p>เลือกห้องที่ใช้สอน</p>
-              <mat-select [(ngModel)]="classRoomSelect">
+              <mat-select name="room" [(ngModel)]="classRoomSelect">
                 <mat-option *ngFor="let classroom of classrooms" [value]="classroom.id">
                   {{classroom.name}}
                 </mat-option>
@@ -86,13 +86,13 @@
           <br>
           <mat-form-field>
             <p>เลือกประเภทการจ่ายเงินให้อาจารย์</p>
-              <mat-select [(ngModel)]="paymentTypeSelect">
-                <mat-option *ngFor="let paymentType of paymentTypes " [value]="paymentType.id">
-                  {{paymentType.name}} &nbsp; {{paymentType.price}} บาท
+              <mat-select name="pay" [(ngModel)]="paymentTypeSelect">
+                <mat-option *ngFor="let paymentType of paymentTypes "  [value]="paymentType.id">
+                  {{paymentType.name}} : {{paymentType.price}} บาท
                 </mat-option>
               </mat-select>
             </mat-form-field>
-
+        <br><p style="color:#red;">{{showError}}</p>
             <br>
 
             <!--           ส่วนของปุ่มเพิ่มข้อมูล        -->

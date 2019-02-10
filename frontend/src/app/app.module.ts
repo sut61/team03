@@ -47,6 +47,8 @@ import { CourseReserveComponent } from './course-reserve/course-reserve.componen
 import { CourseReserveService} from './shared/course-reserve/course-reserve.service';
 import { ClassifyComponent} from './classify/classify.component';
 import { ClassifyService} from './shared/classify/classify.service';
+import { CoursemusicComponent } from './coursemusic/coursemusic.component';
+import { CoursemusicService } from './shared/coursemusic/coursemusic.service';
 import { CheckmainComponent } from './checkmain/checkmain.component';
 import { CheckcustomerComponent } from './checkcustomer/checkcustomer.component';
 import { CheckmanagerComponent } from './checkmanager/checkmanager.component';
@@ -75,6 +77,7 @@ const appRoutes: Routes = [
   {path:'product-show',component:ProductShowComponent},
   {path:'promotion-show',component:PromotionShowComponent},
   {path: 'classify', component: ClassifyComponent},
+  {path: 'courseMusic', component: CoursemusicComponent},
 { path: 'check', component: CheckmainComponent },
 { path: 'cusinfo/:itemName', component: CheckcustomerComponent },
 { path: 'managerinfo/:itemName', component: CheckmanagerComponent },
@@ -109,6 +112,7 @@ ClassifyComponent,
 CheckmainComponent,
 CheckcustomerComponent,
 CheckmanagerComponent,
+CoursemusicComponent,
 ShowdataComponent
 ],
 imports: [
@@ -139,7 +143,7 @@ RouterModule.forRoot(appRoutes),
     MatSlideToggleModule
   ],
   providers: [LoginService, TokenService, RoomSelectService, AllserviceService, RoomReserveService,
-    RoomService , PaidService, ProserviceService , MainService, CheckmainService, BillService , CommentService, CourseReserveService, ClassifyService],
+    RoomService , PaidService, ProserviceService , MainService, CheckmainService, BillService , CommentService, CourseReserveService, ClassifyService, CoursemusicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
