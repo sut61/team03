@@ -4,12 +4,12 @@
 <mat-card align="center">
   <form #userForm="ngForm">
     <mat-form-field>
-      <input matInput (keyup.enter)="login()" type="text" name="userUsername" placeholder="username" [(ngModel)]="user.username">
+      <input matInput (keyup.enter)="login()" type="text" name="userUsername" placeholder="username" id="username-input" [(ngModel)]="user.username">
     </mat-form-field>
     <br>
     <mat-form-field>
-      <input matInput (keyup.enter)="login()" type="password" name="userPassword" placeholder="password" [(ngModel)]="user.password">
+      <input matInput (keyup.enter)="login()" type="password" name="userPassword" placeholder="password" id="password-input" [(ngModel)]="user.password">
     </mat-form-field>
   </form>
-  <button mat-raised-button (click)="login()">login</button>
+  <button mat-raised-button (click)="login()" id="login-button" >login</button>
 </mat-card>

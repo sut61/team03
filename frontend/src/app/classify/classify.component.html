@@ -13,11 +13,11 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <mat-form-field>
-      <input matInput placeholder="หมวดหมู่" [(ngModel)]="model.name" required #classifyNameModel="ngModel">
+      <input matInput placeholder="หมวดหมู่" [(ngModel)]="model.name" id="classify-name" required #classifyNameModel="ngModel">
     </mat-form-field>
     <br>
     <mat-form-field>
-      <textarea matInput #detailMessage [(ngModel)]="model.detail"
+      <textarea matInput #detailMessage [(ngModel)]="model.detail" id="classify-detail"
                 maxlength="250" placeholder="คำอธิบาย" required #classifyDetailModel="ngModel"></textarea>
       <mat-hint align="end">{{detailMessage.value.length}} / 250</mat-hint>
     </mat-form-field>
@@ -26,7 +26,7 @@
                       [(ngModel)]="model.decreaseAble">จำกัดจำนวน</mat-slide-toggle>
     <br>
     <mat-form-field>
-      <input [disabled]="!model.decreaseAble" [(ngModel)]="model.amount"
+      <input [disabled]="!model.decreaseAble" [(ngModel)]="model.amount" id="classify-amount"
              placeholder="จำนวน" matInput type="number">
     </mat-form-field>
     <br>

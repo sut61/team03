@@ -21,16 +21,26 @@ public class Addproduct {
     private Long id;
 
     @NotNull
-
+    @Size(min=3, max=30)
+    @Pattern(regexp = "[a-zA-Z]*")
     private String nameproduct;
     
     @NotNull
+    @Positive
+    @Min(value = 1)
+    @Max(value = 100)
     private int number;
 
     @Positive
+    @Positive
+    @Min(value = 1)
+    @Max(value = 100)
     private int price;
 
+    @NotNull
     @Positive
+    @Min(value = 1)
+    @Max(value = 100)
     private int saleprice;
 
     @NotNull
