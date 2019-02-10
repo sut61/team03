@@ -9,12 +9,8 @@
   </mat-select>
 </mat-form-field>
 <br>
-<div *ngIf="isComplete">
-  บันทึกสำเร็จ
-</div>
-<div *ngIf="isError">
-  พบข้อผิดพลาด<br>
-  รูปแบบชื่ออาจผิด
+<div *ngIf="isComplete" id="report-text">
+  {{reportText}}
 </div>
 <br>
 <form *ngIf="timeTable" (ngSubmit)="onSubmit()">
@@ -33,7 +29,7 @@
   </ng-template>
   <br>
   <mat-form-field [formGroup]="bookingForm">
-    <input matInput placeholder="ชื่อ-นามสกุล ผู้จอง" required formControlName="booking">
+    <input matInput placeholder="ชื่อ-นามสกุล ผู้จอง" id="booking-name" required formControlName="booking">
   </mat-form-field>
   <br>
   <button mat-stroked-button *ngIf="isPractice()" [disabled]="(bookingForm.invalid)||(timeForm.invalid)" type="submit">submit</button>
