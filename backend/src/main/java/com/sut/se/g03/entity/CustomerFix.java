@@ -22,13 +22,17 @@ public class CustomerFix {
     @SequenceGenerator(name="customerFix_seq",sequenceName="customerFix_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="customerFix_seq")
     @Column(name="CustomerFix_ID")
-    private @NotNull  Long customerFixId;
-    @NotNull
+    private  Long customerFixId;
+
     private  String customerFixName;
-    @NotNull
+
     private  String email;
+
     @NotNull
+    @Size(min = 10,max = 12)
+    @Pattern(regexp = "[0]\\d+")
     private  String tel;
+
 
     public CustomerFix(String tel) {
         this.tel = tel;
