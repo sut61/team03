@@ -69,5 +69,8 @@ export class AppComponent {
   gotoClassify() {
     this.route.navigate(['/classify']);
   }
+  gotoCourseMusic() {
+    this.route.navigate(['/courseMusic']);
+  }
 
 }
