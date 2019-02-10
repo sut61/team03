@@ -24,6 +24,7 @@ export class RoomReserveComponent implements OnInit {
   roomType: any;
   isComplete = false;
   isError = false;
+  reportText: string;
 
   constructor(private roomSelectService: RoomSelectService, private router: ActivatedRoute,
               private fb: FormBuilder, private roomReserveService: RoomReserveService,
@@ -78,14 +79,17 @@ export class RoomReserveComponent implements OnInit {
     console.log(this.timeData);
     console.log(this.dateSelectID);
     console.log(this.room.id);
+    this.isComplete = false;
     this.bookingName = this.bookingForm.get('booking').value;
     this.roomReserveService.putReserve(this.room.id, this.dateSelectID, this.timeData, this.token.getUsername(), this.bookingName)
       .subscribe(
       value => {},
       error1 => {
-        this.isError = true;
+        this.isComplete = true;
+        this.reportText = 'พบข้อผิดพลาด';
       }, () => {
         this.isComplete = true;
+        this.reportText = 'เพิ่มข้อมูลสำเร็จ';
       });
   }
 
