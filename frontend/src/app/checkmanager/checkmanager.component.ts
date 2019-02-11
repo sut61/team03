@@ -55,13 +55,11 @@ export class CheckmanagerComponent implements OnInit {
           this.fix = data;
           if(data){
             this.router.navigate(['showdata/' + this.fix.fixMainId]);
-            alert('บันทึกรายละเอียดสำเร้จ');
             this.showError = "บันทึกรายละเอียดสำเร้จ"
           }
         },
         error => {
           console.log('Error', error);
-            alert('การทำบันทึกรายละเอียดไม่สำเร้จ');
             this.showError = "การทำบันทึกรายละเอียดไม่สำเร้จ"
         }
       );
