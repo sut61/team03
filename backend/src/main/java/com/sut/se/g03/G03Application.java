@@ -530,4 +530,28 @@ public class G03Application {
 		};
 	}
 
+	@Bean
+	ApplicationRunner init08(TypeproductRepository typeproductRepository){
+		return args -> {
+			
+
+			Typeproduct typeproduct1 = new Typeproduct("กลอง");
+			Typeproduct typeproduct2 = new Typeproduct("กีตาร์และเบส");
+			Typeproduct typeproduct3 = new Typeproduct("เครื่องสาย");
+			Typeproduct typeproduct4 = new Typeproduct("กีตาร์และเบส");
+			Typeproduct typeproduct5 = new Typeproduct("เครื่องดนตรีมาร์ชชิ่ง");
+			Typeproduct typeproduct6 = new Typeproduct("เครื่องเพอร์คัชชั่น");
+			
+			typeproductRepository.save(typeproduct1);
+			typeproductRepository.save(typeproduct2);
+			typeproductRepository.save(typeproduct3);
+			typeproductRepository.save(typeproduct4);
+			typeproductRepository.save(typeproduct5);
+			typeproductRepository.save(typeproduct6);
+
+		
+
+		};
+	}
+
 }
