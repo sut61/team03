@@ -74,7 +74,9 @@ const appRoutes: Routes = [
 {path: 'comment', component: CommentComponent},
   {path: 'promotion', component: PromotionComponent},
   {path: 'addproduct', component: AddproductComponent},
+  
   {path:'product-show',component:ProductShowComponent},
+
   {path:'promotion-show',component:PromotionShowComponent},
   {path: 'classify', component: ClassifyComponent},
   {path: 'courseMusic', component: CoursemusicComponent},
