@@ -17,6 +17,9 @@ export class CourseReserveComponent implements OnInit {
   CouseMusicSelect: number;
   StatusCourseSelect: number;
 
+  accept: boolean;
+  reporterror: boolean;
+
   constructor(private coursereserveservice:CourseReserveService,private token: TokenService) { }
 
   ngOnInit() {
@@ -44,14 +47,15 @@ export class CourseReserveComponent implements OnInit {
     console.log(this.CouseMusicSelect);
     console.log(this.StatusCourseSelect);
     console.log(this.token.getUsername());
+    this.accept = false;
+    this.reporterror = false;
     this.coursereserveservice.addCourseReserve( this.inputNickName,this.inputNameFacebook, this.inputPhone, this.CouseMusicSelect, this.StatusCourseSelect, this.token.getUsername()).subscribe(
       data => {
         this.getCourseMusicList();
-        alert("การเพิ่มข้อมูลสำเร็จ");
+        this.accept = true;
       },
       error => {
-        alert("การเพิ่มข้อมูลเกิดข้อผิดพลาด");
-        console.log("Error", error);
+        this.reporterror = true;
       }
     );
   }

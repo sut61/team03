@@ -27,6 +27,9 @@ export class RoomComponent implements OnInit {
   instrumentSelect: number = 0;
   instruments: Array<any>;
 
+  accept: boolean;
+  reporterror: boolean;
+
   constructor(private roomService:RoomService) { }
 
   ngOnInit() {
@@ -67,42 +70,47 @@ export class RoomComponent implements OnInit {
     });
   }
   postRoom(){
+    this.accept = false;
+    this.reporterror = false;
     this.roomService.addRoom(this.inputName, this.inputRate, this.roomSizeSelect, this.roomTypeSelect, this.statusRoomSelect).subscribe(
       data => {
         this.inputName = '';
         this.inputRate = 0;
         this.getRoomList();
-        alert("การเพิ่มข้อมูลสำเร็จ");
+        this.accept = true;
       },
       error => {
-        alert("การเพิ่มข้อมูลเกิดข้อผิดพลาด");
+        this.reporterror = true;
         console.log("Error", error);
       }
     );
   }
 
   putRoom(){
+    this.accept = false;
+    this.reporterror = false;
     this.roomService.putRoom( this.roomSelect1, this.inputRate1, this.roomSizeSelect1, this.roomTypeSelect1, this.statusRoomSelect1).subscribe(
       data => {
-        this.inputRate = 0;
         this.getRoomList();
-        alert("การแก้ไขข้อมูลสำเร็จ");
+        this.accept = true;
       },
       error => {
-        alert("การเพิ่มข้อมูลเกิดข้อผิดพลาด");
+        this.reporterror = true;
         console.log("Error", error);
       }
     );
   }
 
   postInstrumen(){
+    this.accept = false;
+    this.reporterror = false;
     this.roomService.addInstrumen( this.roomSelect, this.instrumentSelect).subscribe(
       data => {
         this.getRoomList();
-        alert("การเพิ่มข้อมูลสำเร็จ");
+        this.accept = true;
       },
       error => {
-        alert("การเพิ่มข้อมูลเกิดข้อผิดพลาด");
+        this.reporterror = true;
         console.log("Error", error);
       }
     );

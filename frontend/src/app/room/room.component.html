@@ -4,11 +4,11 @@
 เพิ่มห้องซ้อมดนตรี<br>
 
   <mat-form-field class="example-full-width">
-      <input matInput name="inputName"  type="text" placeholder="ชื่อห้อง"  [(ngModel)]="inputName" >
+      <input matInput name="inputName"  type="text" placeholder="ชื่อห้อง"  [(ngModel)]="inputName" id = room-name >
   </mat-form-field>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <mat-form-field class="example-full-width">
-      <input matInput name="inputRate"  type="number" placeholder="ราคา"  [(ngModel)]="inputRate" >
+      <input matInput name="inputRate"  type="number" placeholder="ราคา"  [(ngModel)]="inputRate" id = room-rate>
   </mat-form-field>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <mat-form-field>
@@ -46,7 +46,7 @@
   </mat-form-field>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <mat-form-field class="example-full-width">
-      <input matInput name="inputRate1"  type="number" placeholder="ราคา"  [(ngModel)]="inputRate1" >
+      <input matInput name="inputRate1"  type="number" placeholder="ราคา"  [(ngModel)]="inputRate1" id = roomrate1>
   </mat-form-field>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <mat-form-field>
@@ -94,3 +94,10 @@
         </mat-form-field>
         &nbsp;&nbsp;&nbsp;&nbsp;
       <button mat-raised-button color="primary" (click)="postInstrumen()">เพิ่ม</button>
+
+      <p [hidden]="!accept">
+        บันทึกสำเร็จ
+      </p>
+      <p [hidden]="!reporterror">
+        เพิ่มข้อมูลผิดพลาดกรุณากรอกใหม่อีกครั้ง
+      </p>
