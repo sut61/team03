@@ -3,15 +3,15 @@
  </mat-toolbar>
  
    <mat-form-field class="example-full-width">
-       <input matInput name="inputNickName"  type="text" placeholder="ชื่อเล่น"  [(ngModel)]="inputNickName" >
+       <input matInput name="inputNickName"  type="text" placeholder="ชื่อเล่น"  [(ngModel)]="inputNickName" id = coursereserve-nickname >
    </mat-form-field>
    &nbsp;&nbsp;&nbsp;&nbsp;
    <mat-form-field class="example-full-width">
-    <input matInput name="inputNameFacebook"  type="text" placeholder="ชื่อFacebook"  [(ngModel)]="inputNameFacebook" >
+    <input matInput name="inputNameFacebook"  type="text" placeholder="ชื่อFacebook"  [(ngModel)]="inputNameFacebook" id = coursereserve-nameFacebook>
   </mat-form-field>
   &nbsp;&nbsp;&nbsp;&nbsp;
    <mat-form-field class="example-full-width">
-       <input matInput name="inputPhone"  type="text" placeholder="เบอร์ที่ใช้ติดต่อ"  [(ngModel)]="inputPhone" >
+       <input matInput name="inputPhone"  type="text" placeholder="เบอร์ที่ใช้ติดต่อ"  [(ngModel)]="inputPhone" id = coursereserve-phone >
    </mat-form-field>
    &nbsp;&nbsp;&nbsp;&nbsp;
    <mat-form-field>
@@ -31,4 +31,10 @@
        </mat-form-field>
        &nbsp;&nbsp;&nbsp;&nbsp;
        <button mat-raised-button color="primary" (click)="postCourseReserve()">เพิ่ม</button><br>
+      <p [hidden]="!accept">
+        บันทึกสำเร็จ
+      </p>
+      <p [hidden]="!reporterror">
+        เพิ่มข้อมูลผิดพลาดกรุณากรอกใหม่อีกครั้ง
+      </p>
  
