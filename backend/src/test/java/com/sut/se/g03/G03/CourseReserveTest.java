@@ -63,6 +63,7 @@ public class CourseReserveTest {
         } catch(javax.validation.ConstraintViolationException e) {
             fail("Should not pass to this line");
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("-------------------------------"+violations+"--------------------------");
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
         }
@@ -84,6 +85,7 @@ public class CourseReserveTest {
 
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("-------------------------------"+violations+"--------------------------");
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
         }
@@ -105,6 +107,7 @@ public class CourseReserveTest {
 
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("-------------------------------"+violations+"--------------------------");
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
         }
@@ -126,6 +129,7 @@ public class CourseReserveTest {
 
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("-------------------------------"+violations+"--------------------------");
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
         }
@@ -146,6 +150,7 @@ public class CourseReserveTest {
             fail("Should not pass to this line");
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("-------------------------------"+violations+"--------------------------");
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
         }
@@ -167,6 +172,7 @@ public class CourseReserveTest {
 
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("-------------------------------"+violations+"--------------------------");
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
         }
@@ -188,6 +194,7 @@ public class CourseReserveTest {
 
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("-------------------------------"+violations+"--------------------------");
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
         }
@@ -208,6 +215,7 @@ public class CourseReserveTest {
             fail("Should not pass to this line");
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("-------------------------------"+violations+"--------------------------");
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
         }
@@ -228,6 +236,7 @@ public class CourseReserveTest {
             fail("Should not pass to this line");
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("-------------------------------"+violations+"--------------------------");
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
         }
@@ -248,6 +257,7 @@ public class CourseReserveTest {
             fail("Should not pass to this line");
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("-------------------------------"+violations+"--------------------------");
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
         }
@@ -268,6 +278,7 @@ public class CourseReserveTest {
             fail("Should not pass to this line");
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("-------------------------------"+violations+"--------------------------");
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
         }
@@ -285,8 +296,36 @@ public class CourseReserveTest {
 
         } catch(javax.validation.ConstraintViolationException e) {
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("-------------------------------"+violations+"--------------------------");
             assertEquals(violations.isEmpty(), false);
             assertEquals(violations.size(), 1);
+        }
+    }
+
+    @Test
+    public void testUniqueNameFacebook() {
+        CourseReserve s = new CourseReserve();
+        CourseReserve s1 = new CourseReserve();
+        s.setPhone("085-7654321");
+        s.setNickname("เฟรมซุ่มs");
+        s.setNameFacebook("frame frame");
+        s.setCoursemusic(courseMusicRepository.findById(1L).get());
+        s.setStatusCourse(entityManager.persist(new StatusCourse("ใช้งาน")));
+
+        s1.setPhone("085-1234567");
+        s1.setNickname("เฟรมซุ่ม");
+        s1.setNameFacebook("frame frame");
+        s1.setCoursemusic(courseMusicRepository.findById(1L).get());
+        s1.setStatusCourse(entityManager.persist(new StatusCourse("ใช้งาน")));
+
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+            entityManager.persist(s1);
+            entityManager.flush();
+            fail("Should not pass to this line");
+        } catch(javax.persistence.PersistenceException e) {
+         System.out.println(" --------------------- "+e+"Err Unique --------------------------------");
         }
     }
 
