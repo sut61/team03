@@ -31,6 +31,7 @@ public class CourseReserve {
     private String nickname;
 
     @NotNull
+    @Column(unique = true)
     private String nameFacebook;
     
     @ManyToOne
