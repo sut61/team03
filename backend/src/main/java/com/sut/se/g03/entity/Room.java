@@ -7,6 +7,10 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.Min;
 
 @Entity
 @ToString
@@ -17,15 +21,27 @@ public class Room {
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="room_seq")
     @Id
     private Long id;
+
+    
+    @NotNull
+    @Size(min = 4,max = 4)
+    @Pattern(regexp = "[PR]\\d+")
+    @Column(unique = true)
     private String name;
+
+    @NotNull
+    @Min(100)
     private int rate;
 
+    @NotNull
     @ManyToOne
     RoomSize roomSize;
 
+    @NotNull
     @ManyToOne
     RoomType roomType;
 
+    @NotNull
     @ManyToOne
     StatusRoom statusRoom;
 
