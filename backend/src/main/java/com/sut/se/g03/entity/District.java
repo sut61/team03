@@ -1,6 +1,7 @@
 package com.sut.se.g03.entity;
 import lombok.*;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -15,7 +16,10 @@ public class District {
     @Column(name="District_ID")
     private @NonNull  Long id;
 
-    private @NonNull String district;
+    private @NotNull String district;
 
+    public District(String district) {
+        this.district = district;
+    }
 
 }
