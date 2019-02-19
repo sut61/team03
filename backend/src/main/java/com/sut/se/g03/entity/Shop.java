@@ -2,6 +2,10 @@ package com.sut.se.g03.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 
 @Data
@@ -16,12 +20,24 @@ public class Shop {
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="shop_seq")
     @Column(name="Shop_ID")
     private @NonNull Long shopId;
-
+    @NotNull
+    @Size(min = 3,max = 50)
     private String subdist;
+    @NotNull
     private int itemNum;
-    private @NonNull String customerName;
-    private  String email;
-    private  String tel;
+    @NotNull
+    @Size(min = 3,max = 50)
+    private String customerName;
+    @NotNull
+    @Email
+    @Column(unique = true)
+    @Size(min = 3,max = 50)
+    private String email;
+    @NotNull
+    @Size(min = 10,max = 10)
+    @Pattern(regexp = "[0]\\d+")
+    private String tel;
+
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Customer.class)
     @JoinColumn(name = "CS_ID", insertable = true)

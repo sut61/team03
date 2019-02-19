@@ -31,6 +31,7 @@ public class CustomerFix {
     @NotNull
     @Size(min = 10,max = 12)
     @Pattern(regexp = "[0]\\d+")
+    @Column(unique = true)
     private  String tel;
 
 

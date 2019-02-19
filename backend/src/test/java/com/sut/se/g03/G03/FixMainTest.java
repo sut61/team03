@@ -287,29 +287,33 @@ public class FixMainTest {
         }
     }
     @Test
-    public void TestAnythingIsPositive() {
+    public void testUniqueTelFix() {
         FixMain f = new FixMain();
+        FixMain f1 = new FixMain();
         f.setCost(1000000);
         f.setItemFix(entityManager.persist(new ItemFix("aaaaaaaaaa")));
-        f.setCustomerFix(entityManager.persist(new CustomerFix("1123456789")));
+        f.setCustomerFix(entityManager.persist(new CustomerFix("0123456789")));
         f.setDatainfo(entityManager.persist(new Datainfo("aaaaaaaaaa")));
         f.setInstruType(entityManager.persist(new InstruType("aaaaaaaaaa")));
         f.setManagerinfo(entityManager.persist(new Managerinfo("aaaaaaaaaa")));
+
+        f.setCost(2000000);
+        f.setItemFix(entityManager.persist(new ItemFix("bbbbbbbbbb")));
+        f.setCustomerFix(entityManager.persist(new CustomerFix("0123456789")));
+        f.setDatainfo(entityManager.persist(new Datainfo("bbbbbbbbbb")));
+        f.setInstruType(entityManager.persist(new InstruType("bbbbbbbbbb")));
+        f.setManagerinfo(entityManager.persist(new Managerinfo("bbbbbbbbbb")));
+
         try {
             entityManager.persist(f);
             entityManager.flush();
-
+            entityManager.persist(f1);
+            entityManager.flush();
             fail("Should not pass to this line");
-        } catch (javax.validation.ConstraintViolationException e) {
-            System.out.println(e.getMessage());
+        } catch(javax.persistence.PersistenceException e) {
             System.out.println();
-            System.out.println(" Anythings is Positive");
-            System.out.println(e);
+            System.out.println(" --------------------- "+e+"Err Unique Tel FIX --------------------------------");
             System.out.println();
-
-            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-            assertEquals(violations.isEmpty(), false);
-
         }
     }
 
