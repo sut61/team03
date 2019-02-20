@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Time;
 
 @Entity
@@ -16,7 +17,11 @@ public class TimePeriod {
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="timeperiod_seq")
     @Id
     private Long id;
+
+    @NotNull
     private Time start;
+
+    @NotNull
     private Time end;
 
     public TimePeriod(){}

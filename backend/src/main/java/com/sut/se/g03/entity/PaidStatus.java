@@ -5,6 +5,9 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @ToString
@@ -15,6 +18,10 @@ public class PaidStatus {
 	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="paid_status_seq")
 	@Id
 	private Long id;
+
+	@NotNull
+	@Pattern(regexp = "^(([ก-ู]|[เ-์])|\\w)(([ก-ู]|[เ-์])|\\w|\\s|\\d)+(([ก-ู]|[เ-์])|\\w|\\d)$")
+	@Size(max = 200)
 	private String name;
 
 	public PaidStatus(String name) {

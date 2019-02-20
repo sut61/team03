@@ -94,7 +94,7 @@ public class RoomReserveTest {
 	public void testBookingLong(){
 		Date date = Date.from(LocalDate.now().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 		float price = 100;
-		String bookingName = "Abcdefghijabcdegfhijabcdegfhij Abcdefghijabcdegfhijabcdegfhij";
+		String bookingName = "abcdefghijklmnopqrstuvwxy abcdefghijklmnopqrstuvwxy";
 		Bill bill = new Bill();
 		bill.setBookingName(bookingName);
 		bill.setDate(date);

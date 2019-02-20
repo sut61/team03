@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -21,17 +23,24 @@ public class Bill {
 	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="bill_seq")
 	@Id
 	private Long id;
+
+	@NotNull
 	private Date date;
+
+	@PositiveOrZero
 	private float totalPrice;
 
 	@NotNull
+	@Size(min = 5, max = 45)
 	@Pattern(regexp = "^(([ก-ู]|[เ-์]){1,25} ([ก-ู]|[เ-์]){1,25})|([A-Z][a-z]{1,25} [A-Z][a-z]{1,25})|([a-z]{1,25} [a-z]{1,25})$")
 	private String bookingName;
 
 	@ManyToOne
+	@NotNull
 	private PaidStatus paidStatus;
 
 	@ManyToOne
+	@NotNull
 	private Member member;
 
 	public Bill(){}

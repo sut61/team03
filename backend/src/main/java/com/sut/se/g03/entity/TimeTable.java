@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @ToString
@@ -20,12 +21,15 @@ public class TimeTable {
     @ManyToOne
 	Member member;
 
+    @NotNull
     @ManyToOne
     Schedule schedule;
 
+    @NotNull
     @ManyToOne
     TimePeriod timePeriod;
 
+    @NotNull
     @ManyToOne
     Room room;
 
