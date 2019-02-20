@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -16,6 +17,8 @@ public class Schedule {
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="schedule_seq")
     @Id
     private Long id;
+
+    @NotNull
     private Date date;
 
     public Schedule(){}
