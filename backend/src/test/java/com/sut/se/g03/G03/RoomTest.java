@@ -19,6 +19,8 @@ import javax.validation.ValidatorFactory;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import com.sut.se.g03.entity.Instrument;
 import com.sut.se.g03.entity.Room;
 import com.sut.se.g03.entity.RoomSize;;
 import com.sut.se.g03.entity.RoomType;;
@@ -261,6 +263,74 @@ public class RoomTest {
         s.setRoomSize(roomSizeRepository.findById(1L).get());
         s.setRoomType(roomTypeRepository.findById(1L).get());
         s.setStatusRoom(null);
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+            fail("Should not pass to this line");
+
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("-------------------------------"+violations+"--------------------------");
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+    @Test
+    public void testStatusRoomNameNull() {
+        StatusRoom s = new StatusRoom();
+        s.setName(null);
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+            fail("Should not pass to this line");
+
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("-------------------------------"+violations+"--------------------------");
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+    @Test
+    public void testRoomTypeNameNull() {
+        RoomType s = new RoomType();
+        s.setType(null);
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+            fail("Should not pass to this line");
+
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("-------------------------------"+violations+"--------------------------");
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+    @Test
+    public void testRoomSizeNameNull() {
+        RoomSize s = new RoomSize();
+        s.setSize(0);
+        try {
+            entityManager.persist(s);
+            entityManager.flush();
+            fail("Should not pass to this line");
+
+        } catch(javax.validation.ConstraintViolationException e) {
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            System.out.println("-------------------------------"+violations+"--------------------------");
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+    @Test
+    public void testInstrumentNameNull() {
+        Instrument s = new Instrument();
+        s.setName(null);
         try {
             entityManager.persist(s);
             entityManager.flush();
