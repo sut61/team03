@@ -110,6 +110,21 @@ public class CourseMusicController{
         return courseMusicRepository.save(newCourseMusic);
     } 
 
+    @PutMapping("/courseMusic/editCourseMusic/{username}/{courseMusicId}/{instrumentId}/{courseTimeId}/{classroomId}/{paymentTypeId}")
+    public CourseMusic newCourseMusic(@PathVariable String username,@PathVariable Long courseMusicId,@PathVariable Long instrumentId,@PathVariable Long courseTimeId,@PathVariable Long classroomId,@PathVariable Long paymentTypeId) {
+        CourseMusic newCourseMusic = courseMusicRepository.findById(courseMusicId).get();
+        Member member = memberRepository.findByUserName(username);
+        Instrument instrument = instrumentRepository.findById(instrumentId).get();
+        CourseTime courseTime = courseTimeRepository.findById(courseTimeId).get();
+        Classroom classroom = classroomRepository.findById(classroomId).get();
+        PaymentType paymentType = paymentTypeRepository.findById(paymentTypeId).get();
+        newCourseMusic.setMember(member);
+        newCourseMusic.setInstrument(instrument);
+        newCourseMusic.setCourseTime(courseTime);
+        newCourseMusic.setClassroom(classroom);
+        newCourseMusic.setPaymentType(paymentType);
+        return courseMusicRepository.save(newCourseMusic);
+    } 
 
 
 }
