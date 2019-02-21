@@ -28,19 +28,19 @@ public class Addproduct {
     @NotNull
     @Positive
     @Min(value = 1)
-    @Max(value = 100)
+    @Max(value = 100000)
     private int number;
 
-    @Positive
+    
     @Positive
     @Min(value = 1)
-    @Max(value = 100)
+    @Max(value = 100000)
     private int price;
 
     @NotNull
     @Positive
     @Min(value = 1)
-    @Max(value = 100)
+    @Max(value = 100000)
     private int saleprice;
 
     @NotNull
