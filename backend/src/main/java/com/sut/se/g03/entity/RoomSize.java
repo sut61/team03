@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @Entity
 @ToString
@@ -15,6 +16,8 @@ public class RoomSize {
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="roomsize_seq")
     @Id
     private Long id;
+
+    @Min(2)
     private int size;
 
     public RoomSize(){}

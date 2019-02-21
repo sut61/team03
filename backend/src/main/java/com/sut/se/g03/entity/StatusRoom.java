@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @ToString
@@ -15,6 +16,8 @@ public class StatusRoom {
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="statusroom_seq")
     @Id
     private Long id;
+
+    @NotNull
     private String name;
 
     public StatusRoom(){}

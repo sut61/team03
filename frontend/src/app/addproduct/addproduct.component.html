@@ -1,7 +1,7 @@
 <mat-card style="margin:100px auto;width: 30%;">
 
   <div style="text-align:center">
-      <mat-card-title>เพิ่มสินค้า </mat-card-title>
+      <mat-card-title> คลังสินค้า </mat-card-title>
   </div>
   <mat-card-content>
 
@@ -14,21 +14,20 @@
       </mat-form-field>
 
       <mat-form-field style="width: 100%;">
-              <input matInput placeholder="ชื่อสินค้า" [(ngModel)]="nameproduct">
-
+              <input matInput placeholder="ชื่อสินค้า" [(ngModel)]="nameproduct" id ="nameproduct">
 
           </mat-form-field>
 
 
       <mat-form-field style="width: 100%;">
-          <input matInput type="number" placeholder="จำนวน" [(ngModel)]="number">
+          <input matInput type="number" placeholder="จำนวน" [(ngModel)]="number" id = "number">
       </mat-form-field>
 
       <mat-form-field style="width: 100%;">
-        <input matInput type="number" placeholder="ราคาต้นทุน/ชิ้น"[(ngModel)]="price">
+        <input matInput type="number" placeholder="ราคาต้นทุน/ชิ้น"[(ngModel)]="price" id = "price">
     </mat-form-field>
     <mat-form-field style="width: 100%;">
-        <input matInput type="number" placeholder="ราคาขาย/ชิ้น" [(ngModel)]="saleprice">
+        <input matInput type="number" placeholder="ราคาขาย/ชิ้น" [(ngModel)]="saleprice" id = "saleprice">
     </mat-form-field>
 
 
@@ -51,6 +50,4 @@
 
   </div>
   
-
-
 </mat-card>

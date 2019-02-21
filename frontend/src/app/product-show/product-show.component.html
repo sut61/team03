@@ -1,4 +1,4 @@
-<mat-card style="margin:100px auto;width: 20%;">
+<mat-card style="margin:100px auto;width: 30%;">
 <div  style="text-align:center">
     <h2 >คลังสินค้า </h2>
 
@@ -11,6 +11,7 @@
     <th>จำนวน</th>
     <th>ราคาต้นทุน</th>
     <th>ราคาขาย</th>
+    <th>ประเภทสินค้า</th>
     
   </tr>
 
@@ -22,6 +23,7 @@
       <td>{{addproduct.number}}</td>
       <td>{{addproduct.price}}</td>
       <td>{{addproduct.saleprice}}</td> 
+      <td>{{addproduct.typeproducts.typeproduct}}</td>
     </tr>
 </table>
 </div>
@@ -31,7 +33,7 @@
 
       <button mat-raised-button class="Bg" routerLink="">ย้อนกลับ</button>
   
-    </div>
+  </div>
 
 
 
