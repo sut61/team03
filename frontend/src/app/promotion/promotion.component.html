@@ -8,7 +8,7 @@
 <br>
 
 <mat-form-field class="example-mid-width">
-  <input matInput placeholder="ชื่อโปรโมชั่น" [(ngModel)]="promotinoName">
+  <input matInput placeholder="ชื่อโปรโมชั่น" [(ngModel)]="promotinoName" id="promotinoName">
 </mat-form-field>
 <br>
 
@@ -20,13 +20,13 @@
 <br>
  
   <mat-form-field  class="example-mid-width">
-  <input matInput [matDatepicker]="pickerend" placeholder="วันที่สิ้นสุด" [(ngModel)]="stopDate" name=stopDate>
+  <input matInput [matDatepicker]="pickerend" placeholder="วันที่สิ้นสุด" [(ngModel)]="stopDate" name=stopDate id="stopDate">
   <mat-datepicker-toggle matSuffix [for]="pickerend"></mat-datepicker-toggle>
   <mat-datepicker #pickerend></mat-datepicker>
 </mat-form-field>
 <br>    
  <mat-form-field class="example-mid-width">
-  <input matInput placeholder="code" [(ngModel)]="code">
+  <input matInput placeholder="code" [(ngModel)]="code" id="code">
 </mat-form-field>
 <br> 
 
@@ -55,6 +55,6 @@
 </mat-form-field>
 <br>
 
-<button mat-button color="primary" class="example-mid-width" (click)="insert()">SUBMIT</button> <br>
-<!-- <button mat-button color="primary" class="example-mid-width" (click)="show()">SHOW-PROMOTION</button> -->
+<button mat-button color="primary" class="example-mid-width" (click)="insert()">บันทึก</button> <br>
+
 <br><br>
