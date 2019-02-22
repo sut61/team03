@@ -19,17 +19,15 @@ public class Cash {
     private  String cashreceive;
     private float cashprice;
 
+    @ManyToOne(fetch = FetchType.EAGER,targetEntity = Member.class)
+    @JoinColumn(name = "Member",insertable = true)
+    private Member mem;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MemberInfo")
-    private MemberInfo mem;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "TotalPrice")
+    @OneToOne
     private Bill bill;
 
 
-    @ManyToOne(fetch = FetchType.EAGER,targetEntity = Payment.class)
-    @JoinColumn(name = "Status",insertable = true)
+    @ManyToOne(fetch = FetchType.EAGER,targetEntity = PaidStatus.class)
+    @JoinColumn(name = "PaidStatus",insertable = true)
     private PaidStatus paidStatus;
 }
