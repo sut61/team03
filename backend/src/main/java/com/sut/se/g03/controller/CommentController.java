@@ -30,7 +30,7 @@ public class CommentController {
     //Member
     @GetMapping("comment/member")
     public Collection<Member> Bill() {
-        return memberRepository.findAll().stream().collect(Collectors.toList());
+        return memberRepository.findAll().stream().filter(this::isReview).collect(Collectors.toList());
     }
 
     @GetMapping("comment/member/{Mid}")
@@ -87,5 +87,8 @@ public class CommentController {
            reviewRepository.save(review);
            return review;
         }
+    private boolean isReview(Member member){
+        return  !member.getUserName().equals("admin");
 
+    }
 }
