@@ -36,21 +36,29 @@ export class ClassifyComponent implements OnInit {
 
   model = new ClassifyModel();
 
+  errorMsg = 'something went wrong';
+
   constructor(private classifyService: ClassifyService, private token: TokenService, private route: Router) { }
 
   ngOnInit() {
     if (this.token.getUsername() !== 'admin') {
       this.route.navigate(['select']);
     }
-    this.classifyService.getClass().subscribe(data => {
-      this.classify = data;
-    });
     this.classifyService.getItem().subscribe(data => {
       this.item = data;
     });
     this.classifyService.getStatus().subscribe(data => {
       this.status = data;
     });
+  }
+
+  getClassify() {
+    this.classifyService.getClass().subscribe(data => {
+      this.classify = data;
+    });
+  }
+
+  getType() {
     this.classifyService.getType().subscribe(data => {
       this.type = data;
     });
@@ -58,46 +66,47 @@ export class ClassifyComponent implements OnInit {
 
   addClass() {
     this.statusText = undefined;
-    this.classifyService.addClass(this.model).subscribe(data => {}, error => {
-      this.statusText = 'บางอย่างไม่ถูกต้อง';
-    }, () => {
-      this.statusText = 'บันทึกสำเร็จ';
+    this.classifyService.addClass(this.model).subscribe(data => {
+      this.statusText = data;
+    }, error => {
+      this.statusText = this.errorMsg;
     });
   }
 
   addType() {
     this.statusText = undefined;
-    this.classifyService.addType(this.typeName).subscribe(data => {}, error => {
-      this.statusText = 'บางอย่างไม่ถูกต้อง';
-    }, () => {
-      this.statusText = 'บันทึกสำเร็จ';
+    this.classifyService.addType(this.typeName).subscribe(data => {
+      this.statusText = data;
+    }, error => {
+      this.statusText = this.errorMsg;
     });
   }
 
   editClassStatus() {
     this.statusText = undefined;
-    this.classifyService.manageStatus(this.selectStatus, this.selectClassStatus).subscribe(data => {}, error => {
-      this.statusText = 'บางอย่างไม่ถูกต้อง';
-    }, () => {
-      this.statusText = 'บันทึกสำเร็จ';
+    this.classifyService.manageStatus(this.selectStatus, this.selectClassStatus).subscribe(data => {
+      this.statusText = data;
+    }, error => {
+      console.log(error);
+      this.statusText = error.error;
     });
   }
 
   manageType() {
     this.statusText = undefined;
-    this.classifyService.manageType(this.selectTypeItem, this.selectItemType).subscribe(data => {}, error => {
-      this.statusText = 'บางอย่างไม่ถูกต้อง';
-    }, () => {
-      this.statusText = 'บันทึกสำเร็จ';
+    this.classifyService.manageType(this.selectTypeItem, this.selectItemType).subscribe(data => {
+      this.statusText = data;
+    }, error => {
+      this.statusText = error.error;
     });
   }
 
   manageClass() {
     this.statusText = undefined;
-    this.classifyService.manageClass(this.selectClassManage, this.selectItem).subscribe(data => {}, error => {
-      this.statusText = 'บางอย่างไม่ถูกต้อง';
-    }, () => {
-      this.statusText = 'บันทึกสำเร็จ';
+    this.classifyService.manageClass(this.selectClassManage, this.selectItem).subscribe(data => {
+      this.statusText = data;
+    }, error => {
+      this.statusText = error.error;
     });
   }
 

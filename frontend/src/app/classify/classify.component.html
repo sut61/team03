@@ -8,7 +8,7 @@
   <!-- add classify -->
   <mat-expansion-panel>
     <mat-expansion-panel-header>
-      <mat-panel-title>
+      <mat-panel-title id="add-classify">
         เพิ่มหมวดหมู่
       </mat-panel-title>
     </mat-expansion-panel-header>
@@ -38,25 +38,25 @@
       </mat-select>
     </mat-form-field>
     <br>
-    <button mat-raised-button [disabled]="classifyNameModel.invalid || classifyDetailModel.invalid || statusModel.invalid" (click)="addClass()">เพิ่ม</button>
+    <button mat-raised-button id="add-classify-button" [disabled]="classifyNameModel.invalid || classifyDetailModel.invalid || statusModel.invalid" (click)="addClass()">เพิ่ม</button>
   </mat-expansion-panel>
   <!-- add type -->
   <mat-expansion-panel>
     <mat-expansion-panel-header>
-      <mat-panel-title>
+      <mat-panel-title id="add-type">
         เพิ่มประเภท
       </mat-panel-title>
     </mat-expansion-panel-header>
     <mat-form-field>
-      <input matInput placeholder="ประเภท" [(ngModel)]="typeName" required>
+      <input matInput id="add-type-text" placeholder="ประเภท" [(ngModel)]="typeName" required>
     </mat-form-field>
     <br>
-    <button mat-raised-button [disabled]="!typeName" (click)="addType()">เพิ่มประเภท</button>
+    <button mat-raised-button id="add-type-button" [disabled]="!typeName" (click)="addType()">เพิ่มประเภท</button>
   </mat-expansion-panel>
   <!-- manage status -->
-  <mat-expansion-panel>
+  <mat-expansion-panel (click)="getClassify()">
     <mat-expansion-panel-header>
-      <mat-panel-title>
+      <mat-panel-title id="manage-status">
         เปลี่ยนแปลงสถานะ
       </mat-panel-title>
     </mat-expansion-panel-header>
@@ -76,12 +76,12 @@
       </mat-select>
     </mat-form-field>
     <br>
-    <button mat-raised-button (click)="editClassStatus()" [disabled]="!selectStatus || !selectClassStatus">แก้ไข</button>
+    <button mat-raised-button id="manage-status-button" (click)="editClassStatus()" [disabled]="!selectStatus || !selectClassStatus">แก้ไข</button>
   </mat-expansion-panel>
   <!-- manage classify -->
-  <mat-expansion-panel>
+  <mat-expansion-panel (click)="getClassify()">
     <mat-expansion-panel-header>
-      <mat-panel-title>
+      <mat-panel-title id="manage-classify">
         จัดหมวดหมู่
       </mat-panel-title>
     </mat-expansion-panel-header>
@@ -101,12 +101,12 @@
       </mat-select>
     </mat-form-field>
     <br>
-    <button mat-raised-button (click)="manageClass()" [disabled]="!selectItem || !selectClassManage">จัดการ</button>
+    <button mat-raised-button id="manage-classify-button" (click)="manageClass()" [disabled]="!selectItem || !selectClassManage">จัดการ</button>
   </mat-expansion-panel>
   <!-- manage type -->
-  <mat-expansion-panel>
+  <mat-expansion-panel (click)="getType()">
     <mat-expansion-panel-header>
-      <mat-panel-title>
+      <mat-panel-title id="manage-type">
         จัดการประเภท
       </mat-panel-title>
     </mat-expansion-panel-header>
@@ -126,6 +126,6 @@
       </mat-select>
     </mat-form-field>
     <br>
-    <button mat-raised-button [disabled]="!selectItemType || !selectTypeItem" (click)="manageType()">จัดการประเภท</button>
+    <button mat-raised-button id="manage-type-button" [disabled]="!selectItemType || !selectTypeItem" (click)="manageType()">จัดการประเภท</button>
   </mat-expansion-panel>
 </mat-accordion>

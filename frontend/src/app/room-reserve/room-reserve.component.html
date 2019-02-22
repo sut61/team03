@@ -1,36 +1,49 @@
 <mat-toolbar color="primary">
   {{name}}
 </mat-toolbar>
+<div>
+  {{reportText}}
+</div>
 <mat-form-field>
   <mat-select placeholder="select date" (valueChange)="selectDate($event)">
     <mat-option *ngFor="let d of date" [value]="d.id">
-      {{d.date|date}}
+      {{d.date | date}}
     </mat-option>
   </mat-select>
 </mat-form-field>
-<br>
-<div *ngIf="isComplete" id="report-text">
-  {{reportText}}
-</div>
-<br>
-<form *ngIf="timeTable" (ngSubmit)="onSubmit()">
-  <div *ngIf="isPractice(); else elseBlock">
+<div *ngIf="timeTable">
+  <div *ngIf="!isPractice && timeTable[0].reserve">
+    ห้องถูกจองไปแล้ว
+  </div>
+  <div *ngIf="isPractice">
     <div *ngFor="let time of timeTable">
-      <mat-checkbox [disabled]="isTrue(time.reserve)"
-                    (change)="onChange($event,time.id)">
+      <mat-checkbox [disabled]="time.reserve" (change)="onChange($event,time.id)">
         {{time.timePeriod.start}} - {{time.timePeriod.end}}
       </mat-checkbox>
     </div>
   </div>
-  <ng-template #elseBlock>
-    <div *ngFor="let time of timeTable">
-      <button mat-stroked-button [disabled]="bookingForm.invalid" type="submit">เลือกวันนี้</button>
-    </div>
-  </ng-template>
-  <br>
-  <mat-form-field [formGroup]="bookingForm">
-    <input matInput placeholder="ชื่อ-นามสกุล ผู้จอง" id="booking-name" required formControlName="booking">
+</div>
+<div>
+  <mat-form-field>
+    <input matInput id="booking-name" placeholder="ชื่อ-นามสกุลของผู้จอง" required [(ngModel)]="booking.bookingName" #bookingNameModel="ngModel">
   </mat-form-field>
-  <br>
-  <button mat-stroked-button *ngIf="isPractice()" [disabled]="(bookingForm.invalid)||(timeForm.invalid)" type="submit">submit</button>
-</form>
+  <mat-form-field style="margin-left: 3%">
+    <input matInput id="booking-tel" placeholder="เบอร์โทรติดต่อ" required [(ngModel)]="booking.bookingTel" #bookingTelModel="ngModel">
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field>
+    <input matInput id="booking-name-second" placeholder="ชื่อ-นามสกุลสำรอง" required [(ngModel)]="booking.bookingNameSecond" #bookingNameSecondModel="ngModel">
+  </mat-form-field>
+  <mat-form-field style="margin-left: 3%">
+    <input matInput id="booking-tel-second" placeholder="เบอร์โทรติดต่อสำรอง" required [(ngModel)]="booking.bookingTelSecond" #bookingTelSecondModel="ngModel">
+  </mat-form-field>
+</div><br>
+<button mat-stroked-button *ngIf="isPractice" [disabled]="bookingNameModel.invalid || bookingNameSecondModel.invalid ||
+                                       bookingTelModel.invalid || bookingTelSecondModel.invalid ||
+                                       timeForm.invalid" (click)="onSubmit()">submit</button>
+
+<!--in timeTable[0].reserve get reserved status-->
+<button mat-stroked-button *ngIf="!isPractice" [disabled]="bookingNameModel.invalid || bookingNameSecondModel.invalid ||
+                                       bookingTelModel.invalid || bookingTelSecondModel.invalid || timeTable[0].reserve"
+                            (click)="onSubmit()" >เลือกวันนี้</button>
