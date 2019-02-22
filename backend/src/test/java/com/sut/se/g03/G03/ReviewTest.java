@@ -63,7 +63,7 @@ public class ReviewTest {
 
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
 
 
         }
@@ -92,11 +92,71 @@ public class ReviewTest {
 
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
 
 
         }
     }
+
+    //CommentNegative = Blank
+    @Test
+    public void TestCommentNegativeCannotBlank(){
+        Review r = new Review();
+        r.setCommentNegative(" ");
+        r.setCommentPositive("aaaaaaaaaaaaaaaaaaaa");
+        r.setServiceType(entityManager.persist(new ServiceType("aaaa")));
+        r.setScore(entityManager.persist(new Score(1)));
+        r.setMember(entityManager.persist(new Member("aaaa")));
+        try {
+            entityManager.persist(r);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println(" NegativeComent Blank");
+            System.out.println();
+            System.out.println();
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 3);
+
+
+        }
+    }
+
+    //CommentPositive = Blank
+    @Test
+    public void TestCommentPositiveCannotBlank(){
+        Review r = new Review();
+        r.setCommentNegative("aaaaaaaaaaaaaaaaaaaa");
+        r.setCommentPositive(" ");
+        r.setServiceType(entityManager.persist(new ServiceType("aaaa")));
+        r.setScore(entityManager.persist(new Score(1)));
+        r.setMember(entityManager.persist(new Member("aaaa")));
+        try {
+            entityManager.persist(r);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println(" PositiveComent Blank");
+            System.out.println();
+            System.out.println();
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 3);
+
+
+        }
+    }
+
+
 
     //test  ServiceType = Null
     @Test

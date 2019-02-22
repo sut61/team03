@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -23,11 +24,13 @@ public class Review {
     private Long id;
 
     @NotNull
+    @NotBlank
     @Size(min = 5 , max = 40)
     @Pattern(regexp = "\\w+|[ก-๙]+")
     private String  commentNegative;
 
     @NotNull
+    @NotBlank
     @Size(min = 5 , max = 40)
     @Pattern(regexp = "\\w+|[ก-๙]+")
     private  String commentPositive;
