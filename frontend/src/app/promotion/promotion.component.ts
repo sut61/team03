@@ -53,7 +53,6 @@ export class PromotionComponent implements OnInit {
       this.httpClient.post('http://localhost:8080/promotion/' + this.addproductSelect + '/' + this.promotinoName + '/' + this.code + '/' + this.startDate + '/' + this.stopDate + '/' + this.staffNameSelect + '/' + this.typePromotinosSelect, {})
       .subscribe()
     alert("บันทึกเรียบร้อย");
-    this.router.navigate(['']);
       }
 
     }

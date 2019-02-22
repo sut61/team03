@@ -35,7 +35,6 @@ export class AddproductComponent implements OnInit {
         this.httpClient.post('http://localhost:8080/addproduct/' + this.selecttypeproduct + '/' + this.nameproduct + '/' + this.number + '/' + this.price + '/' + this.saleprice + '/' + this.date, {})
           .subscribe()
         alert("บันทึกเรียบร้อย");
-        this.router.navigate(['']);
       }
 
     }
