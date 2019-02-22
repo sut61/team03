@@ -11,9 +11,11 @@ export class PaidTableComponent implements OnInit {
   members: Array<any>;
   payments: Array<any>;
   paidstatuss: Array<any>;
-  memberinfos: Array<any>;
-  displayedColumns: string[] = ['id'  , 'userName'  , 'CreditPay' , 'CashPay'];
+  cashs: Array<any>;
 
+  displayedColumns: string[] = ['id'  , 'userName' , 'totalPrice' , 'CreditPay' , 'CashPay'];
+  displayedColumns2: string[] = ['userName'  , 'price', 'type' , 'receive' , 'name'];
+  displayedColumns3: string[] = ['userName'  , 'cashprice', 'cashreceive', 'name' ];
   constructor(private paidService: PaidService , private router: Router) { }
 
   ngOnInit() {
@@ -33,9 +35,9 @@ export class PaidTableComponent implements OnInit {
      this.paidstatuss = data;
      console.log(this.paidstatuss);
    });
-   this.paidService.getMemInfo().subscribe(data => {
-     this.memberinfos = data;
-     console.log(this.memberinfos);
+   this.paidService.getCash().subscribe(data =>{
+     this.cashs = data;
+     console.log(this.cashs);
    });
   }
   viewCreditpay(element): void {
