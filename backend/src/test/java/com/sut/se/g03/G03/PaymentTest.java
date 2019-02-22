@@ -326,4 +326,35 @@ public class PaymentTest {
         }
     }
 
+    //Receive Cannot in Pattern
+    @Test
+    public void testReceiveCannotInPattern(){
+        Payment p =  new Payment();
+        p.setDate(new Date());
+        p.setPrice(555);
+        p.setReceive("-*/-*/-*/-*");
+        p.setCredit(creditTypeRepository.findById(1L).get());
+        p.setMember(memberRepository.findById(1L).get());
+        p.setBill(billRepository.findById(1L).get());
+        p.setPaidStatus(paidStatusRepository.findById(1L).get());
+
+        try {
+            entityManager.persist(p);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println(" Receive  not  Pattern");
+            System.out.println();
+            System.out.println();
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+
+        }
+    }
+
 }
