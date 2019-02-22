@@ -25,16 +25,15 @@ public class Payment {
     @JoinColumn(name = "CreditType",insertable = true)
     private CreditType credit;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MemberInfo")
-    private MemberInfo mem;
+    @ManyToOne (fetch = FetchType.EAGER,targetEntity = Member.class)
+    @JoinColumn(name = "Member",insertable = true)
+    private Member member;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "TotalPrice")
+    @OneToOne
     private Bill bill;
 
-    @ManyToOne(fetch = FetchType.EAGER,targetEntity = Payment.class)
-    @JoinColumn(name = "Status",insertable = true)
+    @ManyToOne(fetch = FetchType.EAGER,targetEntity = PaidStatus.class)
+    @JoinColumn(name = "PaidStatus",insertable = true)
     private PaidStatus paidStatus;
 
 
