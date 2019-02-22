@@ -52,7 +52,7 @@ public class PaymentController {
     //Member
     @GetMapping("pay/member")
     public Collection<Member> Member() {
-        return memberRepository.findAll().stream().collect(Collectors.toList());
+        return memberRepository.findAll().stream().filter(this::isReview).collect(Collectors.toList());
     }
     @GetMapping("pay/member/{Mid}")
     public Optional<Member> takeinMemberByid(@PathVariable Long Mid) {
@@ -68,10 +68,10 @@ public class PaymentController {
         return paymentRepository.findById(Pid);
     }
 
-    @PostMapping("pay/payment/{timeSelect}/{price}/{receive}/{Cid}/{Iid}/{Bid}/{Sid}")
-    public Payment createPayment(@PathVariable Long Cid , @PathVariable Date timeSelect, @PathVariable float price, @PathVariable String receive, @PathVariable Long Iid , @PathVariable Long Bid, @PathVariable Long Sid) {
+    @PostMapping("pay/payment/{timeSelect}/{price}/{receive}/{Cid}/{Mid}/{Bid}/{Sid}")
+    public Payment createPayment(@PathVariable Long Cid , @PathVariable Date timeSelect, @PathVariable float price, @PathVariable String receive, @PathVariable Long Mid , @PathVariable Long Bid, @PathVariable Long Sid) {
         CreditType creditType = creditTypeRepository.findById(Cid).get();
-        MemberInfo memberInfo = memberInfoRepository.findById(Iid).get();
+        Member member = memberRepository.findById(Mid).get();
         Bill bill = billRepository.findById(Bid).get();
         PaidStatus paidStatus = paidStatusRepository.findById(Sid).get();
 
@@ -80,7 +80,7 @@ public class PaymentController {
         payment.setPrice(price);
         payment.setReceive(receive);
         payment.setCredit(creditType);
-        payment.setMem(memberInfo);
+        payment.setMember(member);
         payment.setBill(bill);
         payment.setPaidStatus(paidStatus);
         paymentRepository.save(payment);
@@ -111,9 +111,9 @@ public class PaymentController {
         return cashRepository.findById(Hid);
     }
 
-    @PostMapping("pay/cash/{cashreceive}/{price}/{Bid}/{Iid}/{Sid}")
-    public Cash createCash(@PathVariable String cashreceive , @PathVariable float price , @PathVariable Long Bid , @PathVariable Long Iid , @PathVariable Long Sid){
-        MemberInfo memberInfo = memberInfoRepository.findById(Iid).get();
+    @PostMapping("pay/cash/{cashreceive}/{price}/{Bid}/{Mid}/{Sid}")
+    public Cash createCash(@PathVariable String cashreceive , @PathVariable float price , @PathVariable Long Bid , @PathVariable Long Mid , @PathVariable Long Sid){
+        Member member = memberRepository.findById(Mid).get();
         Bill bill = billRepository.findById(Bid).get();
         PaidStatus paidStatus = paidStatusRepository.findById(Sid).get();
 
@@ -121,7 +121,7 @@ public class PaymentController {
         c.setCashreceive(cashreceive);
         c.setCashprice(price);
         c.setBill(bill);
-        c.setMem(memberInfo);
+        c.setMem(member);
         c.setPaidStatus(paidStatus);
         cashRepository.save(c);
         return c;
@@ -136,5 +136,10 @@ public class PaymentController {
     @GetMapping("pay/memberinfo/{Iid}")
     public Optional<MemberInfo> takeinInfoByid(@PathVariable Long Iid) {
         return memberInfoRepository.findById(Iid);
+    }
+
+    private boolean isReview(Member member){
+        return  !member.getUserName().equals("admin");
+
     }
 }
