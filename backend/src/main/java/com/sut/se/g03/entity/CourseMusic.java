@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -24,38 +25,45 @@ public class CourseMusic {
     private Long id;
     @NotNull
     @Size(min = 3, max = 20)
-    @Pattern(regexp = "\\w+|[ก-๙]+")
+    @Pattern(regexp = "\\w+|[ก-์]+")
+    @NotBlank
     private String Fname;
 
     @NotNull
     @Size(min = 3, max = 25)
-    @Pattern(regexp = "\\w+|[ก-๙]+")
+    @Pattern(regexp = "\\w+|[ก-์]+")
+    @NotBlank
     private String Lname;
     
     @NotNull
-    @Size(min = 1, max = 8)
-    @Pattern(regexp = "\\w+|[ก-๙]+")
+    @Size(min = 3, max = 16)
+    @Pattern(regexp = "\\w+|[ก-์]+")
+    @NotBlank
     private String nickname;
 
     @NotNull
     @Size(min = 10, max = 10)
     @Pattern(regexp = "[0]\\d+")
+    @NotBlank
     private String telephone;
 
+    @NotNull
 	@ManyToOne
 	private Instrument instrument;
 
-	@ManyToOne
+    @NotNull
+    @ManyToOne
     private Member member;
     
     @NotNull
     @ManyToOne
     private Classroom classroom;
     
+    @NotNull
     @ManyToOne
     private PaymentType paymentType;
     
-    
+    @NotNull
     @ManyToOne
 	private CourseTime courseTime;
 

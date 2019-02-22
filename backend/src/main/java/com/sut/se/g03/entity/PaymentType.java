@@ -3,7 +3,7 @@ package com.sut.se.g03.entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-
+import javax.validation.constraints.NotNull;
 import javax.persistence.*;
 
 @Entity
@@ -15,7 +15,11 @@ public class PaymentType {
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="paymentType_seq")
     @Id
     private Long id;
+
+    @NotNull
     private String name;
+
+    @NotNull
     private Float  price;
 
     public PaymentType(){}
