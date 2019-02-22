@@ -11,13 +11,15 @@ import {PaidService} from '../shared/pay/paid.service';
 export class CreditpayComponent implements OnInit {
   credittypes: Array<any>;
   bills: Array<any> ;
-  credittypeSelect = '';
   paidstatuss: Array<any>;
-  statusSelect = '';
   payments: Array<any>;
-  memberInfos: Array<any>;
-  memberInfoSelect = '';
+  members: Array<any>;
+
+  credittypeSelect = '';
+  statusSelect = '';
+  memberSelect = '';
   totalSelect = '';
+
   price: string;
   receive: string;
   timeSelect = null;
@@ -32,9 +34,9 @@ export class CreditpayComponent implements OnInit {
       this.payments = data;
       console.log(this.payments);
     });
-    this.paidService.getMemInfo().subscribe(data => {
-      this.memberInfos = data;
-      console.log(this.memberInfos);
+    this.paidService.getMember().subscribe(data => {
+      this.members = data;
+      console.log(this.members);
     });
     this.paidService.getBill().subscribe(data => {
       this.bills = data;
@@ -46,10 +48,10 @@ export class CreditpayComponent implements OnInit {
     });
   }
   insert() {
-    if (this.credittypeSelect == null || this.price == null || this.receive == null || this.timeSelect == null || this.memberInfoSelect == null || this.totalSelect == null || this.statusSelect == null) {
+    if (this.credittypeSelect == null || this.price == null || this.receive == null || this.timeSelect == null || this.memberSelect == null || this.totalSelect == null || this.statusSelect == null) {
       alert('กรอกข้อมูลให้ครบ');
     } else {
-      this.httpClient.post('http://localhost:8080/pay/payment/' + this.timeSelect + '/' + this.price + '/' + this.receive + '/' + this.credittypeSelect + '/' + this.memberInfoSelect + '/' + this.totalSelect + '/' + this.statusSelect , {}).subscribe()
+      this.httpClient.post('http://localhost:8080/pay/payment/' + this.timeSelect + '/' + this.price + '/' + this.receive + '/' + this.credittypeSelect + '/' + this.memberSelect + '/' + this.totalSelect + '/' + this.statusSelect , {}).subscribe()
       alert('สำเร็จ');
       this.router.navigate(['']);
     }

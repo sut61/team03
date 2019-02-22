@@ -20,14 +20,92 @@
 <section>
   <nav>
     <ul>
+      <h2> <p align = "left">สถานะแจ้งด้วยการโอน</p></h2>
+      <div class="example-container mat-elevation-z8">
+        <mat-table #table [dataSource]="payments">
+
+          <!-- id Column -->
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="userName">
+            <mat-header-cell *matHeaderCellDef> userName. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.member.userName}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef> Date. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef> Price. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="type">
+            <mat-header-cell *matHeaderCellDef> Bank. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.credit.type}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="receive">
+            <mat-header-cell *matHeaderCellDef> Receive. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.receive}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> status. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.paidStatus.name}} </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns2"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns2;"></mat-row>
+        </mat-table>
+      </div>
+
+    </ul>
+
+    <ul>
+      <h2> <p align = "left">สถานะแจ้งด้วยเงินสด</p></h2>
+      <div class="example-container mat-elevation-z8">
+        <mat-table #table [dataSource]="cashs">
+
+
+          <ng-container matColumnDef="userName">
+            <mat-header-cell *matHeaderCellDef> userName. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.mem.userName}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="cashreceive">
+            <mat-header-cell *matHeaderCellDef> Receive. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.cashreceive}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="cashprice">
+            <mat-header-cell *matHeaderCellDef> Price. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.cashprice}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> status. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.paidStatus.name}} </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns3"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns3;"></mat-row>
+        </mat-table>
+      </div>
+
     </ul>
   </nav>
   <br>
 
-  <h2 ><p align = "center">โปรดตรวจสอบการแจ้งชำระ</p></h2>
+  <h2 ><p align = "center">โปรดตรวจสอบยอดค้างชำระ</p></h2>
 
   <div class="example-container mat-elevation-z8">
-    <mat-table #table [dataSource]="memberinfos">
+    <mat-table #table [dataSource]="bills">
 
       <!-- id Column -->
       <ng-container matColumnDef="id">
@@ -38,9 +116,13 @@
 
       <ng-container matColumnDef="userName">
         <mat-header-cell *matHeaderCellDef> userName. </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.fname}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.member.userName}} </mat-cell>
       </ng-container>
 
+      <ng-container matColumnDef="totalPrice">
+        <mat-header-cell *matHeaderCellDef> totalPrice. </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.totalPrice}} </mat-cell>
+      </ng-container>
 
       <ng-container matColumnDef="CreditPay">
         <th mat-header-cell *matHeaderCellDef style = "width:8%">โอนเงิน</th>

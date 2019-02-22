@@ -10,10 +10,11 @@ import {PaidService} from '../shared/pay/paid.service';
 })
 export class CashpayComponent implements OnInit {
   paidstatuss: Array<any>;
-  memberinfos: Array<any>;
+  members: Array<any>;
   bills: Array<any> ;
   cashs: Array<any>;
-  memberInfoSelect = '';
+
+  memberSelect = '';
   totalSelect = '';
   statusSelect = '';
 
@@ -22,9 +23,9 @@ export class CashpayComponent implements OnInit {
   constructor(private paidService: PaidService , private router: Router , private  httpClient: HttpClient) { }
 
   ngOnInit() {
-    this.paidService.getMemInfo().subscribe(data => {
-      this.memberinfos = data;
-      console.log(this.memberinfos);
+    this.paidService.getMember().subscribe(data => {
+      this.members = data;
+      console.log(this.members);
     });
     this.paidService.getBill().subscribe(data => {
       this.bills = data;
@@ -40,10 +41,10 @@ export class CashpayComponent implements OnInit {
     });
   }
   insert() {
-    if ( this.price == null || this.cashreceive == null  || this.memberinfos == null || this.totalSelect == null || this.statusSelect == null) {
+    if ( this.price == null || this.cashreceive == null  || this.memberSelect == null || this.totalSelect == null || this.statusSelect == null) {
       alert('กรอกข้อมูลให้ครบ');
     } else {
-      this.httpClient.post('http://localhost:8080/pay/cash/' + this.cashreceive + '/' +  this.price + '/'  + this.totalSelect + '/' + this.memberInfoSelect + '/' + this.statusSelect , {}).subscribe()
+      this.httpClient.post('http://localhost:8080/pay/cash/' + this.cashreceive + '/' +  this.price + '/'  + this.totalSelect + '/' + this.memberSelect + '/' + this.statusSelect , {}).subscribe()
       alert('สำเร็จ');
       this.router.navigate(['']);
     }
