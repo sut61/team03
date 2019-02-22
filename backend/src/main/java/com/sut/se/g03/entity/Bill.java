@@ -13,6 +13,7 @@ import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @ToString
@@ -30,11 +31,6 @@ public class Bill {
 	@PositiveOrZero
 	private float totalPrice;
 
-	@NotNull
-	@Size(min = 5, max = 45)
-	@Pattern(regexp = "^(([ก-ู]|[เ-์]){1,25} ([ก-ู]|[เ-์]){1,25})|([A-Z][a-z]{1,25} [A-Z][a-z]{1,25})|([a-z]{1,25} [a-z]{1,25})$")
-	private String bookingName;
-
 	@ManyToOne
 	@NotNull
 	private PaidStatus paidStatus;
@@ -42,6 +38,9 @@ public class Bill {
 	@ManyToOne
 	@NotNull
 	private Member member;
+
+	@OneToMany
+	List<Contact> contacts;
 
 	public Bill(){}
 
@@ -56,14 +55,6 @@ public class Bill {
 		this.totalPrice += totalPrice;
 		this.paidStatus = paidStatus;
 		this.member = member;
-	}
-
-	public Bill(Date date, float totalPrice, Member member, PaidStatus paidStatus, String bookingName) {
-		this.date = date;
-		this.totalPrice += totalPrice;
-		this.paidStatus = paidStatus;
-		this.member = member;
-		this.bookingName = bookingName;
 	}
 
 }

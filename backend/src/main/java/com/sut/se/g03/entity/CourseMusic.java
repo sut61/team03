@@ -17,7 +17,6 @@ import javax.persistence.*;
 @ToString
 @EqualsAndHashCode
 @Data
-
 public class CourseMusic {
 	@SequenceGenerator(name="courseMusic_seq",sequenceName="courseMusic_seq")
 	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="courseMusic_seq")
