@@ -4,6 +4,19 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.util.Date;
 
+
+
+import javax.persistence.Entity;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.*;
+import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @ToString
 @EqualsAndHashCode
@@ -13,19 +26,37 @@ public class Promotion {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "promotion_seq")
     private Long id;
 
+    
+    @NotNull
+    @Size(min=3, max=30)
+    @Pattern(regexp = "[a-zA-Z]*")
     private String promotinoName;
+
+    @NotNull
+    @Pattern(regexp = "[a-zA-Z]*")
     private String code;
+   
+    // @Temporal(TemporalType.DATE)
+    // private @io.micrometer.core.lang.NonNull
+    // Date startDate;
+    // Date stopDate;
+
+    
+    @FutureOrPresent
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private @io.micrometer.core.lang.NonNull
     Date startDate;
+
+    @FutureOrPresent
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     Date stopDate;
+
 
 //    @Temporal(TemporalType.DATE)
 //    private @io.micrometer.core.lang.NonNull
 //    Date stopDate;
-
-
-
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Product product;

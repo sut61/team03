@@ -22,9 +22,9 @@ import org.junit.Test;
 
 import com.sut.se.g03.entity.Instrument;
 import com.sut.se.g03.entity.Room;
-import com.sut.se.g03.entity.RoomSize;;
-import com.sut.se.g03.entity.RoomType;;
-import com.sut.se.g03.entity.RoomInstrument;;
+import com.sut.se.g03.entity.RoomSize;
+import com.sut.se.g03.entity.RoomType;
+import com.sut.se.g03.entity.RoomInstrument;
 import com.sut.se.g03.entity.StatusRoom;
 import com.sut.se.g03.repository.RoomRepository;
 import com.sut.se.g03.repository.RoomTypeRepository;

@@ -6,7 +6,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-
 import java.util.Collections;
 import java.util.OptionalInt;
 import java.util.Set;
