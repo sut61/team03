@@ -25,7 +25,15 @@ export class CoursemusicComponent implements OnInit {
   courseTimeSelect: number ;
   classRoomSelect: number  ;
   paymentTypeSelect: number ;
-  showError : String;
+
+  courseMusicSelect2: number;
+  instrumentSelect2: number;
+  courseTimeSelect2: number;
+  classRoomSelect2: number;
+  paymentTypeSelect2: number;
+
+  showCheck: String;
+  showCheck2: String;
 
   constructor(private courseMusicService: CoursemusicService , private route: Router, private token: TokenService) { }
 
@@ -60,36 +68,48 @@ export class CoursemusicComponent implements OnInit {
   }
 
   InsertCoursemusic(){
-    console.log(this.token.getUsername());
-    console.log(this.inputFname);
-    console.log(this.inputLname);
-    console.log(this.inputnickname);
-    console.log(this.inputPhoneNum);
-    console.log(this.instrumentSelect);
-    console.log(this.courseTimeSelect);
-    console.log(this.classRoomSelect);
-    console.log(this.paymentTypeSelect);
+
     if(this.inputFname === '' || this.inputLname === ''|| this.inputnickname === '' || this.inputPhoneNum === ''|| this.instrumentSelect === 0 ||
     this.courseTimeSelect === 0 || this.classRoomSelect === 0 || this.paymentTypeSelect === 0){
-    alert('กรุณากรอกข้อมูลให้ครบถ้วน');
-    this.showError = "กรุณากรอกข้อมูลให้ครบถ้วน"
+
+    this.showCheck = "กรุณากรอกข้อมูลให้ครบถ้วน"
   }
     else{
       this.courseMusicService.addcourseMusic( this.inputFname, this.inputLname, this.inputnickname, this.inputPhoneNum,this.instrumentSelect,
         this.courseTimeSelect, this.classRoomSelect, this.paymentTypeSelect, this.token.getUsername()).subscribe(
         data => {
           this.getCourseMusicItem();
-          alert("การเพิ่มข้อมูลสำเร็จ");
-          this.showError = "การเพิ่มข้อมูลสำเร็จ"
+          this.showCheck = "การเพิ่มข้อมูลสำเร็จ"
         },
         error => {
-          alert("เกิดข้อผิดพลาด");
           console.log("Error", error);
-          this.showError = "เกิดข้อผิดพลาด"
+          this.showCheck = "เกิดข้อผิดพลาด"
         }
       );
 
   }
+}
+
+UpdateCoursemusic(){
+  if(this.courseMusicSelect2 === 0 || this.instrumentSelect2 === 0 ||
+    this.courseTimeSelect2 === 0 || this.classRoomSelect2 === 0 || this.paymentTypeSelect2 === 0){
+
+  this.showCheck2 = "กรุณากรอกข้อมูลให้ครบถ้วน"
+}
+  else{
+    this.courseMusicService.editcourseMusic( this.courseMusicSelect2, this.instrumentSelect2,
+      this.courseTimeSelect2, this.classRoomSelect2, this.paymentTypeSelect2, this.token.getUsername()).subscribe(
+      data => {
+        this.getCourseMusicItem();
+        this.showCheck2 = "แก้ไขข้อมูลสำเร็จ"
+      },
+      error => {
+        console.log("Error", error);
+        this.showCheck2 = "เกิดข้อผิดพลาด"
+      }
+    );
+
+}
 }
 
 }

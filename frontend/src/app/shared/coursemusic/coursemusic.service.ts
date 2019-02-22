@@ -40,4 +40,9 @@ export class CoursemusicService {
     });
   }
 
+  editcourseMusic(courseMusicSelect2: number,instrumentSelect2: number,courseTimeSelect2: number,classroomSelect2: number,paymentTypeSelect2: number, username: String){
+    return this.http.put(this.API + '/courseMusic/editCourseMusic/' + username + '/' + courseMusicSelect2 + '/' +  instrumentSelect2 + '/' +  courseTimeSelect2 + '/' + classroomSelect2 + '/' + paymentTypeSelect2,{
+    });
+  }
+
 }
