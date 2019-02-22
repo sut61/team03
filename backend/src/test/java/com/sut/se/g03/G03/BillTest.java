@@ -51,7 +51,6 @@ public class BillTest {
 		b.setPaidStatus(p);
 		b.setMember(m);
 		b.setTotalPrice(1);
-		b.setBookingName("abcd efgh");
 		b.setDate(d);
 		try {
 			entityManager.persistAndFlush(b);
@@ -70,7 +69,6 @@ public class BillTest {
 		b.setPaidStatus(p);
 		b.setMember(m);
 		b.setTotalPrice(1);
-		b.setBookingName("abcd efgh");
 		b.setDate(null);
 		try{
 			entityManager.persistAndFlush(b);
@@ -78,30 +76,6 @@ public class BillTest {
 		}
 		catch (ConstraintViolationException e){
 			printError("bill date null test", e);
-			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
-		}
-	}
-
-	//@Test
-	public void billFutureOrPresentDateTest(){
-		Member m = memberRepository.findByUserName("zzzz");
-		PaidStatus p = paidStatusRepository.getOne(1L);
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		Date d = Date.from(LocalDate.parse("11/11/1997",formatter).atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Bill b = new Bill();
-		b.setPaidStatus(p);
-		b.setMember(m);
-		b.setTotalPrice(1);
-		b.setBookingName("abcd efgh");
-		b.setDate(d);
-		try{
-			entityManager.persistAndFlush(b);
-			fail("test bill date not pass");
-		}
-		catch (ConstraintViolationException e){
-			printError("bill date test", e);
 			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 			assertEquals(violations.isEmpty(), false);
 			assertEquals(violations.size(), 1);
@@ -117,7 +91,6 @@ public class BillTest {
 		b.setPaidStatus(p);
 		b.setMember(m);
 		b.setTotalPrice(-1);
-		b.setBookingName("abcd efgh");
 		b.setDate(d);
 		try{
 			entityManager.persistAndFlush(b);
@@ -132,98 +105,6 @@ public class BillTest {
 	}
 
 	@Test
-	public void billBookingNameNullTest(){
-		Member m = memberRepository.findByUserName("zzzz");
-		PaidStatus p = paidStatusRepository.getOne(1L);
-		Date d = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Bill b = new Bill();
-		b.setPaidStatus(p);
-		b.setMember(m);
-		b.setTotalPrice(1);
-		b.setBookingName(null);
-		b.setDate(d);
-		try{
-			entityManager.persistAndFlush(b);
-			fail("test bill booking-name null not pass");
-		}
-		catch (ConstraintViolationException e){
-			printError("test bill booking-name null", e);
-			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
-		}
-	}
-
-	@Test
-	public void billBookingNameMinSizeTest(){
-		Member m = memberRepository.findByUserName("zzzz");
-		PaidStatus p = paidStatusRepository.getOne(1L);
-		Date d = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Bill b = new Bill();
-		b.setPaidStatus(p);
-		b.setMember(m);
-		b.setTotalPrice(1);
-		b.setBookingName("a a");
-		b.setDate(d);
-		try{
-			entityManager.persistAndFlush(b);
-			fail("test bill booking-name min-size not pass");
-		}
-		catch (ConstraintViolationException e){
-			printError("test bill booking-name min-size", e);
-			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
-		}
-	}
-
-	@Test
-	public void billBookingNameMaxSizeTest(){
-		Member m = memberRepository.findByUserName("zzzz");
-		PaidStatus p = paidStatusRepository.getOne(1L);
-		Date d = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Bill b = new Bill();
-		b.setPaidStatus(p);
-		b.setMember(m);
-		b.setTotalPrice(1);
-		b.setBookingName("abcdefghijklmnopqrstuvwx abcdefghijklmnopqrstuvwx");
-		b.setDate(d);
-		try{
-			entityManager.persistAndFlush(b);
-			fail("test bill booking-name max-size not pass");
-		}
-		catch (ConstraintViolationException e){
-			printError("test bill booking-name max-size", e);
-			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
-		}
-	}
-
-	@Test
-	public void billBookingNamePatternTest(){
-		Member m = memberRepository.findByUserName("zzzz");
-		PaidStatus p = paidStatusRepository.getOne(1L);
-		Date d = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Bill b = new Bill();
-		b.setPaidStatus(p);
-		b.setMember(m);
-		b.setTotalPrice(1);
-		b.setBookingName("abcdefghijklmnopqrstuvwx");
-		b.setDate(d);
-		try{
-			entityManager.persistAndFlush(b);
-			fail("test bill booking-name pattern not pass");
-		}
-		catch (ConstraintViolationException e){
-			printError("test bill booking-name pattern max-size", e);
-			Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-			assertEquals(violations.isEmpty(), false);
-			assertEquals(violations.size(), 1);
-		}
-	}
-
-	@Test
 	public void billPaidStatusNullTest(){
 		Member m = memberRepository.findByUserName("zzzz");
 		Date d = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
@@ -231,7 +112,6 @@ public class BillTest {
 		b.setPaidStatus(null);
 		b.setMember(m);
 		b.setTotalPrice(1);
-		b.setBookingName("abcdef abcdef");
 		b.setDate(d);
 		try{
 			entityManager.persistAndFlush(b);
@@ -253,7 +133,6 @@ public class BillTest {
 		b.setPaidStatus(p);
 		b.setMember(null);
 		b.setTotalPrice(1);
-		b.setBookingName("abcdef abcdef");
 		b.setDate(d);
 		try{
 			entityManager.persistAndFlush(b);
