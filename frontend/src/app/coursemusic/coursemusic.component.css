@@ -45,3 +45,13 @@
 
     width:500px;
 }
+
+.addData-card2 {
+  margin-left:300px;
+  margin-top:-50px;
+  width: 700px;
+  height: auto;
+  background-color:	#F5F5DC;
+  border: 5px solid #616161;
+  margin-bottom: 100px;
+}
