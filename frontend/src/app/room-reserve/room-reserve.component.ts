@@ -5,6 +5,15 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {RoomReserveService} from '../shared/room-reserve/room-reserve.service';
 import {TokenService} from '../shared/token/token.service';
 
+class BookingModel {
+  bookingName: string;
+  bookingTel: string;
+  bookingNameSecond: string;
+  bookingTelSecond: string;
+  timeData = [];
+  username: string;
+}
+
 @Component({
   selector: 'app-room-reserve',
   templateUrl: './room-reserve.component.html',
@@ -19,12 +28,15 @@ export class RoomReserveComponent implements OnInit {
   timeTable: any;
   timeData = [];
   timeForm: FormGroup;
-  bookingForm: FormGroup;
-  bookingName: any;
   roomType: any;
-  isComplete = false;
-  isError = false;
-  reportText: string;
+  reportText: any;
+
+  failText = 'พบปัญหา';
+  passText = 'เพิ่มสำเร็จ';
+
+  isPractice: boolean;
+
+  booking = new BookingModel();
 
   constructor(private roomSelectService: RoomSelectService, private router: ActivatedRoute,
               private fb: FormBuilder, private roomReserveService: RoomReserveService,
@@ -41,6 +53,7 @@ export class RoomReserveComponent implements OnInit {
       });
       this.roomReserveService.getRoomType(data['id']).subscribe(value => {
         this.roomType = value;
+        this.isPractice = (this.roomType.type === 'practice');
       });
     });
     this.roomReserveService.getDate().subscribe(value => {
@@ -49,13 +62,6 @@ export class RoomReserveComponent implements OnInit {
     this.timeForm = this.fb.group({
       'time': new FormControl('', Validators.required)
     });
-    this.bookingForm = this.fb.group({
-      'booking': new FormControl('', Validators.required)
-    });
-  }
-
-  isTrue(reserve: boolean) {
-    return reserve;
   }
 
   onChange(event, time) {
@@ -71,30 +77,19 @@ export class RoomReserveComponent implements OnInit {
     this.dateSelectID = event;
     this.roomReserveService.getTime(this.room.id, event).subscribe(value => {
       this.timeTable = value;
-      console.log(this.timeTable);
     });
+    this.timeData = [];
   }
 
   onSubmit() {
-    console.log(this.timeData);
-    console.log(this.dateSelectID);
-    console.log(this.room.id);
-    this.isComplete = false;
-    this.bookingName = this.bookingForm.get('booking').value;
-    this.roomReserveService.putReserve(this.room.id, this.dateSelectID, this.timeData, this.token.getUsername(), this.bookingName)
-      .subscribe(
-      value => {},
-      error1 => {
-        this.isComplete = true;
-        this.reportText = 'พบข้อผิดพลาด';
-      }, () => {
-        this.isComplete = true;
-        this.reportText = 'เพิ่มข้อมูลสำเร็จ';
+    this.booking.username = this.token.getUsername();
+    this.booking.timeData = this.timeData;
+    this.reportText = '';
+    this.roomReserveService.putReserve(this.room.id, this.dateSelectID, this.booking)
+      .subscribe(value => {
+        this.reportText = value;
+        }, error => {
+        this.reportText = 'booking fail';
       });
   }
-
-  isPractice() {
-    return this.roomType.type === 'practice';
-  }
-
 }

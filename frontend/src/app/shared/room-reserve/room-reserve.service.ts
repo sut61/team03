@@ -31,8 +31,8 @@ export class RoomReserveService {
     return this.http.get(this.API + this.roomTypeURL + '/' + roomID);
   }
 
-  putReserve(roomID, dateID, timeID, username, bookingName) {
-    return this.http.put(this.API + this.reserveTimeURL + '/' + roomID + '/' + dateID + '/' + username + '/' + bookingName, timeID);
+  putReserve(roomID, dateID, booking) {
+    return this.http.put(this.API + this.reserveTimeURL + '/' + roomID + '/' + dateID, booking, {responseType: 'text'});
   }
 
 }

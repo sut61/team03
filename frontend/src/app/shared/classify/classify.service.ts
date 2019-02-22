@@ -27,23 +27,23 @@ export class ClassifyService {
   }
 
   addClass(classify) {
-    return this.http.post(this.API + '/add/class', classify);
+    return this.http.post(this.API + '/add/class', classify, {responseType: 'text'});
   }
 
   addType(typeName) {
-    return this.http.post(this.API + '/add/type/' + typeName, null);
+    return this.http.post(this.API + '/add/type/' + typeName, null, {responseType: 'text'});
   }
 
   manageStatus(status, classify) {
-    return this.http.post(this.API + '/manage/status/' + status + '/' + classify, null);
+    return this.http.post(this.API + '/manage/status/' + status + '/' + classify, null, {responseType: 'text'});
   }
 
   manageClass(classify, item) {
-    return this.http.post(this.API + '/manage/class/' + classify + '/' + item, null);
+    return this.http.post(this.API + '/manage/class/' + classify + '/' + item, null, {responseType: 'text'});
   }
 
   manageType(type, item) {
-    return this.http.post(this.API + '/manage/type/' + type + '/' + item, null);
+    return this.http.post(this.API + '/manage/type/' + type + '/' + item, null, {responseType: 'text'});
   }
 
 }
