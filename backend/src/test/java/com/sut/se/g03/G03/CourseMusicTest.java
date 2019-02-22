@@ -36,7 +36,14 @@ public class CourseMusicTest {
     private CourseMusicRepository courseMusicRepository;
     @Autowired
     private ClassroomRepository classroomRepository;
-   
+    @Autowired
+    private CourseTimeRepository courseTimeRepository;
+    @Autowired
+    private PaymentTypeRepository paymentTypeRepository;
+    @Autowired
+    private MemberRepository memberRepository;
+    @Autowired
+    private InstrumentRepository instrumentRepository;
     @Autowired
     private TestEntityManager entityManager;
 
@@ -47,21 +54,52 @@ public class CourseMusicTest {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
     }
-   
-   @Test
-   public void CourseMusicTest() {
-       
-   }
-  
     @Test
-    public void testCourseMusicFnameCannotBeNull() {
+    public void testCourseMusicCorrect() {
+        CourseMusic cm = new CourseMusic();
+        cm.setFname("ภัทรพล");
+        cm.setLname("จันทวัติกุล");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
+        cm.setTelephone("0986270527");
+        cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
+
+
+        try {
+            entityManager.persist(cm);
+            entityManager.flush();
+        } catch(javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println("");
+            System.out.println("");
+            System.out.println("Test CourseMusicCorrect Pass");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("");
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 0);
+        } catch(Exception e){
+            fail("Should not pass to this line");
+            e.printStackTrace();
+       }
+    }
+    @Test
+    public void testCourseMusicFnameCannotBeNullAndNotBlank() {
         CourseMusic cm = new CourseMusic();
         cm.setFname(null);
         cm.setLname("จันทวัติกุล");
-        cm.setNickname("ฟี่");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
         cm.setTelephone("0986270527");
         cm.setClassroom(classroomRepository.findById(1L).get());
-
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
+        
 
         try {
             entityManager.persist(cm);
@@ -72,24 +110,27 @@ public class CourseMusicTest {
             System.out.println(e.getMessage());
             System.out.println("");
             System.out.println("");
-            System.out.println("Test FnameCannotBeNull Pass");
+            System.out.println("Test CourseMusicFnameCannotBeNullAndNotBlank Pass");
             System.out.println("");
             System.out.println("");
             System.out.println("");
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
         }
     }
-
-   @Test
-    public void testCourseMusicLnameCannotBeNull() {
+    @Test
+    public void testCourseMusicLnameCannotBeNullAndNotBlank() {
         CourseMusic cm = new CourseMusic();
         cm.setFname("ภัทรพล");
         cm.setLname(null);
-        cm.setNickname("ฟี่");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
         cm.setTelephone("0986270527");
         cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
 
 
         try {
@@ -101,24 +142,28 @@ public class CourseMusicTest {
             System.out.println(e.getMessage());
             System.out.println("");
             System.out.println("");
-            System.out.println("Test LnameCannotBeNull Pass");
+            System.out.println("Test CourseMusicLnameCannotBeNullAndNotBlank Pass");
             System.out.println("");
             System.out.println("");
             System.out.println("");
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
         }
     }
 
     @Test
-    public void testCourseMusicNicknameCannotBeNull() {
+    public void testCourseMusicNicknameCannotBeNullAndNotBlank() {
         CourseMusic cm = new CourseMusic();
         cm.setFname("ภัทรพล");
         cm.setLname("จันทวัติกุล");
         cm.setNickname(null);
         cm.setTelephone("0986270527");
         cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
 
 
         try {
@@ -130,24 +175,28 @@ public class CourseMusicTest {
             System.out.println(e.getMessage());
             System.out.println("");
             System.out.println("");
-            System.out.println("Test NicknameCannotBeNull Pass");
+            System.out.println("Test CourseMusicNicknameCannotBeNullAndNotBlank Pass");
             System.out.println("");
             System.out.println("");
             System.out.println("");
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
         }
     }
 
    @Test
-    public void testCourseMusicTelephoneCannotBeNull() {
+    public void testCourseMusicTelephoneCannotBeNullAndNotBlank() {
         CourseMusic cm = new CourseMusic();
         cm.setFname("ภัทรพล");
         cm.setLname("จันทวัติกุล");
-        cm.setNickname("ฟี่");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
         cm.setTelephone(null);
         cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
 
 
         try {
@@ -159,13 +208,144 @@ public class CourseMusicTest {
             System.out.println(e.getMessage());
             System.out.println("");
             System.out.println("");
-            System.out.println("Test TelephoneCannotBeNull Pass");
+            System.out.println("Test CourseMusicTelephoneCannotBeNullAndNotBlank Pass");
             System.out.println("");
             System.out.println("");
             System.out.println("");
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
+        }
+    }
+
+    @Test
+    public void testCourseMusicFnameCannotBeSpacebar() {
+        CourseMusic cm = new CourseMusic();
+        cm.setFname(" ");
+        cm.setLname("จันทวัติกุล");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
+        cm.setTelephone("0986270527");
+        cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
+        
+
+        try {
+            entityManager.persist(cm);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println("");
+            System.out.println("");
+            System.out.println("Test CourseMusicFnameCannotBeSpacebar Pass");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("");
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 3);
+        }
+    }
+    @Test
+    public void testCourseMusicLnameCannotBeSpacebar() {
+        CourseMusic cm = new CourseMusic();
+        cm.setFname("ภัทรพล");
+        cm.setLname(" ");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
+        cm.setTelephone("0986270527");
+        cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
+
+
+        try {
+            entityManager.persist(cm);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println("");
+            System.out.println("");
+            System.out.println("Test CourseMusicLnameCannotBeSpacebar Pass");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("");
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 3);
+        }
+    }
+
+    @Test
+    public void testCourseMusicNicknameCannotBeSpacebar() {
+        CourseMusic cm = new CourseMusic();
+        cm.setFname("ภัทรพล");
+        cm.setLname("จันทวัติกุล");
+        cm.setNickname(" ");
+        cm.setTelephone("0986270527");
+        cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
+
+
+        try {
+            entityManager.persist(cm);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println("");
+            System.out.println("");
+            System.out.println("Test CourseMusicNicknameCannotBeSpacebar Pass");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("");
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 3);
+        }
+    }
+
+   @Test
+    public void testCourseMusicTelephoneCannotBeSpacebar() {
+        CourseMusic cm = new CourseMusic();
+        cm.setFname("ภัทรพล");
+        cm.setLname("จันทวัติกุล");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
+        cm.setTelephone(" ");
+        cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
+
+
+        try {
+            entityManager.persist(cm);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println("");
+            System.out.println("");
+            System.out.println("Test CourseMusicTelephoneCannotBeSpacebar Pass");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("");
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 3);
         }
     }
 
@@ -174,9 +354,13 @@ public class CourseMusicTest {
         CourseMusic cm = new CourseMusic();
         cm.setFname("ภัทรพลเทพซ่าจีจีจีจีจี");
         cm.setLname("จันทวัติกุล");
-        cm.setNickname("ฟี่");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
         cm.setTelephone("0986270527");
        cm.setClassroom(classroomRepository.findById(1L).get());
+       cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
 
         try {
             entityManager.persist(cm);
@@ -187,7 +371,7 @@ public class CourseMusicTest {
             System.out.println(e.getMessage());
             System.out.println("");
             System.out.println("");
-            System.out.println("Test FnameCannotMorethanTwelve Pass");
+            System.out.println("Test CourseMusicFnameCannotMorethanTwenty Pass");
             System.out.println("");
             System.out.println("");
             System.out.println("");
@@ -202,9 +386,13 @@ public class CourseMusicTest {
         CourseMusic cm = new CourseMusic();
         cm.setFname("คน");
         cm.setLname("จันทวัติกุล");
-        cm.setNickname("ฟี่");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
         cm.setTelephone("0986270527");
         cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
 
 
         try {
@@ -216,7 +404,7 @@ public class CourseMusicTest {
             System.out.println(e.getMessage());
             System.out.println("");
             System.out.println("");
-            System.out.println("Test FnameCannotLessthanThree Pass");
+            System.out.println("Test CourseMusicFnameCannotLessthanThree Pass");
             System.out.println("");
             System.out.println("");
             System.out.println("");
@@ -231,9 +419,13 @@ public class CourseMusicTest {
         CourseMusic cm = new CourseMusic();
         cm.setFname("ภัทรพล789");
         cm.setLname("จันทวัติกุล");
-        cm.setNickname("ฟี่");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
         cm.setTelephone("0986270527");
         cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
 
 
         try {
@@ -245,7 +437,7 @@ public class CourseMusicTest {
             System.out.println(e.getMessage());
             System.out.println("");
             System.out.println("");
-            System.out.println("Test FnameCannotBeNumber Pass");
+            System.out.println("Test CourseMusicFnameCannotBeNumber Pass");
             System.out.println("");
             System.out.println("");
             System.out.println("");
@@ -261,9 +453,13 @@ public class CourseMusicTest {
         CourseMusic cm = new CourseMusic();
         cm.setFname("ภัทรพล");
         cm.setLname("จันทวัติกุลเทพซ่าไหมล่ะฮ่าฮ่า");
-        cm.setNickname("ฟี่");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
         cm.setTelephone("0986270527");
         cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
 
 
         try {
@@ -275,7 +471,7 @@ public class CourseMusicTest {
             System.out.println(e.getMessage());
             System.out.println("");
             System.out.println("");
-            System.out.println("Test LnameCannotMorethanTwentyFive Pass");
+            System.out.println("Test CourseMusicLnameCannotMorethanTwentyFive Pass");
             System.out.println("");
             System.out.println("");
             System.out.println("");
@@ -290,9 +486,13 @@ public class CourseMusicTest {
         CourseMusic cm = new CourseMusic();
         cm.setFname("ภัทรพล");
         cm.setLname("คน");
-        cm.setNickname("ฟี่");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
         cm.setTelephone("0986270527");
         cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
 
 
         try {
@@ -304,7 +504,7 @@ public class CourseMusicTest {
             System.out.println(e.getMessage());
             System.out.println("");
             System.out.println("");
-            System.out.println("Test LnameCannotCannotLessthanThree Pass");
+            System.out.println("Test CourseMusicLnameCannotLessthanThree Pass");
             System.out.println("");
             System.out.println("");
             System.out.println("");
@@ -319,9 +519,13 @@ public class CourseMusicTest {
         CourseMusic cm = new CourseMusic();
         cm.setFname("ภัทรพล");
         cm.setLname("จันทวัติกุล789");
-        cm.setNickname("ฟี่");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
         cm.setTelephone("0986270527");
         cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
 
 
         try {
@@ -333,7 +537,7 @@ public class CourseMusicTest {
             System.out.println(e.getMessage());
             System.out.println("");
             System.out.println("");
-            System.out.println("Test LnameCannotBeNumber Pass");
+            System.out.println("Test CourseMusicLnameCannotBeNumber Pass");
             System.out.println("");
             System.out.println("");
             System.out.println("");
@@ -344,13 +548,17 @@ public class CourseMusicTest {
     }
 
     @Test
-    public void testCourseMusicNicknameCannotMorethanEight() {
+    public void testCourseMusicNicknameCannotMorethanSixteen() {
         CourseMusic cm = new CourseMusic();
         cm.setFname("ภัทรพล");
         cm.setLname("จันทวัติกุล");
-        cm.setNickname("ท๊อฟฟี่เทพซ่า");
+        cm.setNickname("อาจารย์ท๊อฟฟี่เทพซ่า");
         cm.setTelephone("0986270527");
         cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
 
 
         try {
@@ -362,7 +570,40 @@ public class CourseMusicTest {
             System.out.println(e.getMessage());
             System.out.println("");
             System.out.println("");
-            System.out.println("Test NicknameCannotMorethanEight Pass");
+            System.out.println("Test CourseMusicNicknameCannotMorethanSixteen Pass");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("");
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+    @Test
+    public void testCourseMusicNicknameCannotLessthanThree() {
+        CourseMusic cm = new CourseMusic();
+        cm.setFname("ภัทรพล");
+        cm.setLname("จันทวัติกุล");
+        cm.setNickname("อา");
+        cm.setTelephone("0986270527");
+        cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
+
+
+        try {
+            entityManager.persist(cm);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println("");
+            System.out.println("");
+            System.out.println("Test CourseMusicNicknameCannotLessthanThree Pass");
             System.out.println("");
             System.out.println("");
             System.out.println("");
@@ -377,9 +618,13 @@ public class CourseMusicTest {
         CourseMusic cm = new CourseMusic();
         cm.setFname("ภัทรพล");
         cm.setLname("จันทวัติกุล");
-        cm.setNickname("ท๊อฟฟี่7");
+        cm.setNickname("อาจารย์ท๊อฟฟี่7");
         cm.setTelephone("0986270527");
         cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
 
 
         try {
@@ -391,7 +636,7 @@ public class CourseMusicTest {
             System.out.println(e.getMessage());
             System.out.println("");
             System.out.println("");
-            System.out.println("Test NicknameCannotBeNumber Pass");
+            System.out.println("Test CourseMusicNicknameCannotBeNumber Pass");
             System.out.println("");
             System.out.println("");
             System.out.println("");
@@ -406,9 +651,13 @@ public class CourseMusicTest {
         CourseMusic cm = new CourseMusic();
         cm.setFname("ภัทรพล");
         cm.setLname("จันทวัติกุล");
-        cm.setNickname("ท๊อฟฟี่");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
         cm.setTelephone("0986270527123456");
         cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
 
 
         try {
@@ -420,7 +669,7 @@ public class CourseMusicTest {
             System.out.println(e.getMessage());
             System.out.println("");
             System.out.println("");
-            System.out.println("Test TelephoneEqualTenString Pass");
+            System.out.println("Test CourseMusicTelephoneEqualTenString Pass");
             System.out.println("");
             System.out.println("");
             System.out.println("");
@@ -435,9 +684,13 @@ public class CourseMusicTest {
         CourseMusic cm = new CourseMusic();
         cm.setFname("ภัทรพล");
         cm.setLname("จันทวัติกุล");
-        cm.setNickname("ท๊อฟฟี่");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
         cm.setTelephone("3986270527");
         cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
 
 
         try {
@@ -449,7 +702,40 @@ public class CourseMusicTest {
             System.out.println(e.getMessage());
             System.out.println("");
             System.out.println("");
-            System.out.println("Test TelephoneFirstNumberEqualZero Pass");
+            System.out.println("Test CourseMusicTelephoneFirstNumberEqualZero Pass");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("");
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+    
+    @Test
+    public void testCourseMusicClassroomCannotBeNull() {
+        CourseMusic cm = new CourseMusic();
+        cm.setFname("ภัทรพล");
+        cm.setLname("จันทวัติกุล");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
+        cm.setTelephone("0986270527");
+        cm.setClassroom(null);
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
+
+
+        try {
+            entityManager.persist(cm);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println("");
+            System.out.println("");
+            System.out.println("Test CourseMusicClassroomCannotBeNull Pass");
             System.out.println("");
             System.out.println("");
             System.out.println("");
@@ -460,13 +746,17 @@ public class CourseMusicTest {
     }
 
     @Test
-    public void testCourseMusicClassroomCannotBeNull() {
+    public void testCourseMusicCourseTimeCannotBeNull() {
         CourseMusic cm = new CourseMusic();
         cm.setFname("ภัทรพล");
         cm.setLname("จันทวัติกุล");
-        cm.setNickname("ท๊อฟฟี่");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
         cm.setTelephone("0986270527");
-        cm.setClassroom(null);
+        cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(null);
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
 
 
         try {
@@ -478,7 +768,7 @@ public class CourseMusicTest {
             System.out.println(e.getMessage());
             System.out.println("");
             System.out.println("");
-            System.out.println("Test ClassroomCannotBeNull Pass");
+            System.out.println("Test CourseMusicCourseTimeCannotBeNull Pass");
             System.out.println("");
             System.out.println("");
             System.out.println("");
@@ -488,9 +778,104 @@ public class CourseMusicTest {
         }
     }
 
-   
-    
+    @Test
+    public void testCourseMusicPaymentTypeCannotBeNull() {
+        CourseMusic cm = new CourseMusic();
+        cm.setFname("ภัทรพล");
+        cm.setLname("จันทวัติกุล");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
+        cm.setTelephone("0986270527");
+        cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(null);
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
 
+
+        try {
+            entityManager.persist(cm);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println("");
+            System.out.println("");
+            System.out.println("Test CourseMusicPaymentTypeCannotBeNull Pass");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("");
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+    @Test
+    public void testCourseMusicMemberCannotBeNull() {
+        CourseMusic cm = new CourseMusic();
+        cm.setFname("ภัทรพล");
+        cm.setLname("จันทวัติกุล");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
+        cm.setTelephone("0986270527");
+        cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(null);
+        cm.setInstrument(instrumentRepository.findById(1L).get());
+
+
+        try {
+            entityManager.persist(cm);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println("");
+            System.out.println("");
+            System.out.println("Test CourseMusicMemberCannotBeNull Pass");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("");
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+    @Test
+    public void testCourseMusicInstrumentCannotBeNull() {
+        CourseMusic cm = new CourseMusic();
+        cm.setFname("ภัทรพล");
+        cm.setLname("จันทวัติกุล");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
+        cm.setTelephone("0986270527");
+        cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(null);
+
+
+        try {
+            entityManager.persist(cm);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println("");
+            System.out.println("");
+            System.out.println("Test CourseMusicMemberCannotBeNull Pass");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("");
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
    
 
 
