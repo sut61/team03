@@ -19,11 +19,13 @@ public class Member {
     @Id
     private Long id;
 
-    @Column(unique = true)
+
     @NotNull
+    @Column(unique = true)
     private String userName;
 
     @JsonIgnore
+    @NotNull
     private String password;
 
     @OneToOne(cascade = CascadeType.ALL)

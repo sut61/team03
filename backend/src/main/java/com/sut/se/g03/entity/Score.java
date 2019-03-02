@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 
 @Entity
 @Getter
@@ -18,7 +19,9 @@ public class Score {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "score_seq")
     private Long id;
 
+
     @NotNull
+    @PositiveOrZero
     private Integer score;
 
     public Score(Integer score) {
