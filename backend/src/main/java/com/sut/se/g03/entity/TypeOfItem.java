@@ -21,6 +21,8 @@ public class TypeOfItem {
 	@ManyToOne
 	Item item;
 
+	public TypeOfItem(){}
+
 	public TypeOfItem(ItemType itemType, Item item) {
 		this.itemType = itemType;
 		this.item = item;

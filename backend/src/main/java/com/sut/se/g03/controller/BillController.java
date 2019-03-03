@@ -22,23 +22,15 @@ import java.util.Optional;
 
 public class BillController{
 
-    @Autowired private RoomTypeRepository roomTypeRepository;
-    @Autowired private RoomSizeRepository roomSizeRepository;
-    @Autowired private RoomRepository roomRepository;
-    @Autowired private ScheduleRepository scheduleRepository;
-    @Autowired private TimeTableRepository timeTableRepository;
-    @Autowired private TimePeriodRepository timePeriodRepository;
+   
     @Autowired private MemberRepository memberRepository;
     @Autowired private BillRepository billRepository;
-    @Autowired private BillRoomRepository billRoomRepository;
     @Autowired private BillInfoRepository billInfoRepository;
-    @Autowired private RoomInstrumentRepository roomInstrumentRepository;
     @Autowired private PaidStatusRepository paidStatusRepository;
+    @Autowired private ContactRepository contactRepository;
 
 
-    
-
-    @GetMapping("/bill")
+    @GetMapping("/Bill")
     public Collection<Bill> bill(){
         return billRepository.findAll().stream().collect(Collectors.toList());
     }
@@ -48,63 +40,52 @@ public class BillController{
         return billRepository.findById(billId);
     }
 
+
     @GetMapping("/PaidStatus")
-    public Collection<PaidStatus> paidstatus(){
+    public Collection<PaidStatus> paidStatus(){
         return  paidStatusRepository.findAll().stream().collect(Collectors.toList());
     }
 
-    @GetMapping("/PaidStatus/{paidstatusId}")
-    public Optional<PaidStatus> takeinPaidStatusByid(@PathVariable Long paidstatusId ){
-        return  paidStatusRepository.findById(paidstatusId);
+    @GetMapping("/PaidStatus/{paidStatusId}")
+    public Optional<PaidStatus> takeinPaidStatusByid(@PathVariable Long paidStatusId ){
+        return  paidStatusRepository.findById(paidStatusId);
     }
 
-    @GetMapping("/Room")
-    public Collection<Room> room(){
-        return  roomRepository.findAll().stream().collect(Collectors.toList());
+    
+    @GetMapping("/bill/Member")
+    public Collection<Member> member() {
+       return memberRepository.findAll();
     }
 
-    @GetMapping("/Room/{roomId}")
-    public Optional<Room> takeinRoomByid(@PathVariable Long roomId ){
-        return  roomRepository.findById(roomId);
+    @GetMapping("/bill/Member/{memberId}")
+    public Optional<Member> takeinMemberByid(@PathVariable Long memberId) {
+        return memberRepository.findById(memberId);
     }
 
-    @GetMapping("/BillRoom")
-    public Collection<BillRoom> billroom(){
-        return  billRoomRepository.findAll().stream().collect(Collectors.toList());
-    }
-
-    @GetMapping("/BillRoom/{billRoomId}")
-    public Optional<BillRoom> takeinBillRoomByid(@PathVariable Long billRoomId ){
-        return  billRoomRepository.findById(billRoomId);
-    }
-
-    @PutMapping("/bill/updateBill/{billId}/{date}/{paidStatusId}/{MemberId}")
-    public Bill upgradeBill(@PathVariable Long billId, @PathVariable Date date, @PathVariable Long paidStatusId, @PathVariable Long memberId ){
-        Bill upgradeBill = new Bill();
-        Member member = memberRepository.findById(memberId).get();
-        PaidStatus paidstatus = paidStatusRepository.findById(paidStatusId).get();
-        upgradeBill.setDate(new Date());
-        upgradeBill.setMember(member);
-        upgradeBill.setPaidStatus(paidstatus);
-       
+    @PostMapping("/bill/{username}/{billId}/{name}/{tel}/{content}/{price}/{paidStatusId}")
+    public BillInfo addDamageBill(@PathVariable String username,@PathVariable Long billId,@PathVariable String name,@PathVariable String tel,@PathVariable String content,@PathVariable Float price,@PathVariable Long paidStatusId) {
+        BillInfo damageBill = new BillInfo();
+        Bill bill = billRepository.findById(billId).get();
+        Contact contact = new Contact();
+        Member member = memberRepository.findByUserName(username);
+        PaidStatus paidStatus = paidStatusRepository.findById(paidStatusId).get();
         
-        return billRepository.save(upgradeBill);
-    }
 
+        bill.setMember(member);
+        damageBill.setBill(bill);
+        contact.setBill(bill);
+        contact.setName(name);
+        contact.setTel(tel);
+        damageBill.setContent(content);
+        damageBill.setPrice(price);
+        bill.setPaidStatus(paidStatus);
 
-   @PostMapping("/bill")
-    public BillInfo addBill(BillInfo newBillInfo,@RequestBody Map<String, String> body){
-        Optional<Bill> bill = billRepository.findById(Long.valueOf(body.get("billid")));
-
-        newBillInfo.setBill(bill.get());
-        newBillInfo.setContent(body.get("comment"));
-        newBillInfo.setPrice(Float.valueOf(body.get("price")));
-
-        bill.get().setTotalPrice(Float.valueOf(body.get("price")) + bill.get().getTotalPrice());
-        billRepository.save(bill.get());
+        bill.setTotalPrice(price + bill.getTotalPrice());
+        billRepository.save(bill);
+        contactRepository.save(contact);
         
-        return billInfoRepository.save(newBillInfo);
-    }
+        return billInfoRepository.save(damageBill);
+    } 
 
     
 }
