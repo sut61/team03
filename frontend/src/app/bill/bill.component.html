@@ -4,15 +4,9 @@
 <div class="body">
   <!--         ส่วนกล่องของเลือกปุ่มด้านซ้ายมือ  -->
   <div class="left-body">
-    <mat-card class="left-card">
-      <div class="left-style">
-        <h3>MENU</h3>
-        <button class="b-left" mat-flat-button color="accent" (click)="gotoBill()">จัดการบิลล์ค่าเสียหาย</button>
-      </div>
-    </mat-card>
+    <mat-card class="left-card"></mat-card>
 
     <!--         ส่วนกล่องของฝั่งเพิ่มข้อมูล  -->
-    <form #bill="ngForm" (ngSubmit)="putBill(bill.value)">
       <mat-card class="addData-card">
         <div class="addData-style">
           <div style="margin-bottom: 10px;">
@@ -22,24 +16,36 @@
           <p>เลือกIDจากบิลล์ค่าห้องซ้อม</p>
 
           <mat-form-field>
-            <mat-select [(ngModel)]="bill.bill" name="billid">
-              <mat-option *ngFor="let billRoom of billRooms" [value]="billRoom.id" class="showcombobox">
-                {{billRoom.bill.member.userName}} &nbsp; {{billRoom.bill.date}} &nbsp; {{billRoom.bill.totalPrice}} บาท
+            <mat-select [(ngModel)]="billSelect" name="billid">
+              <mat-option *ngFor="let bill of bills" id = "billid" [value]="bill.id" class="showcombobox">
+                {{"ID : "+bill.id+" - "}} {{bill.member.userName+" - "}}  {{bill.totalPrice+" บาท -"}} {{bill.date | date}}
               </mat-option>
             </mat-select>
           </mat-form-field>
 
 
-          <!--         ส่วนcombobox ของ ห้องที่ใช้ซ้อม  -->
+
+
+     <!--         ส่วนกรอกชื่อผู้ที่รับผิดชอบค่าเสียหาย-->
+          <br>
+            <mat-form-field>
+              <div>
+                <p>กรอกชื่อผู้รับผิดชอบค่าเสียหาย</p>
+              </div>
+              <input matInput style="text-align:left;" [(ngModel)]="InputName" id ="contactName"  name="contactName" >
+            </mat-form-field>
+
+            <!--         ส่วนกรอกเบอร์โทรผู้รับผิดชอบค่าเสียหาย-->
           <br>
           <mat-form-field>
-            <p>เลือกห้องที่ผู้ใช้งานเข้าใช้ซ้อม</p>
-            <mat-select [(ngModel)]="bill.room" name="billRoom">
-              <mat-option *ngFor="let billRoom of billRooms" [value]="billRoom.id">
-                {{billRoom.room.name}}
-              </mat-option>
-            </mat-select>
+            <div>
+              <p>กรอกเบอร์โทรผู้รับผิดชอบค่าเสียหาย</p>
+            </div>
+            <input matInput style="text-align:left;" [(ngModel)]="InputTel" id ="contactTel"  name="contactTel" >
           </mat-form-field>
+
+
+
 
 
           <!--         ส่วนกรอกรายละเอียดค่าเสียหาย -->
@@ -49,7 +55,7 @@
                 <p>กรอกรายละเอียดค่าเสียหาย</p>
                 <p>(กดมุมล่างขวาเพื่อขยาย-ลดได้)</p>
               </div>
-              <textarea class="contentbox-write" matInput [(ngModel)]="bill.comment" name="comment"></textarea>
+              <textarea class="contentbox-write" matInput [(ngModel)]="Inputdetail" id = "detail" name="detail"></textarea>
             </mat-form-field>
 
           <!--         ส่วนกรอกรายละเอียดค่าเสียหาย -->
@@ -58,7 +64,7 @@
               <div>
                 <p>กรอกราคาค่าเสียหายทั้งหมด</p>
               </div>
-              <input matInput style="text-align:right;" [(ngModel)]="bill.price" name="price">
+              <input matInput style="text-align:right;"  [(ngModel)]="Inputprice" id = "price" name="price">
             </mat-form-field>
             <div class="bath">บาท</div>
 
@@ -66,23 +72,27 @@
           <br>
           <mat-form-field>
             <p>เลือกสถานะการจ่ายเงินของผู้ใช้งาน</p>
-            <mat-select [(ngModel)]="bill.paidStatus" name="paidStatus">
+            <mat-select  [(ngModel)]="paidStatusSelect" name="paidStatusid">
               <mat-option *ngFor="let paidStatus of paidStatuses" [value]="paidStatus.id">
                 {{paidStatus.name}}
               </mat-option>
             </mat-select>
           </mat-form-field>
 
+
           <br>
           <!--           ส่วนของปุ่มเพิ่มข้อมูล        -->
-          <div style="margin-top: 20px;"><button type="submit" mat-raised-button color="accent">
+          <div style="margin-top: 20px;"><button type="submit" mat-raised-button color="accent" (click)="postBill()">
               <p style="text-align: center;">เพิ่มข้อมูล
               </p>
             </button></div>
 
+            <br>
+          <p>{{showCheck}}</p>
+            <br>
+
 
         </div>
       </mat-card>
-    </form>
   </div>
 </div>

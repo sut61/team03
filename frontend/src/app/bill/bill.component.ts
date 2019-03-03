@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BillService } from '../shared/bill/bill.service';
 import { Router } from '@angular/router';
+import { TokenService } from '../shared/token/token.service';
+
 @Component({
   selector: 'app-bill',
   templateUrl: './bill.component.html',
@@ -8,17 +10,20 @@ import { Router } from '@angular/router';
 })
 export class BillComponent implements OnInit {
   paidStatuses: Array<any>;
-  rooms: Array<any>;
-  billRooms: Array<any>;
   members: Array<any>;
-  inputContent: string = '';
-  inputPrice: number = 0;
-  date: any;
-  paidStatusSelect: number = 0;
-  selectBillRoom: number = 0;
   bills: Array<any>;
+  contacts: Array<any>;
 
-  constructor(private billService: BillService, private router: Router) { }
+  billSelect: number;
+  InputName: String;
+  InputTel: String;
+  Inputdetail: String;
+  Inputprice: number;
+  paidStatusSelect: number;
+
+  showCheck: String;
+
+  constructor(private billService: BillService, private route: Router, private token: TokenService) { }
 
   ngOnInit() {
     this.getBillList();
@@ -26,19 +31,12 @@ export class BillComponent implements OnInit {
       this.paidStatuses = data;
       console.log(this.paidStatuses);
     });
-    this.billService.getBillRoom().subscribe(data => {
-      this.billRooms = data;
-      console.log(this.billRooms);
-    });
-    this.billService.getRooms().subscribe(data => {
-      this.rooms = data;
-      console.log(this.rooms);
-    });
 
     this.billService.getMember().subscribe(data => {
       this.members = data;
       console.log(this.members);
     });
+
 
 
   }
@@ -49,17 +47,27 @@ export class BillComponent implements OnInit {
     });
   }
 
-  putBill(sdata) {
-    console.log(sdata);
+  postBill() {
+    if(this.billSelect === 0 || this.InputName === '' || this.InputTel === '' || this.Inputdetail === ''|| this.Inputprice === 0 ||
+    this.paidStatusSelect === 0) {
 
-    this.billService.postBill(sdata).subscribe(data => {
-      console.log(data);
+    this.showCheck = "กรุณากรอกข้อมูลให้ครบถ้วน"
+  }
+    else{
+      this.billService.addDamageBill( this.billSelect, this.InputName, this.InputTel, this.Inputdetail, this.Inputprice,
+        this.paidStatusSelect, this.token.getUsername() ).subscribe(
+        data => {
+          this.getBillList();
+          this.showCheck = "การเพิ่มข้อมูลสำเร็จ"
+        },
+        error => {
+          console.log("Error", error);
+          this.showCheck = "เกิดข้อผิดพลาด"
+        }
+      );
 
-    },
-    err => {
-      console.log(err);
-    })
   }
 
 
+}
 }

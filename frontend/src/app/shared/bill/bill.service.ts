@@ -15,25 +15,17 @@ export class BillService {
     return this.http.get(this.API + '/PaidStatus');
   }
 
-  getRooms(): Observable<any> {
-    return this.http.get(this.API + '/Room');
-  }
-  getBillRoom(): Observable<any> {
-    return this.http.get(this.API + '/BillRoom');
-  }
-  getRoom(roomId, billId): Observable<any> {
-    return this.http.get(this.API + '/Bill/BillRoom/' + roomId + '/' + billId);
-  }
   getMember(): Observable<any> {
-    return this.http.get(this.API + '/pay/member');
+    return this.http.get(this.API + '/bill/Member');
   }
 
   getBill(): Observable<any> {
-    return this.http.get(this.API + '/bill');
+    return this.http.get(this.API + '/Bill');
   }
 
-  postBill(data : any): Observable<any> {
-    return this.http.post(this.API + '/bill', data);
+  addDamageBill(billSelect: number,InputName: String,InputTel: String,Inputdetail: String,Inputprice: number,paidStatusSelect: number,username: String){
+    return this.http.post(this.API + '/bill/'+username+ '/' +billSelect+ '/' +InputName+ '/' +InputTel+ '/' +Inputdetail+ '/' +  Inputprice+ '/' +paidStatusSelect,{
+    });
   }
 
 }
