@@ -23,7 +23,7 @@ public class ItemFix {
     @Column(name="ItemFix_ID")
     private @NonNull  Long itemFixId;
     @NotNull
-    private @NonNull String itemFixName;
+    private String itemFixName;
 
     public ItemFix(String itemFixName) {
         this.itemFixName = itemFixName;

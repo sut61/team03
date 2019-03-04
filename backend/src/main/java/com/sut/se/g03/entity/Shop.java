@@ -2,10 +2,7 @@ package com.sut.se.g03.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Collection;
 
 @Data
@@ -24,6 +21,7 @@ public class Shop {
     @Size(min = 3,max = 50)
     private String subdist;
     @NotNull
+    @PositiveOrZero
     private int itemNum;
     @NotNull
     @Size(min = 3,max = 50)
