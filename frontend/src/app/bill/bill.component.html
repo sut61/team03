@@ -61,9 +61,11 @@
           <!--         ส่วนกรอกรายละเอียดค่าเสียหาย -->
           <br>
             <mat-form-field>
-              <div>
-                <p>กรอกราคาค่าเสียหายทั้งหมด</p>
+              <div style="text-align:center;">
+                <p>กรอกราคาค่าเสียหายรวมทั้งหมด</p>
               </div>
+                <p>(ไม่รวมค่าห้องซ้อมและห้องบันทึกเสียง)</p>
+
               <input matInput style="text-align:right;"  [(ngModel)]="Inputprice" id = "price" name="price">
             </mat-form-field>
             <div class="bath">บาท</div>
