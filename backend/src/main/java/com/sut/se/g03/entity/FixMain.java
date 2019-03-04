@@ -4,6 +4,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 
 @Data
@@ -19,6 +20,7 @@ public class FixMain {
     @Column(name="FixMain_ID")
     private @NonNull Long fixMainId;
     @NotNull
+    @PositiveOrZero
     private  Integer cost;
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = ItemFix.class)

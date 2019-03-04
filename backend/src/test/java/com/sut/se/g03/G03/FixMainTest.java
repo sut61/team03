@@ -47,7 +47,7 @@ public class FixMainTest {
         FixMain f = new FixMain();
         f.setCost(null);
         f.setItemFix(entityManager.persist(new ItemFix("aaaaaaaaaa")));
-        f.setCustomerFix(entityManager.persist(new CustomerFix("1123456789")));
+        f.setCustomerFix(entityManager.persist(new CustomerFix("0111111111","aaaaaaaaaa","khnan@gmail.com")));
         f.setDatainfo(entityManager.persist(new Datainfo("aaaaaaaaaa")));
         f.setInstruType(entityManager.persist(new InstruType("aaaaaaaaaa")));
         f.setManagerinfo(entityManager.persist(new Managerinfo("aaaaaaaaaa")));
@@ -74,8 +74,8 @@ public class FixMainTest {
     public void TestItemFixCannotNull() {
         FixMain f = new FixMain();
         f.setCost(1000000);
-        f.setItemFix(null);
-        f.setCustomerFix(entityManager.persist(new CustomerFix("1123456789")));
+        f.setItemFix(entityManager.persist(new ItemFix(null)));
+        f.setCustomerFix(entityManager.persist(new CustomerFix("0111111111","aaaaaaaaaa","khnan@gmail.com")));
         f.setDatainfo(entityManager.persist(new Datainfo("aaaaaaaaaa")));
         f.setInstruType(entityManager.persist(new InstruType("aaaaaaaaaa")));
         f.setManagerinfo(entityManager.persist(new Managerinfo("aaaaaaaaaa")));
@@ -96,42 +96,41 @@ public class FixMainTest {
 
         }
     }
-    /*
-     //test CustomerFix = Null
-     @Test
-     public void TestCustomerFixCannotNull(){
-         FixMain f = new FixMain();
-         f.setCost(1000);
-         f.setItemFix(entityManager.persist(new ItemFix ("aaaaaaaaaa")));
-         f.setCustomerFix(null);
-         f.setDatainfo(entityManager.persist(new Datainfo("aaaaaaaaaa")));
-         f.setInstruType(entityManager.persist(new InstruType("aaaaaaaaaa")));
-         f.setManagerinfo(entityManager.persist(new Managerinfo("aaaaaaaaaa")));
-         try {
-             entityManager.persist(f);
-             entityManager.flush();
+    //test CustomerFix = Null
+    @Test
+    public void TestCustomerFixTelCannotNull(){
+        FixMain f = new FixMain();
+        f.setCost(1000);
+        f.setItemFix(entityManager.persist(new ItemFix ("aaaaaaaaaa")));
+        f.setCustomerFix(entityManager.persist(new CustomerFix(null,"aaaaaaaaaa","khnan@gmail.com")));
+        f.setDatainfo(entityManager.persist(new Datainfo("aaaaaaaaaa")));
+        f.setInstruType(entityManager.persist(new InstruType("aaaaaaaaaa")));
+        f.setManagerinfo(entityManager.persist(new Managerinfo("aaaaaaaaaa")));
+        try {
+            entityManager.persist(f);
+            entityManager.flush();
 
-             fail("Should not pass to this line");
-         } catch(javax.validation.ConstraintViolationException e) {
-             System.out.println(e.getMessage());
-             System.out.println();
-             System.out.println(" Customer Null");
-             System.out.println(e);
-             System.out.println();
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println(" Customer Null");
+            System.out.println(e);
+            System.out.println();
 
-             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
-             assertEquals(violations.isEmpty(), false);
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
 
-         }
-     }*/
+        }
+    }
     //test Datainfo = Null
     @Test
     public void TestDatainfoCannotNull() {
         FixMain f = new FixMain();
         f.setCost(1000000);
         f.setItemFix(entityManager.persist(new ItemFix("aaaaaaaaaa")));
-        f.setCustomerFix(entityManager.persist(new CustomerFix("1123456789")));
-        f.setDatainfo(null);
+        f.setCustomerFix(entityManager.persist(new CustomerFix("0111111111","aaaaaaaaaa","khnan@gmail.com")));
+        f.setDatainfo(entityManager.persist(new Datainfo(null)));
         f.setInstruType(entityManager.persist(new InstruType("aaaaaaaaaa")));
         f.setManagerinfo(entityManager.persist(new Managerinfo("aaaaaaaaaa")));
         try {
@@ -157,9 +156,9 @@ public class FixMainTest {
         FixMain f = new FixMain();
         f.setCost(1000000);
         f.setItemFix(entityManager.persist(new ItemFix("aaaaaaaaaa")));
-        f.setCustomerFix(entityManager.persist(new CustomerFix("1123456789")));
+        f.setCustomerFix(entityManager.persist(new CustomerFix("0111111111","aaaaaaaaaa","khnan@gmail.com")));
         f.setDatainfo(entityManager.persist(new Datainfo("aaaaaaaaaa")));
-        f.setInstruType(null);
+        f.setInstruType(entityManager.persist(new InstruType(null)));
         f.setManagerinfo(entityManager.persist(new Managerinfo("aaaaaaaaaa")));
         try {
             entityManager.persist(f);
@@ -185,10 +184,10 @@ public class FixMainTest {
         FixMain f = new FixMain();
         f.setCost(1000000);
         f.setItemFix(entityManager.persist(new ItemFix("aaaaaaaaaa")));
-        f.setCustomerFix(entityManager.persist(new CustomerFix("1123456789")));
+        f.setCustomerFix(entityManager.persist(new CustomerFix("0111111111","aaaaaaaaaa","khnan@gmail.com")));
         f.setDatainfo(entityManager.persist(new Datainfo("aaaaaaaaaa")));
         f.setInstruType(entityManager.persist(new InstruType("aaaaaaaaaa")));
-        f.setManagerinfo(null);
+        f.setManagerinfo(entityManager.persist(new Managerinfo(null)));
         try {
             entityManager.persist(f);
             entityManager.flush();
@@ -213,7 +212,7 @@ public class FixMainTest {
         FixMain f = new FixMain();
         f.setCost(1000000);
         f.setItemFix(entityManager.persist(new ItemFix("aaaaaaaaaa")));
-        f.setCustomerFix(entityManager.persist(new CustomerFix("011")));
+        f.setCustomerFix(entityManager.persist(new CustomerFix("011","aaaaaaaaaa","khnan@gmail.com")));
         f.setDatainfo(entityManager.persist(new Datainfo("aaaaaaaaaa")));
         f.setInstruType(entityManager.persist(new InstruType("aaaaaaaaaa")));
         f.setManagerinfo(entityManager.persist(new Managerinfo("aaaaaaaaaa")));
@@ -239,7 +238,7 @@ public class FixMainTest {
         FixMain f = new FixMain();
         f.setCost(1000000);
         f.setItemFix(entityManager.persist(new ItemFix("aaaaaaaaaa")));
-        f.setCustomerFix(entityManager.persist(new CustomerFix("011111111111111111111111111")));
+        f.setCustomerFix(entityManager.persist(new CustomerFix("0111111111111","aaaaaaaaaa","khnan@gmail.com")));
         f.setDatainfo(entityManager.persist(new Datainfo("aaaaaaaaaa")));
         f.setInstruType(entityManager.persist(new InstruType("aaaaaaaaaa")));
         f.setManagerinfo(entityManager.persist(new Managerinfo("aaaaaaaaaa")));
@@ -265,7 +264,7 @@ public class FixMainTest {
         FixMain f = new FixMain();
         f.setCost(1000000);
         f.setItemFix(entityManager.persist(new ItemFix("aaaaaaaaaa")));
-        f.setCustomerFix(entityManager.persist(new CustomerFix("-*/-*/-*/-")));
+        f.setCustomerFix(entityManager.persist(new CustomerFix("-*/-*/-*/-","aaaaaaaaaa","khnan@gmail.com")));
         f.setDatainfo(entityManager.persist(new Datainfo("aaaaaaaaaa")));
         f.setInstruType(entityManager.persist(new InstruType("aaaaaaaaaa")));
         f.setManagerinfo(entityManager.persist(new Managerinfo("aaaaaaaaaa")));
@@ -287,35 +286,136 @@ public class FixMainTest {
         }
     }
     @Test
-    public void testUniqueTelFix() {
+    public void TestAnythingIsPositive() {
         FixMain f = new FixMain();
-        FixMain f1 = new FixMain();
         f.setCost(1000000);
         f.setItemFix(entityManager.persist(new ItemFix("aaaaaaaaaa")));
-        f.setCustomerFix(entityManager.persist(new CustomerFix("0123456789")));
+        f.setCustomerFix(entityManager.persist(new CustomerFix("0111111111111","aaaaaaaaaa","khnan@gmail.com")));
         f.setDatainfo(entityManager.persist(new Datainfo("aaaaaaaaaa")));
         f.setInstruType(entityManager.persist(new InstruType("aaaaaaaaaa")));
         f.setManagerinfo(entityManager.persist(new Managerinfo("aaaaaaaaaa")));
-
-        f.setCost(2000000);
-        f.setItemFix(entityManager.persist(new ItemFix("bbbbbbbbbb")));
-        f.setCustomerFix(entityManager.persist(new CustomerFix("0123456789")));
-        f.setDatainfo(entityManager.persist(new Datainfo("bbbbbbbbbb")));
-        f.setInstruType(entityManager.persist(new InstruType("bbbbbbbbbb")));
-        f.setManagerinfo(entityManager.persist(new Managerinfo("bbbbbbbbbb")));
-
         try {
             entityManager.persist(f);
             entityManager.flush();
-            entityManager.persist(f1);
-            entityManager.flush();
+
             fail("Should not pass to this line");
-        } catch(javax.persistence.PersistenceException e) {
+        } catch (javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
             System.out.println();
-            System.out.println(" --------------------- "+e+"Err Unique Tel FIX --------------------------------");
+            System.out.println(" Anythings is Positive");
+            System.out.println(e);
             System.out.println();
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+
         }
     }
+    //test CustomerFix = Null
+    @Test
+    public void TestCustomerFixCusNameCannotNull(){
+        FixMain f = new FixMain();
+        f.setCost(1000);
+        f.setItemFix(entityManager.persist(new ItemFix ("aaaaaaaaaa")));
+        f.setCustomerFix(entityManager.persist(new CustomerFix("0111111111",null,"khnan@gmail.com")));
+        f.setDatainfo(entityManager.persist(new Datainfo("aaaaaaaaaa")));
+        f.setInstruType(entityManager.persist(new InstruType("aaaaaaaaaa")));
+        f.setManagerinfo(entityManager.persist(new Managerinfo("aaaaaaaaaa")));
+        try {
+            entityManager.persist(f);
+            entityManager.flush();
 
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println(" Customer NAME Null");
+            System.out.println(e);
+            System.out.println();
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+
+        }
+    }
+    //test CustomerFix = Null
+    @Test
+    public void TestCustomerFixEmailCannotNull(){
+        FixMain f = new FixMain();
+        f.setCost(1000);
+        f.setItemFix(entityManager.persist(new ItemFix ("aaaaaaaaaa")));
+        f.setCustomerFix(entityManager.persist(new CustomerFix("0111111111","aaaaaaaaaa",null)));
+        f.setDatainfo(entityManager.persist(new Datainfo("aaaaaaaaaa")));
+        f.setInstruType(entityManager.persist(new InstruType("aaaaaaaaaa")));
+        f.setManagerinfo(entityManager.persist(new Managerinfo("aaaaaaaaaa")));
+        try {
+            entityManager.persist(f);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println(" Customer Email Null");
+            System.out.println(e);
+            System.out.println();
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+
+        }
+    }
+    @Test
+    public void TestCostIsPositiveOrZero() {
+        FixMain f = new FixMain();
+        f.setCost(-1);
+        f.setItemFix(entityManager.persist(new ItemFix("aaaaaaaaaa")));
+        f.setCustomerFix(entityManager.persist(new CustomerFix("0111111111111","aaaaaaaaaa","khnan@gmail.com")));
+        f.setDatainfo(entityManager.persist(new Datainfo("aaaaaaaaaa")));
+        f.setInstruType(entityManager.persist(new InstruType("aaaaaaaaaa")));
+        f.setManagerinfo(entityManager.persist(new Managerinfo("aaaaaaaaaa")));
+        try {
+            entityManager.persist(f);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println(" Cost is Positive");
+            System.out.println(e);
+            System.out.println();
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+
+        }
+    }
+    @Test
+    public void EmailNotBeEmailPattern() {
+        FixMain f = new FixMain();
+        f.setCost(1000);
+        f.setItemFix(entityManager.persist(new ItemFix("aaaaaaaaaa")));
+        f.setCustomerFix(entityManager.persist(new CustomerFix("0111111111111","aaaaaaaaaa","aaaaaaaaaa")));
+        f.setDatainfo(entityManager.persist(new Datainfo("aaaaaaaaaa")));
+        f.setInstruType(entityManager.persist(new InstruType("aaaaaaaaaa")));
+        f.setManagerinfo(entityManager.persist(new Managerinfo("aaaaaaaaaa")));
+        try {
+            entityManager.persist(f);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println(" Email is Email");
+            System.out.println(e);
+            System.out.println();
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+
+        }
+    }
 }
 

@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 
 @Data
 @Entity
@@ -24,6 +26,15 @@ public class Customer {
     private @NonNull String username;
     private @NonNull String password;
     private @NonNull String customerName;
-    private  String email;
-    private  String tel;
+    @Email
+    private @NonNull String email;
+    @Size(min = 10,max = 10)
+    private @NonNull String tel;
+
+    public Customer(String customerName,String email,String tel) {
+        this.customerName = customerName;
+        this.email = email;
+        this.tel = tel;
+
+    }
 }

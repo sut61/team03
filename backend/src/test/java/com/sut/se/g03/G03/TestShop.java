@@ -26,6 +26,8 @@ public class TestShop {
     @Autowired
     private ShopRepository shopRepository;
     @Autowired
+    private ItemRepository itemRepository;
+    @Autowired
     private TestEntityManager entityManager;
 
     private Validator validator;
@@ -286,4 +288,141 @@ public class TestShop {
             System.out.println();
         }
     }
+    @Test
+    public void TestItemNameCannotNull() {
+        Shop f = new Shop();
+        f.setItemNum(2);
+        f.setSubdist("aaaaaaaaaaaaaaa");
+        f.setCustomerName("aaaaaaaaaaaaaaa");
+        f.setEmail("khnan@gmail.com");
+        f.setTel("0111111111");
+        f.setItem(entityManager.persist(new Item(null,1000,1,"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")));
+
+        try {
+            entityManager.persist(f);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println(" District Null");
+            System.out.println(e);
+            System.out.println();
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+
+        }
+    }
+    @Test
+    public void TestPriceCannotNull() {
+        Shop f = new Shop();
+        f.setItemNum(2);
+        f.setSubdist("aaaaaaaaaaaaaaa");
+        f.setCustomerName("aaaaaaaaaaaaaaa");
+        f.setEmail("khnan@gmail.com");
+        f.setTel("0111111111");
+        f.setItem(entityManager.persist(new Item("aaaaaaaaaaaaaaa",null,1,"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")));
+
+        try {
+            entityManager.persist(f);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println(" Price Null");
+            System.out.println(e);
+            System.out.println();
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+
+        }
+    }
+    @Test
+    public void TestItemNumCannotNull() {
+        Shop f = new Shop();
+        f.setItemNum(2);
+        f.setSubdist("aaaaaaaaaaaaaaa");
+        f.setCustomerName("aaaaaaaaaaaaaaa");
+        f.setEmail("khnan@gmail.com");
+        f.setTel("0111111111");
+        f.setItem(entityManager.persist(new Item("aaaaaaaaaaaaaaa",1000,null,"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")));
+
+        try {
+            entityManager.persist(f);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println(" ItemNum Null");
+            System.out.println(e);
+            System.out.println();
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+
+        }
+    }
+    @Test
+    public void TestPicCannotNull() {
+        Shop f = new Shop();
+        f.setItemNum(2);
+        f.setSubdist("aaaaaaaaaaaaaaa");
+        f.setCustomerName("aaaaaaaaaaaaaaa");
+        f.setEmail("khnan@gmail.com");
+        f.setTel("0111111111");
+        f.setItem(entityManager.persist(new Item("aaaaaaaaaaaaaaa",1000,1,null)));
+
+        try {
+            entityManager.persist(f);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println(" Pic Null");
+            System.out.println(e);
+            System.out.println();
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+
+        }
+    }
+    @Test
+    public void TestItemNumPositiveOrZero() {
+        Shop f = new Shop();
+        f.setItemNum(-1);
+        f.setSubdist("aaaaaaaaaaaaaaa");
+        f.setCustomerName("aaaaaaaaaaaaaaa");
+        f.setEmail("khnan@gmail.com");
+        f.setTel("0111111111");
+        f.setItem(entityManager.persist(new Item("aaaaaaaaaaaaaaa",1000,1,"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")));
+
+        try {
+            entityManager.persist(f);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println(" ItemNum PositiveOrZeroTest");
+            System.out.println(e);
+            System.out.println();
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+
+        }
+    }
+
+
 }
