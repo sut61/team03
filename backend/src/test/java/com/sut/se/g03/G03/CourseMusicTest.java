@@ -377,7 +377,7 @@ public class CourseMusicTest {
             System.out.println("");
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
         }
     }
 
@@ -410,7 +410,7 @@ public class CourseMusicTest {
             System.out.println("");
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
         }
     }
 
@@ -438,6 +438,39 @@ public class CourseMusicTest {
             System.out.println("");
             System.out.println("");
             System.out.println("Test CourseMusicFnameCannotBeNumber Pass");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("");
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+    @Test
+    public void testCourseMusicFnameOnlyThaiLanguage() {
+        CourseMusic cm = new CourseMusic();
+        cm.setFname("abcdefg");
+        cm.setLname("จันทวัติกุล");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
+        cm.setTelephone("0986270527");
+        cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
+
+
+        try {
+            entityManager.persist(cm);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println("");
+            System.out.println("");
+            System.out.println("Test CourseMusicFnameOnlyThaiLanguage Pass");
             System.out.println("");
             System.out.println("");
             System.out.println("");
@@ -477,7 +510,7 @@ public class CourseMusicTest {
             System.out.println("");
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
         }
     }
 
@@ -510,7 +543,7 @@ public class CourseMusicTest {
             System.out.println("");
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
         }
     }
 
@@ -538,6 +571,39 @@ public class CourseMusicTest {
             System.out.println("");
             System.out.println("");
             System.out.println("Test CourseMusicLnameCannotBeNumber Pass");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("");
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+    @Test
+    public void testCourseMusicLnameOnlyThaiLanguage() {
+        CourseMusic cm = new CourseMusic();
+        cm.setFname("ภัทรพล");
+        cm.setLname("abcdefg");
+        cm.setNickname("อาจารย์ท๊อฟฟี่");
+        cm.setTelephone("0986270527");
+        cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
+
+
+        try {
+            entityManager.persist(cm);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println("");
+            System.out.println("");
+            System.out.println("Test CourseMusicLnameOnlyThaiLanguage Pass");
             System.out.println("");
             System.out.println("");
             System.out.println("");
@@ -576,7 +642,7 @@ public class CourseMusicTest {
             System.out.println("");
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
         }
     }
 
@@ -609,7 +675,7 @@ public class CourseMusicTest {
             System.out.println("");
             Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
             assertEquals(violations.isEmpty(), false);
-            assertEquals(violations.size(), 1);
+            assertEquals(violations.size(), 2);
         }
     }
 
@@ -637,6 +703,39 @@ public class CourseMusicTest {
             System.out.println("");
             System.out.println("");
             System.out.println("Test CourseMusicNicknameCannotBeNumber Pass");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("");
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+    @Test
+    public void testCourseMusicNicknameOnlyThaiLanguage() {
+        CourseMusic cm = new CourseMusic();
+        cm.setFname("ภัทรพล");
+        cm.setLname("จันทวัติกุล");
+        cm.setNickname("abcdefg");
+        cm.setTelephone("0986270527");
+        cm.setClassroom(classroomRepository.findById(1L).get());
+        cm.setCourseTime(courseTimeRepository.findById(1L).get());
+        cm.setPaymentType(paymentTypeRepository.findById(1L).get());
+        cm.setMember(memberRepository.findById(1L).get());
+        cm.setInstrument(instrumentRepository.findById(1L).get());
+
+
+        try {
+            entityManager.persist(cm);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch(javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println("");
+            System.out.println("");
+            System.out.println("Test CourseMusicNicknameOnlyThaiLanguage Pass");
             System.out.println("");
             System.out.println("");
             System.out.println("");
