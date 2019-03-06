@@ -63,6 +63,7 @@ public class BillController{
     }
 
     @PostMapping("/bill/{username}/{billId}/{name}/{tel}/{content}/{price}/{paidStatusId}")
+    @Transactional
     public BillInfo addDamageBill(@PathVariable String username,@PathVariable Long billId,@PathVariable String name,@PathVariable String tel,@PathVariable String content,@PathVariable Float price,@PathVariable Long paidStatusId) {
         BillInfo damageBill = new BillInfo();
         Bill bill = billRepository.findById(billId).get();
