@@ -122,7 +122,7 @@ public class G03Application {
 			createPaidStatus("จ่ายแล้ว");
 			createPaidStatus("ยังไม่จ่ายเงิน");
 			createStatusCourse("ยืนยันการจอง");
-			Bill b = new Bill(new Date(), 1200f, memberRepository.findById(1L).get(),
+			Bill b = new Bill(new Date(), 1000f, memberRepository.findById(1L).get(),
 					paidStatusRepository.findByName("จ่ายแล้ว").get());
 			billRepository.save(b);
 			contactRepository.save(new Contact("abcde fghij", "0823456789", b));

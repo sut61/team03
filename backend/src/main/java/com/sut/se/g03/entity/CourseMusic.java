@@ -24,19 +24,19 @@ public class CourseMusic {
     private Long id;
     @NotNull
     @Size(min = 3, max = 20)
-    @Pattern(regexp = "\\w+|[ก-์]+")
+    @Pattern(regexp = "^(([ก-ู]|[เ-์]){3,20})$")
     @NotBlank
     private String Fname;
 
     @NotNull
     @Size(min = 3, max = 25)
-    @Pattern(regexp = "\\w+|[ก-์]+")
+    @Pattern(regexp = "^(([ก-ู]|[เ-์]){3,25})$")
     @NotBlank
     private String Lname;
     
     @NotNull
     @Size(min = 3, max = 16)
-    @Pattern(regexp = "\\w+|[ก-์]+")
+    @Pattern(regexp = "^(([ก-ู]|[เ-์]){3,16})$")
     @NotBlank
     private String nickname;
 
