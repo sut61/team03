@@ -21,17 +21,11 @@ public class Addproduct {
     private Long id;
 
     @NotNull
-    @Size(min=3, max=30)
-    @Pattern(regexp = "[a-zA-Z]*")
-    private String nameproduct;
-    
-    @NotNull
     @Positive
     @Min(value = 1)
     @Max(value = 100000)
     private int number;
 
-    
     @Positive
     @Min(value = 1)
     @Max(value = 100000)
@@ -46,19 +40,12 @@ public class Addproduct {
     @NotNull
     Date date;
 
-   
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Typeproduct typeproducts;
-
-
     public Addproduct() {}
-    public Addproduct(Typeproduct typeproducts,String nameproduct,int number ,int price,int saleprice,Date date) { // constructor
-        this.nameproduct = nameproduct;
+    public Addproduct(int number ,int price,int saleprice,Date date) { // constructor
         this.number = number;
         this.price = price ;
         this.saleprice = saleprice;
         this.date = date;
-        this.typeproducts = typeproducts;
     }
     public Long getId() {
         return id;
@@ -86,25 +73,10 @@ public class Addproduct {
     public int getSaleprice(){
         return saleprice;
     }
-
-    public void setTypeproducts(Typeproduct typeproducts){
-        this.typeproducts=typeproducts;
-    }
-    public Typeproduct getTypeproducts(){
-        return typeproducts;
-    }
     public void setNumber (int number){
         this.number=number;
     }
     public int getNumber(){
         return number;
     }
-    public void setNameproduct(String nameproduct){
-        this.nameproduct=nameproduct;
-    }
-    public String getNameproduct(){
-        return nameproduct;
-    }
-  
-
 }

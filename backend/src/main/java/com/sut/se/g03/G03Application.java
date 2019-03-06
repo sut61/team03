@@ -490,32 +490,23 @@ public class G03Application {
 	@Bean
 	ApplicationRunner init8(ProductRepository productRepository, PromotionRepository promotionRepository, StaffRepository staffRepository, TypepromotionRepository typepromotionRepository){
 		return args -> {
-			Product product1 = new Product("กีตาร์");
-			Product product2 = new Product("กลอง");
-			Product product3 = new Product("ปี่");
-			Product product4 = new Product("ฉาบ");
-			Product product5 = new Product("ที่ขยายเสียง");
-			Product product6 = new Product("เบส");
-			Product product7 = new Product("สายสะพาย");
-			Product product8 = new Product("กีตาร์-ไฟฟ้า");
-			Product product9 = new Product("ที่จูนสาย");
-			Product product10 = new Product("ฉิ่ง");
+			Product product1 = new Product("guitar");
+			Product product2 = new Product("drum");
+			Product product3 = new Product("Clarinet");
+			Product product4 = new Product("plaster");
+
+
 			productRepository.save(product1);
 			productRepository.save(product2);
 			productRepository.save(product3);
 			productRepository.save(product4);
-			productRepository.save(product5);
-			productRepository.save(product6);
-			productRepository.save(product7);
-			productRepository.save(product8);
-			productRepository.save(product9);
-			productRepository.save(product10);
 
-			Typepromotion typepromotion1 = new Typepromotion("ซื้อ1เเถม1");
-			Typepromotion typepromotion2 = new Typepromotion("นาทีทอง");
-			Typepromotion typepromotion3 = new Typepromotion("ลด20%");
-			Typepromotion typepromotion4= new Typepromotion("ลด50%");
-			Typepromotion typepromotion5 = new Typepromotion("ลด80%");
+
+			Typepromotion typepromotion1 = new Typepromotion("Buy 1 Free 1");
+			Typepromotion typepromotion2 = new Typepromotion("Gold minute");
+			Typepromotion typepromotion3 = new Typepromotion("Reduce20%");
+			Typepromotion typepromotion4= new Typepromotion("Reduce50%");
+			Typepromotion typepromotion5 = new Typepromotion("Reduce80%");
 			typepromotionRepository.save(typepromotion1);
 			typepromotionRepository.save(typepromotion2);
 			typepromotionRepository.save(typepromotion3);
@@ -540,17 +531,17 @@ public class G03Application {
 		return args -> {
 			
 
-			Typeproduct typeproduct1 = new Typeproduct("กลอง");
-			Typeproduct typeproduct2 = new Typeproduct("กีตาร์และเบส");
-			Typeproduct typeproduct3 = new Typeproduct("เครื่องสาย");
-			Typeproduct typeproduct4 = new Typeproduct("กีตาร์และเบส");
-			Typeproduct typeproduct5 = new Typeproduct("เครื่องดนตรีมาร์ชชิ่ง");
-			Typeproduct typeproduct6 = new Typeproduct("เครื่องเพอร์คัชชั่น");
+			Typeproduct typeproduct1 = new Typeproduct("drum");
+			Typeproduct typeproduct2 = new Typeproduct(" Guitar and bass");
+			Typeproduct typeproduct3 = new Typeproduct("stringed band");
+
+			Typeproduct typeproduct5 = new Typeproduct("Marching instrument");
+			Typeproduct typeproduct6 = new Typeproduct("Percussion instrument");
 			
 			typeproductRepository.save(typeproduct1);
 			typeproductRepository.save(typeproduct2);
 			typeproductRepository.save(typeproduct3);
-			typeproductRepository.save(typeproduct4);
+
 			typeproductRepository.save(typeproduct5);
 			typeproductRepository.save(typeproduct6);
 
