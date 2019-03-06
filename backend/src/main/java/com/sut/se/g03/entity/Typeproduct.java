@@ -8,6 +8,7 @@ import lombok.ToString;
 import javax.persistence.*;
 
 
+import javax.validation.constraints.NotNull;
 @Entity
 @ToString
 @EqualsAndHashCode
@@ -18,7 +19,7 @@ public class Typeproduct {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "typeproduct_seq")
 
     private  Long id;
-    
+    @NotNull
     private  String typeproducts;
    
     public Typeproduct() {

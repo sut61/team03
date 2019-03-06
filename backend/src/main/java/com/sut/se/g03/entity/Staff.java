@@ -3,6 +3,7 @@ package com.sut.se.g03.entity;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 @Entity
 @ToString
 @EqualsAndHashCode
@@ -11,6 +12,8 @@ public class Staff {
     @SequenceGenerator(name = "staff_seq",sequenceName = "staff_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "staff_seq")
     private Long id;
+
+    @NotNull
     private String staffName;
     public Staff(){}
 

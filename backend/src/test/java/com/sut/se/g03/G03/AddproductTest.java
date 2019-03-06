@@ -16,7 +16,8 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,10 +34,8 @@ public class AddproductTest {
 
     @Autowired
     private AddproductRepository addproductRepository;
-
     @Autowired
     private TestEntityManager entityManager;
-
     private Validator validator;
 
     @Before
@@ -45,11 +44,12 @@ public class AddproductTest {
         validator = factory.getValidator();
     }
 
-    
     @Test
-    public void testContractEntitySuccess() {
+    public void testEntitySuccess() {
+
         Addproduct a = new Addproduct();
         Product p = new Product();
+       
         p.setAddproduct("test");
         a.setNumber(5);
         a.setPrice(10);
@@ -255,7 +255,7 @@ public class AddproductTest {
         }
     }
     @Test
-    public void TestTelSizeMax() {
+    public void TestnameproductSizeMax() {
         Addproduct a = new Addproduct();
         Product p = new Product();
         p.setAddproduct("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
@@ -302,7 +302,7 @@ public class AddproductTest {
             System.out.println();
             System.out.println();
             System.out.println();
-            System.out.println("---------------------->>Test Grade Negative<<------------------------");
+            System.out.println("---------------------->>Test number Negative<<------------------------");
             System.out.println(e.getMessage());
             System.out.println();
             System.out.println();
@@ -313,5 +313,64 @@ public class AddproductTest {
         }
 
     }
+    @Test
+    public void Testnulltypeproducrt () {
+        Typeproduct t = new Typeproduct();
+        t.setTypeproduct(null);
+        try {
+            entityManager.persist(t);
+            entityManager.flush();
+
+           // fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+
+            System.out.println();
+            System.out.println();
+            System.out.println();
+            System.out.println("---------------------->>Test Null type product<------------------------");
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println();
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+ 
+    @Test
+    public void Datenull() {
+        Addproduct a = new Addproduct();
+        Product p = new Product();
+        p.setAddproduct("test");
+        a.setNumber(5);
+        a.setPrice(10);
+        a.setSaleprice(100);
+        a.setDate(null);
+
+        try {
+            entityManager.persist(a);
+            entityManager.persist(p);
+            entityManager.flush();
+
+            fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+
+            System.out.println();
+            System.out.println();
+            System.out.println();
+            System.out.println("---------------------->>Test Date not null<<------------------------");
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println();
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+
+    }
+ 
+
 
 }

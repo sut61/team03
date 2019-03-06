@@ -4,6 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @ToString
@@ -14,7 +15,7 @@ public class Typepromotion {
     @SequenceGenerator(name = "typepromotion_seq",sequenceName = "typepromotion_seq")
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "typepromotion_seq")
     private Long id;
-
+    @NotNull
     private String typePromotinos;
 
     public Typepromotion(){}
