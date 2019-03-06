@@ -49,7 +49,8 @@ public class AddproductTest {
     @Test
     public void testContractEntitySuccess() {
         Addproduct a = new Addproduct();
-        a.setNameproduct("test");
+        Product p = new Product();
+        p.setAddproduct("test");
         a.setNumber(5);
         a.setPrice(10);
         a.setSaleprice(100);
@@ -57,6 +58,7 @@ public class AddproductTest {
 
         try {
             entityManager.persist(a);
+            entityManager.persist(p);
             entityManager.flush();
             
             //fail("Should not pass to the line")
@@ -73,7 +75,8 @@ public class AddproductTest {
     @Test
     public void NameproductNull() {
         Addproduct a = new Addproduct();
-        a.setNameproduct(null);
+        Product p = new Product();
+        p.setAddproduct(null);
         a.setNumber(5);
         a.setPrice(6);
         a.setSaleprice(100);
@@ -81,6 +84,7 @@ public class AddproductTest {
 
         try {
             entityManager.persist(a);
+            entityManager.persist(p);
             entityManager.flush();
 
             fail("Should not pass to this line");
@@ -100,7 +104,8 @@ public class AddproductTest {
     @Test
     public void PriceNegative() {
         Addproduct a = new Addproduct();
-        a.setNameproduct("test");
+        Product p = new Product();
+        p.setAddproduct("test");
         a.setNumber(5);
         a.setPrice(-6);
         a.setSaleprice(100);
@@ -108,6 +113,7 @@ public class AddproductTest {
 
         try {
             entityManager.persist(a);
+            entityManager.persist(p);
             entityManager.flush();
 
             fail("Should not pass to this line");
@@ -130,7 +136,8 @@ public class AddproductTest {
     @Test
     public void NumberZero() {
         Addproduct a = new Addproduct();
-        a.setNameproduct("test");
+        Product p = new Product();
+        p.setAddproduct("test");
         a.setNumber(0);
         a.setPrice(6);
         a.setSaleprice(100);
@@ -138,6 +145,7 @@ public class AddproductTest {
 
         try {
             entityManager.persist(a);
+            entityManager.persist(p);
             entityManager.flush();
 
             fail("Should not pass to this line");
@@ -161,7 +169,8 @@ public class AddproductTest {
     @Test
     public void SalepriceNegative() {
         Addproduct a = new Addproduct();
-        a.setNameproduct("test");
+        Product p = new Product();
+        p.setAddproduct("test");
         a.setNumber(5);
         a.setPrice(6);
         a.setSaleprice(-100);
@@ -169,6 +178,7 @@ public class AddproductTest {
 
         try {
             entityManager.persist(a);
+            entityManager.persist(p);
             entityManager.flush();
 
             fail("Should not pass to this line");
@@ -190,9 +200,10 @@ public class AddproductTest {
     }
     
     @Test
-    public void TestTelPatternError() {
+    public void TestNamePatternError() {
         Addproduct a = new Addproduct();
-        a.setNameproduct("*#@!@#$");
+        Product p = new Product();
+        p.setAddproduct("*#@!@#$");
         a.setNumber(5);
         a.setPrice(6);
         a.setSaleprice(100);
@@ -200,6 +211,7 @@ public class AddproductTest {
 
         try {
             entityManager.persist(a);
+            entityManager.persist(p);
             entityManager.flush();
 
             fail("Should not pass to this line");
@@ -218,13 +230,15 @@ public class AddproductTest {
     @Test
     public void NameproductSizeMin() {
         Addproduct a = new Addproduct();
-        a.setNameproduct("hh");
+        Product p = new Product();
+        p.setAddproduct("hh");
         a.setNumber(5);
         a.setPrice(6);
         a.setSaleprice(100);
         a.setDate(new Date());
         try {
             entityManager.persist(a);
+            entityManager.persist(p);
             entityManager.flush();
 
             fail("Should not pass to this line");
@@ -243,13 +257,15 @@ public class AddproductTest {
     @Test
     public void TestTelSizeMax() {
         Addproduct a = new Addproduct();
-        a.setNameproduct("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+        Product p = new Product();
+        p.setAddproduct("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
         a.setNumber(5);
         a.setPrice(6);
         a.setSaleprice(100);
         a.setDate(new Date());
         try {
             entityManager.persist(a);
+            entityManager.persist(p);
             entityManager.flush();
 
             fail("Should not pass to this line");
@@ -268,7 +284,8 @@ public class AddproductTest {
     @Test
     public void NumberNegative() {
         Addproduct a = new Addproduct();
-        a.setNameproduct("test");
+        Product p = new Product();
+        p.setAddproduct("test");
         a.setNumber(-5);
         a.setPrice(6);
         a.setSaleprice(100);
@@ -276,6 +293,7 @@ public class AddproductTest {
 
         try {
             entityManager.persist(a);
+            entityManager.persist(p);
             entityManager.flush();
 
             fail("Should not pass to this line");
