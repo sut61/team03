@@ -8,6 +8,7 @@ import java.util.*;
 import com.fasterxml.jackson.core.JsonParseException;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -90,6 +91,7 @@ public class CourseMusicController{
     }
 
     @PostMapping("/courseMusic/createCourseMusic/{username}/{Fname}/{Lname}/{nickname}/{telephone}/{instrumentId}/{courseTimeId}/{classroomId}/{paymentTypeId}")
+    @Transactional
     public CourseMusic newCourseMusic(@PathVariable String username,@PathVariable String Fname,@PathVariable String Lname,@PathVariable String nickname,@PathVariable String telephone,@PathVariable Long instrumentId,@PathVariable Long courseTimeId,@PathVariable Long classroomId,@PathVariable Long paymentTypeId) {
         CourseMusic newCourseMusic = new CourseMusic();
         Member member = memberRepository.findByUserName(username);
@@ -111,19 +113,20 @@ public class CourseMusicController{
     } 
 
     @PutMapping("/courseMusic/editCourseMusic/{username}/{courseMusicId}/{instrumentId}/{courseTimeId}/{classroomId}/{paymentTypeId}")
-    public CourseMusic newCourseMusic(@PathVariable String username,@PathVariable Long courseMusicId,@PathVariable Long instrumentId,@PathVariable Long courseTimeId,@PathVariable Long classroomId,@PathVariable Long paymentTypeId) {
-        CourseMusic newCourseMusic = courseMusicRepository.findById(courseMusicId).get();
+    @Transactional
+    public CourseMusic updateCourseMusic(@PathVariable String username,@PathVariable Long courseMusicId,@PathVariable Long instrumentId,@PathVariable Long courseTimeId,@PathVariable Long classroomId,@PathVariable Long paymentTypeId) {
+        CourseMusic updateCourseMusic = courseMusicRepository.findById(courseMusicId).get();
         Member member = memberRepository.findByUserName(username);
         Instrument instrument = instrumentRepository.findById(instrumentId).get();
         CourseTime courseTime = courseTimeRepository.findById(courseTimeId).get();
         Classroom classroom = classroomRepository.findById(classroomId).get();
         PaymentType paymentType = paymentTypeRepository.findById(paymentTypeId).get();
-        newCourseMusic.setMember(member);
-        newCourseMusic.setInstrument(instrument);
-        newCourseMusic.setCourseTime(courseTime);
-        newCourseMusic.setClassroom(classroom);
-        newCourseMusic.setPaymentType(paymentType);
-        return courseMusicRepository.save(newCourseMusic);
+        updateCourseMusic.setMember(member);
+        updateCourseMusic.setInstrument(instrument);
+        updateCourseMusic.setCourseTime(courseTime);
+        updateCourseMusic.setClassroom(classroom);
+        updateCourseMusic.setPaymentType(paymentType);
+        return courseMusicRepository.save(updateCourseMusic);
     } 
 
 

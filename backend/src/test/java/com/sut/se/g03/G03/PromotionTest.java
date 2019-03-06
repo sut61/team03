@@ -256,6 +256,55 @@ public class PromotionTest {
             assertEquals(violations.size(), 1);
         }
     }
+    @Test
+    public void TestnullNamestaff () {
+        Staff t = new Staff();
+        t.setStaffName(null);
+        try {
+            entityManager.persist(t);
+            entityManager.flush();
+
+           // fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+
+            System.out.println();
+            System.out.println();
+            System.out.println();
+            System.out.println("---------------------->>Test Null Name staff<------------------------");
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println();
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
+
+    @Test
+    public void Testnulltypepromotion () {
+        Typepromotion t = new Typepromotion();
+        t.setTypePromotinos(null);
+        try {
+            entityManager.persist(t);
+            entityManager.flush();
+
+           // fail("Should not pass to this line");
+        } catch (javax.validation.ConstraintViolationException e) {
+
+            System.out.println();
+            System.out.println();
+            System.out.println();
+            System.out.println("---------------------->>Test Null typepromotion<------------------------");
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println();
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+            assertEquals(violations.size(), 1);
+        }
+    }
 	
 
 
