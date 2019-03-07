@@ -64,28 +64,26 @@ public class BillController{
 
     @PostMapping("/bill/{username}/{billId}/{name}/{tel}/{content}/{price}/{paidStatusId}")
     @Transactional
-    public BillInfo addDamageBill(@PathVariable String username,@PathVariable Long billId,@PathVariable String name,@PathVariable String tel,@PathVariable String content,@PathVariable Float price,@PathVariable Long paidStatusId) {
-        BillInfo damageBill = new BillInfo();
+    public void AddDamageBill(@PathVariable String username,@PathVariable Long billId,@PathVariable String name,@PathVariable String tel,@PathVariable String content,@PathVariable Float price,@PathVariable Long paidStatusId) {
+        BillInfo billInfo = new BillInfo();
         Bill bill = billRepository.findById(billId).get();
         Contact contact = new Contact();
         Member member = memberRepository.findByUserName(username);
         PaidStatus paidStatus = paidStatusRepository.findById(paidStatusId).get();
         
-
         bill.setMember(member);
-        damageBill.setBill(bill);
+        billInfo.setBill(bill);
         contact.setBill(bill);
         contact.setName(name);
         contact.setTel(tel);
-        damageBill.setContent(content);
-        damageBill.setPrice(price);
+        billInfo.setContent(content);
+        billInfo.setPrice(price);
         bill.setPaidStatus(paidStatus);
 
         bill.setTotalPrice(price + bill.getTotalPrice());
-        billRepository.save(bill);
+        billInfoRepository.save(billInfo);
         contactRepository.save(contact);
-        
-        return billInfoRepository.save(damageBill);
+        billRepository.save(bill);
     } 
 
     
