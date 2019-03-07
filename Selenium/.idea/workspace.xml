@@ -16,6 +16,7 @@
       <change beforePath="$PROJECT_DIR$/B5907588/B5907588 Sprint2 ระบบรับซ่อมและตรวจเช็คอุปกรณ์.html" beforeDir="false" afterPath="$PROJECT_DIR$/B5907588/B5907588 Sprint2 ระบบรับซ่อมและตรวจเช็คอุปกรณ์.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/B5916153/Classify Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/B5916153/Classify Test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/B5916153/Room Reserve Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/B5916153/Room Reserve Test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/B5923465/B5923465 sprint1 ระบบจัดการบิลล์ค่าเสียหาย.html" beforeDir="false" afterPath="$PROJECT_DIR$/B5923465/B5923465 sprint1 ระบบจัดการบิลล์ค่าเสียหาย.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/B5923465/B5923465 sprint2 ระบบจัดคอร์สสอนดนตรี.html" beforeDir="false" afterPath="$PROJECT_DIR$/B5923465/B5923465 sprint2 ระบบจัดคอร์สสอนดนตรี.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
@@ -360,12 +361,12 @@
     <session id="1059868167">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.0" value="4" />
           <entry key="project.open.time.1" value="4" />
-          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="10" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -446,10 +447,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="26" />
-    <option name="width" value="1940" />
-    <option name="height" value="1060" />
+    <option name="x" value="952" />
+    <option name="y" value="30" />
+    <option name="width" value="975" />
+    <option name="height" value="1058" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -457,6 +458,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -494,14 +496,13 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551515372644" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -542,17 +543,18 @@
       <workItem from="1550843366618" duration="414000" />
       <workItem from="1551515309032" duration="71000" />
       <workItem from="1551515787411" duration="89000" />
+      <workItem from="1551930029432" duration="58000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5836000" />
+    <option name="totallyTimeSpent" value="5894000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="23" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.36979866" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3751678" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />

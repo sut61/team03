@@ -34,7 +34,7 @@ public class ServiceTypeTest {
     @Test
     public  void testServiceType(){}
 
-   // @Test
+    @Test
     public void testTypeServiceCannotNull(){
         ServiceType s = new ServiceType();
         s.setTypeService(null);
