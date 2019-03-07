@@ -48,26 +48,16 @@ export class BillComponent implements OnInit {
   }
 
   postBill() {
-    if(this.billSelect === 0 || this.InputName === '' || this.InputTel === '' || this.Inputdetail === ''|| this.Inputprice === 0 ||
-    this.paidStatusSelect === 0) {
-
-    this.showCheck = "กรุณากรอกข้อมูลให้ครบถ้วน"
-  }
-    else{
-      this.billService.addDamageBill( this.billSelect, this.InputName, this.InputTel, this.Inputdetail, this.Inputprice,
-        this.paidStatusSelect, this.token.getUsername() ).subscribe(
-        data => {
-          this.getBillList();
-          this.showCheck = "การเพิ่มข้อมูลสำเร็จ"
-        },
-        error => {
-          console.log("Error", error);
-          this.showCheck = "เกิดข้อผิดพลาด"
-        }
-      );
-
-  }
-
-
+    this.billService.addDamageBill( this.billSelect, this.InputName, this.InputTel, this.Inputdetail, this.Inputprice,
+      this.paidStatusSelect, this.token.getUsername() ).subscribe(
+      data => {
+        this.getBillList();
+        this.showCheck = "เพิ่มข้อมูลสำเร็จ"
+      },
+      error => {
+        console.log("Error", error);
+        this.showCheck = "เกิดข้อผิดพลาด"
+      }
+    );
 }
 }
