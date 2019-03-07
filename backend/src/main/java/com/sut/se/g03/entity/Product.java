@@ -34,6 +34,12 @@ public class Product {
         this.addproduct = addproduct;
     }
 
+    public Product(String addproduct, Typeproduct typeproducts, Addproduct product){
+        this.addproduct = addproduct;
+        this.typeproducts = typeproducts;
+        this.product = product;
+    }
+
     public Long getId() {
         return id;
     }
