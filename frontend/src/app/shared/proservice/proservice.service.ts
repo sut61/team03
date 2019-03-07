@@ -17,6 +17,9 @@ export class ProserviceService {
   getTypeproduct(): Observable<any>{
     return this.httpClient.get(this.API+'/typeproduct');
   }
+  getProduct(): Observable<any>{
+    return this.httpClient.get(this.API+'/product');
+  }
 
 
 }

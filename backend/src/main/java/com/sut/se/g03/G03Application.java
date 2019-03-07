@@ -487,13 +487,44 @@ public class G03Application {
 		}
 	}
 
+
 	@Bean
-	ApplicationRunner init8(ProductRepository productRepository, PromotionRepository promotionRepository, StaffRepository staffRepository, TypepromotionRepository typepromotionRepository){
+	ApplicationRunner init08(TypeproductRepository typeproductRepository){
 		return args -> {
-			Product product1 = new Product("guitar");
-			Product product2 = new Product("drum");
-			Product product3 = new Product("Clarinet");
-			Product product4 = new Product("plaster");
+		
+			Typeproduct typeproduct1 = new Typeproduct("drum");
+			Typeproduct typeproduct2 = new Typeproduct(" Guitar and bass");
+			Typeproduct typeproduct3 = new Typeproduct("stringed band");
+
+			Typeproduct typeproduct5 = new Typeproduct("Marching instrument");
+			Typeproduct typeproduct6 = new Typeproduct("Percussion instrument");
+			
+			typeproductRepository.save(typeproduct1);
+			typeproductRepository.save(typeproduct2);
+			typeproductRepository.save(typeproduct3);
+
+			typeproductRepository.save(typeproduct5);
+			typeproductRepository.save(typeproduct6);
+
+		
+
+		};
+	}
+
+	@Bean
+	ApplicationRunner init8(ProductRepository productRepository, PromotionRepository promotionRepository, StaffRepository staffRepository, TypepromotionRepository typepromotionRepository,
+		AddproductRepository addproductRepository, TypeproductRepository typeproductRepository){
+		return args -> {
+			Date date = new Date();
+			Addproduct add = new Addproduct(1,1,1,date);
+			addproductRepository.save(add);
+			
+			Typeproduct typeproduct = typeproductRepository.findById(1L).get();
+			
+			Product product1 = new Product("guitar",typeproduct,add);
+			Product product2 = new Product("drum",typeproduct,add);
+			Product product3 = new Product("Clarinet",typeproduct,add);
+			Product product4 = new Product("plaster",typeproduct,add);
 
 
 			productRepository.save(product1);
@@ -525,29 +556,4 @@ public class G03Application {
 
 		};
 	}
-
-	@Bean
-	ApplicationRunner init08(TypeproductRepository typeproductRepository){
-		return args -> {
-			
-
-			Typeproduct typeproduct1 = new Typeproduct("drum");
-			Typeproduct typeproduct2 = new Typeproduct(" Guitar and bass");
-			Typeproduct typeproduct3 = new Typeproduct("stringed band");
-
-			Typeproduct typeproduct5 = new Typeproduct("Marching instrument");
-			Typeproduct typeproduct6 = new Typeproduct("Percussion instrument");
-			
-			typeproductRepository.save(typeproduct1);
-			typeproductRepository.save(typeproduct2);
-			typeproductRepository.save(typeproduct3);
-
-			typeproductRepository.save(typeproduct5);
-			typeproductRepository.save(typeproduct6);
-
-		
-
-		};
-	}
-
 }

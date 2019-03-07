@@ -12,10 +12,16 @@ export class ProductShowComponent implements OnInit {
 
   constructor(private controller:ProserviceService,private httpClient:HttpClient,private router:Router) { }
   addproduct:Array<any>;
+  products:Array<any>;
   ngOnInit() {
     this.controller.getAddproduct().subscribe(data =>{
       this.addproduct = data;
       console.log(this.addproduct);
+    })
+
+    this.controller.getProduct().subscribe(data =>{
+      this.products = data;
+      console.log(this.products);
     })
   }
 
