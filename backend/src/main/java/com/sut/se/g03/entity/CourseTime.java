@@ -7,6 +7,8 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.sql.Time;
 
+import javax.validation.constraints.NotNull;
+
 @Entity
 @ToString
 @EqualsAndHashCode
@@ -16,8 +18,11 @@ public class CourseTime {
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="courseTime_seq")
     @Id
     private Long id;
+    @NotNull
     private String day;
+    @NotNull
     private Time start;
+    @NotNull
     private Time end;
 
     public CourseTime(){}
