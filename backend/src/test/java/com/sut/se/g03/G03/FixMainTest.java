@@ -417,5 +417,31 @@ public class FixMainTest {
 
         }
     }
+    @Test
+    public void TestFixMainAllCorrect() {
+        FixMain f = new FixMain();
+        f.setCost(1000);
+        f.setItemFix(entityManager.persist(new ItemFix("aaaaaaaaaa")));
+        f.setCustomerFix(entityManager.persist(new CustomerFix("0111111111111","aaaaaaaaaa","khnan@gmail.com")));
+        f.setDatainfo(entityManager.persist(new Datainfo("aaaaaaaaaa")));
+        f.setInstruType(entityManager.persist(new InstruType("aaaaaaaaaa")));
+        f.setManagerinfo(entityManager.persist(new Managerinfo("aaaaaaaaaa")));
+        try {
+            entityManager.persist(f);
+            entityManager.flush();
+
+            System.out.println("Test FixMain All Correct");
+        } catch (javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println("Test FixMain All Correct");
+            System.out.println(e);
+            System.out.println();
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+
+        }
+    }
 }
 

@@ -423,6 +423,32 @@ public class TestShop {
 
         }
     }
+    @Test
+    public void TsetShopAllCorrect() {
+        Shop f = new Shop();
+        f.setItemNum(2);
+        f.setSubdist("aaaaaaaaaaaaaaa");
+        f.setCustomerName("aaaaaaaaaaaaaaa");
+        f.setEmail("khnan@gmail.com");
+        f.setTel("0111111111");
+        f.setItem(entityManager.persist(new Item("aaaaaaaaaaaaaaa",1000,1,"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")));
+        f.setDistrictShop(entityManager.persist(new District("aaaaaaaaaaaaaaa")));
+        try {
+            entityManager.persist(f);
+            entityManager.flush();
+            System.out.println(" Add Shop All Correct");
+        } catch (javax.validation.ConstraintViolationException e) {
+            System.out.println(e.getMessage());
+            System.out.println();
+            System.out.println(" Add Shop All Correct");
+            System.out.println(e);
+            System.out.println();
+
+            Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
+            assertEquals(violations.isEmpty(), false);
+
+        }
+    }
 
 
 }
