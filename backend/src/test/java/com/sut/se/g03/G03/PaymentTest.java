@@ -80,7 +80,7 @@ public class PaymentTest {
 
     //Receive = null
     @Test
-    public void testPriceCannotNull(){
+    public void testReceiveCannotNull(){
         Payment p =  new Payment();
         p.setDate(new Date());
         p.setPrice(555);
