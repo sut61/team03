@@ -21,7 +21,7 @@ public class CreditType {
     private  Long   id;
 
     @NotNull
-    @Size( max = 14)
+    @Size(max = 14)
     @Pattern(regexp = "\\w+|[ก-๙]+")
     private  String type;
 
